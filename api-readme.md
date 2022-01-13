@@ -1,8 +1,8 @@
 # `AUTH`
 
-# Registration
+## Registration
 
-## Registration request
+### Registration request
 
 ```
 POST /api/auth/register
@@ -13,7 +13,7 @@ RequestBody: {
 }
 ```
 
-## Registration validation error
+### Registration validation error
 
 ```
 Status: 400 Bad Request
@@ -21,7 +21,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## Registration conflict error
+### Registration conflict error
 
 ```
 Status: 409 Conflict
@@ -31,7 +31,7 @@ ResponseBody: {
 }
 ```
 
-## Registration success response
+### Registration success response
 
 ```
 Status: 201 Created
@@ -44,9 +44,9 @@ ResponseBody: {
 }
 ```
 
-# Auth
+## Auth
 
-## Auth request
+### Auth request
 
 ```
 POST /api/auth/login
@@ -57,7 +57,7 @@ RequestBody: {
 }
 ```
 
-## Auth validation error
+### Auth validation error
 
 ```
 Status: 400 Bad Request
@@ -65,7 +65,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки  валидации>
 ```
 
-## Auth error
+### Auth error
 
 ```
 Status: 401 Unauthorized
@@ -74,7 +74,7 @@ ResponseBody: {
 }
 ```
 
-## Auth success response
+### Auth success response
 
 ```
 Status: 200 OK
@@ -88,15 +88,15 @@ ResponseBody: {
 }
 ```
 
-# Verification (email - optionaly)
+## Verification (email - optionaly)
 
-## Verification request
+### Verification request
 
 ```
 GET /api/auth/verify/:emailToken
 ```
 
-## Verification user Not Found
+### Verification user Not Found
 
 ```
 Status: 404 Not Found
@@ -105,7 +105,7 @@ ResponseBody: {
 }
 ```
 
-## Verification success response
+### Verification success response
 
 ```
 Status: 200 OK
@@ -114,9 +114,9 @@ ResponseBody: {
 }
 ```
 
-# Resending (email - optionaly)
+## Resending (email - optionaly)
 
-## Resending a email request
+### Resending a email request
 
 ```
 POST /api/auth/resend
@@ -126,7 +126,7 @@ RequestBody: {
 }
 ```
 
-## Resending a email validation error
+### Resending a email validation error
 
 ```
 Status: 400 Bad Request
@@ -134,7 +134,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## Resend error email for verified user
+### Resend error email for verified user
 
 ```
 Status: 400 Bad Request
@@ -144,7 +144,7 @@ ResponseBody: {
 }
 ```
 
-## Resending a email success response
+### Resending a email success response
 
 ```
 Status: 200 Ok
@@ -154,16 +154,16 @@ ResponseBody: {
 }
 ```
 
-# Logout
+## Logout
 
-## Logout request
+### Logout request
 
 ```
 GET /api/auth/logout
 Authorization: "Bearer {{token}}"
 ```
 
-## Logout unauthorized error
+### Logout unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -173,22 +173,22 @@ ResponseBody: {
 }
 ```
 
-## Logout success response
+### Logout success response
 
 ```
 Status: 204 No Content
 ```
 
-# Current
+## Current
 
-## Current request
+### Current request
 
 ```
 GET /api/auth/current
 Authorization: "Bearer {{token}}"
 ```
 
-## Current unauthorized error
+### Current unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -198,7 +198,7 @@ ResponseBody: {
 }
 ```
 
-## Current user success response
+### Current user success response
 
 ```
 Status: 200 OK
@@ -209,9 +209,9 @@ ResponseBody: {
 }
 ```
 
-# Auth прослойка?
+## Auth прослойка?
 
-## Middleware unauthorized error
+### Middleware unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -221,9 +221,9 @@ ResponseBody: {
 }
 ```
 
-# Avatar
+## Avatar
 
-## Avatar request
+### Avatar request
 
 ```
 PATCH /api/auth/avatar
@@ -232,7 +232,7 @@ Authorization: "Bearer {{token}}"
 RequestBody: загруженный файл
 ```
 
-## Avatar unauthorized error
+### Avatar unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -242,7 +242,7 @@ ResponseBody: {
 }
 ```
 
-## Avatar success response
+### Avatar success response
 
 ```
 Status: 200 OK
@@ -252,11 +252,11 @@ ResponseBody: {
 }
 ```
 
-# `BALANCE`
+# `TRANSACTIONS`
 
-# BalanceUpdate
+## BalanceUpdate
 
-## BalanceUpdate request
+### BalanceUpdate request
 
 ```
 POST /api/transactions/balance
@@ -267,7 +267,7 @@ RequestBody: {
 }
 ```
 
-## BalanceUpdate error
+### BalanceUpdate error
 
 ```
 Status: 400 Bad Request
@@ -275,7 +275,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## BalanceUpdate unauthorized error
+### BalanceUpdate unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -285,7 +285,7 @@ ResponseBody: {
 }
 ```
 
-## BalanceUpdate success response
+### BalanceUpdate success response
 
 ```
 Status: 200 OK
@@ -295,9 +295,9 @@ ResponseBody: {
 }
 ```
 
-# AddExpense & AddIncome
+## AddExpense & AddIncome
 
-## addTransaction request
+### addTransaction request
 
 ```
 POST /api/transactions/add
@@ -311,7 +311,7 @@ RequestBody: {
 }
 ```
 
-## addTransaction error
+### addTransaction error
 
 ```
 Status: 400 Bad Request
@@ -319,7 +319,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## addTransaction unauthorized error
+### addTransaction unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -329,7 +329,7 @@ ResponseBody: {
 }
 ```
 
-## addTransaction success response
+### addTransaction success response
 
 ```
 Status: 201 Created
@@ -348,9 +348,9 @@ ResponseBody: {
   }
 ```
 
-# RemoveTransaction
+## RemoveTransaction
 
-## removeTransaction request
+### removeTransaction request
 
 ```
 DELETE /api/transactions/:id
@@ -358,7 +358,7 @@ Content-Type: application/json
 Authorization: "Bearer {{token}}"
 ```
 
-## removeTransaction error Not Found
+### removeTransaction error Not Found
 
 ```
 Status: 404 Not Found
@@ -368,7 +368,7 @@ ResponseBody: {
     }
 ```
 
-## removeTransaction error
+### removeTransaction error
 
 ```
 Status: 400 Bad Request
@@ -376,7 +376,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## removeTransaction unauthorized error
+### removeTransaction unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -386,7 +386,7 @@ ResponseBody: {
 }
 ```
 
-## removeTransaction success response
+### removeTransaction success response
 
 ```
 Status: 200 Ok
@@ -397,9 +397,9 @@ ResponseBody: {
   }
 ```
 
-# getYearlyTransactionsByType
+## getYearlyTransactionsByType
 
-## getYearlyTransactionsByType request
+### getYearlyTransactionsByType request
 
 //type: 'income' or 'expense'
 
@@ -408,7 +408,7 @@ GET /api/transactions/all/:year/:type
 Authorization: "Bearer {{token}}"
 ```
 
-## getYearlyTransactionsByType error
+### getYearlyTransactionsByType error
 
 ```
 Status: 400 Bad Request
@@ -416,7 +416,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## getYearlyTransactionsByType unauthorized error
+### getYearlyTransactionsByType unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -426,7 +426,7 @@ ResponseBody: {
 }
 ```
 
-## getYearlyTransactionsByType Not Found error
+### getYearlyTransactionsByType Not Found error
 
 ```
 Status: 404 Not found
@@ -436,7 +436,7 @@ ResponseBody: {
 }
 ```
 
-## getYearlyTransactionsByType success response
+### getYearlyTransactionsByType success response
 
 ```
 Status: 200 OK
@@ -462,16 +462,16 @@ ResponseBody: {
 }
 ```
 
-# getAllMonthlyTransactions
+## getAllMonthlyTransactions
 
-## getAllMonthlyTransactions request
+### getAllMonthlyTransactions request
 
 ```
 GET /api/transactions/all/:month/:year
 Authorization: "Bearer {{token}}"
 ```
 
-## getAllMonthlyTransactions error
+### getAllMonthlyTransactions error
 
 ```
 Status: 400 Bad Request
@@ -479,7 +479,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## getAllMonthlyTransactions unauthorized error
+### getAllMonthlyTransactions unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -489,7 +489,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyTransactions Not Found error
+### getAllMonthlyTransactions Not Found error
 
 ```
 Status: 404 Not found
@@ -499,7 +499,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyTransactions success response
+### getAllMonthlyTransactions success response
 
 ```
 Status: 200 OK
@@ -557,9 +557,9 @@ ResponseBody: {
 }
 ```
 
-# getAllMonthlyByCategoryTransactions
+## getAllMonthlyByCategoryTransactions
 
-## getAllMonthlyByCategoryTransactions request
+### getAllMonthlyByCategoryTransactions request
 
 ```
 GET /api/transactions/category/:month/:year
@@ -569,7 +569,7 @@ RequestBody: {
 }
 ```
 
-## getAllMonthlyByCategoryTransactions error
+### getAllMonthlyByCategoryTransactions error
 
 ```
 Status: 400 Bad Request
@@ -577,7 +577,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## getAllMonthlyByCategoryTransactions unauthorized error
+### getAllMonthlyByCategoryTransactions unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -587,7 +587,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyByCategoryTransactions Not Found error
+### getAllMonthlyByCategoryTransactions Not Found error
 
 ```
 Status: 404 Not found
@@ -597,7 +597,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyByCategoryTransactions success response
+### getAllMonthlyByCategoryTransactions success response
 
 ```
 Status: 200 OK
@@ -627,9 +627,9 @@ ResponseBody: {
 }
 ```
 
-# getAllMonthlyByTypeTransactions
+## getAllMonthlyByTypeTransactions
 
-## getAllMonthlyByTypeTransactions request
+### getAllMonthlyByTypeTransactions request
 
 ```
 GET /api/transactions/type/:month/:year
@@ -639,7 +639,7 @@ RequestBody: {
 }
 ```
 
-## getAllMonthlyByTypeTransactions error
+### getAllMonthlyByTypeTransactions error
 
 ```
 Status: 400 Bad Request
@@ -647,7 +647,7 @@ Content-Type: application/json
 ResponseBody: <Ошибка от Joi или другой библиотеки валидации>
 ```
 
-## getAllMonthlyByTypeTransactions unauthorized error
+### getAllMonthlyByTypeTransactions unauthorized error
 
 ```
 Status: 401 Unauthorized
@@ -657,7 +657,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyByTypeTransactions Not Found error
+### getAllMonthlyByTypeTransactions Not Found error
 
 ```
 Status: 404 Not found
@@ -667,7 +667,7 @@ ResponseBody: {
 }
 ```
 
-## getAllMonthlyByTypeTransactions success response
+### getAllMonthlyByTypeTransactions success response
 
 ```
 Status: 200 OK
