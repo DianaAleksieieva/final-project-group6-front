@@ -1,8 +1,68 @@
-/* @import "../../node_modules/modern-normalize/modern-normalize.css";
+@import "../../node_modules/modern-normalize/modern-normalize.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import "../utils/_common.css";
-@import "../utils/_variables.css"; */
+@import "../utils/_variables.css";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+    text-decoration: none;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    color: black;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
 
 .app {
   font-family: 'Roboto', sans-serif;
