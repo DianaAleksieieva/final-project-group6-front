@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.167;
+  color: #52555f;
+
+  letter-spacing: 0.04em;
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+.userAvatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+.userName {
+  text-align: center;
+}
+.exit {
+  display: flex;
+  align-items: center;
+}
+.exitLink {
+  margin-left: 20px;
+  text-decoration-line: underline;
+}

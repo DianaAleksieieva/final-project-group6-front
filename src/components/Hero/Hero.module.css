@@ -1,0 +1,21 @@
+.hero {
+  background-color: #f5f6fb;
+  background-image: url(../../images/svg/kapusta.svg);
+  background-repeat: no-repeat;
+  background-size: 83px;
+  background-position: right -34px top 104px;
+  padding: 86px 88px 137px 49px;
+}
+/* .image {
+} */
+.tagline {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.1875;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
