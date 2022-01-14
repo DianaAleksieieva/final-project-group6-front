@@ -1,0 +1,23 @@
+:root {
+    --main-bg-color: #F2F5FC;
+    --white-color: #FFFFFF;
+    --black-text-color: #000000;
+    --main-text-color: #52555F;
+    --main-text-color-transparent: #52555FB2;
+    --placeholder-text-color: #C7CCDC;
+    --balance-text-color: #52555fb3;
+    --accent-orange-color: #FF751D;
+    --lite-orange-color: #FFDAC0;
+    --dark-icons-color: #071F41;
+    --light-icons-color: #F5F6FB;
+    --red-text-color: #E7192E;
+    --red-text-color-auth: #EB5757;
+    --green-text-color: #407946;
+    --kapusta-color: #DFE2EB;
+    --modal-balance-gradient: linear-gradient(117.84deg, #1D346A 2.84%, #031634 67.28%);
+    --main-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    --notification-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+    --vertical-line-header: #E0E5EB;
+  
+  }
+  
