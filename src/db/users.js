@@ -1,4 +1,4 @@
-users = [
+const users = [
   {
     id: 'ObjectId',
     email: 'donald@example.com',

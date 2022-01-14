@@ -1,0 +1,122 @@
+.loginForm {
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  transform: translateY(-87px);
+  background: #ffffff;
+
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  margin: auto;
+}
+.formContainer {
+  padding: 40px 18px;
+}
+.heading {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin: auto;
+  color: #52555f;
+  padding: 0 20px 24px;
+}
+.google {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  justify-content: center;
+  padding: 10px;
+  padding-bottom: 30px;
+
+  color: #000000;
+}
+.google::before {
+  content: '';
+  background-image: url(../../images/svg/googleSymbol.svg);
+  width: 17.58px;
+  height: 18px;
+  margin-right: 9.76px;
+}
+.hint {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  margin: 0 0 24px 11px;
+
+  color: #52555f;
+}
+.mailInput {
+  margin-bottom: 30px;
+}
+.mailInput,
+.passwordInput {
+  display: block;
+
+  background: #f6f7fb;
+  border-radius: 30px;
+  padding: 17px 20px;
+  border: hidden;
+  width: 213px;
+  margin-left: 11px;
+}
+.label {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: left;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px 11px;
+
+  color: #000000;
+}
+.passwordInput {
+}
+.formButtons {
+  padding: 0 18px 53px 17px;
+  justify-content: space-between;
+  display: flex;
+}
+.loginBtn,
+.registrationLink {
+  background: #f5f6fb;
+  border-radius: 16px;
+  margin: auto;
+  padding: 12px 34px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 0;
+  display: flex;
+  justify-content: center;
+
+  color: #52555f;
+  width: 125px;
+}
+.registrationLink {
+  padding: 12px 15px;
+  width: 95px;
+}
+
+.loginBtn:hover,
+.registrationLink:hover {
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  background: #ff751d;
+  color: #ffffff;
+}
