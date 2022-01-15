@@ -4,7 +4,6 @@ import line from '../../images/svg/line.svg';
 import { options } from '../../db';
 function Nav() {
   const { userName, avatarUrl } = options;
-  // isLoggedIn,
   return (
     <nav className={css.nav}>
       <div className={css.user}>
@@ -13,10 +12,10 @@ function Nav() {
       </div>
       <img className={css.line} src={line} alt="logout" />
       <div className={css.exit}>
-        <span className={css.exitIconLink}>
-          <img className={css.exitIcon} src={logout} alt="logout" />
+        <span className={css.exitIconLink} onClick={() => console.log('logout modal is open')}>
+          <img className={css.exitIcon} src={logout} alt="line" />
         </span>
-        <span className={css.exitLink}>
+        <span className={css.exitLink} onClick={() => console.log('logout modal is open')}>
           Выйти
         </span>
       </div>
