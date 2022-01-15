@@ -23,8 +23,8 @@ const users = [
     //       return jwt.sign({ id: _id }, process.env.SECRET)
     //     },
     avatarUrl: 'url', //avatarUrl: { type: String, required: true },
-    startBalance: 10000, //startBallanse: { type: Number, default: 0 }
-    currentBalance: 5, //currentBallanse: { type: Number }
+    startBalance: 10000, //startBalance: { type: Number, default: 0 }
+    currentBalance: 5, //currentBalance: { type: Number }
     verify: false, //verify: { type: Boolean, default: false },
   },
   {
