@@ -1,16 +1,23 @@
 import css from './Balance.module.css';
-import { Link } from 'react-router-dom';
 
-export default function Balance() {
+import { transactionsSelectors } from '../../redux/transactions';
+import { useSelector, useDispatch } from 'react-redux';
+
+function Balance() {
+  const balance = useSelector(transactionsSelectors.getBalance);
   return (
     <div className={css.container}>
-      <h3>Баланс:</h3>
-      <form >
-        <input type="number" />
-        <button type="submit">Подтвердить</button>
-      </form>
-
-      <Link to="/statistics">Перейти к отчетам</Link>
+      <p className={css.balanceText}>Баланс:</p>
+      <input className={css.input} placeholder={balance + ' ' + 'UAN'}></input>
+      {balance}
+      <button type="submit" className={css.confirmButton}>
+        ПОДТВЕРДИТЬ
+      </button>
+      <button type="button" className={css.toStatisticButton}>
+        Перейти к отчетам
+      </button>
     </div>
-  )
+  );
 }
+
+export default Balance;

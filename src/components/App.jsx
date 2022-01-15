@@ -9,6 +9,7 @@ function App() {
         <Header />
         <Body />
         <Footer />
+       
       </div>
     </div>
   );
