@@ -10,6 +10,7 @@ function Body() {
       {!isLoggedIn && <Hero />}
       {!isLoggedIn && <LoginForm />}
       {isLoggedIn && <Dashboard />}
+      
     </section>
   );
 }
