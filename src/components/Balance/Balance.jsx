@@ -7,11 +7,14 @@ function Balance() {
   return (
     <div className={css.container}>
       <p className={css.balanceText}>Баланс:</p>
-      <input></input>
+      <input className={css.input} placeholder={balance + ' ' + 'UAN'}></input>
       {balance}
-      UAN
-      <button>ПОДТВЕРДИТЬ</button>
-      <button>Перейти к отчетам</button>
+      <button type="submit" className={css.confirmButton}>
+        ПОДТВЕРДИТЬ
+      </button>
+      <button type="button" className={css.toStatisticButton}>
+        Перейти к отчетам
+      </button>
     </div>
   );
 }
