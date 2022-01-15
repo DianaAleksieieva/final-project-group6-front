@@ -263,7 +263,7 @@ POST /api/transactions/balance
 Content-Type: application/json
 Authorization: "Bearer {{token}}"
 RequestBody: {
-  "currentBallanse": 1000
+  "currentBalance": 1000
 }
 ```
 
@@ -291,7 +291,7 @@ ResponseBody: {
 Status: 200 OK
 Content-Type: application/json
 ResponseBody: {
-  "currentBallanse": 1000
+  "currentBalance": 1000
 }
 ```
 
@@ -404,7 +404,7 @@ ResponseBody: {
 //type: 'income' or 'expense'
 
 ```
-GET /api/transactions/all/:year/:type
+GET /api/transactions/year/:year/:type
 Authorization: "Bearer {{token}}"
 ```
 
@@ -467,7 +467,7 @@ ResponseBody: {
 ### getAllMonthlyTransactions request
 
 ```
-GET /api/transactions/all/:month/:year
+GET /api/transactions/month/:month/:year
 Authorization: "Bearer {{token}}"
 ```
 
@@ -635,7 +635,7 @@ ResponseBody: {
 GET /api/transactions/type/:month/:year
 Authorization: "Bearer {{token}}"
 RequestBody: {
-    category: 'income'
+    type: 'income'
 }
 ```
 
