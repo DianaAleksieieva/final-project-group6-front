@@ -5,19 +5,18 @@
 }
 
 * {
-    text-decoration: none;
-  }
-  
-  * {
-    padding: 0;
-    margin: 0;
-    color: black;
-  }
-  
-  li {
-    list-style: none;
-  }
-  
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
 
 img {
   display: block;
@@ -58,4 +57,8 @@ li {
   width: 1px;
   margin: -1px;
   overflow: hidden;
+}
+
+.container {
+  /* Пропоную тут додати стилі і перевикористовувати так як відступи на макеті одинакові!  */
 }
