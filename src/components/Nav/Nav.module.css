@@ -7,7 +7,6 @@
   font-weight: normal;
   line-height: 1.167;
   color: #52555f;
-
   letter-spacing: 0.04em;
 }
 .user {
@@ -20,14 +19,35 @@
   height: 32px;
   object-fit: cover;
 }
-.userName {
-  text-align: center;
-}
 .exit {
   display: flex;
   align-items: center;
 }
-.exitLink {
-  margin-left: 20px;
-  text-decoration-line: underline;
+.exitIcon{
+  display: block;
+  margin-left: 15px;
+}
+@media (min-width: 320px) {
+  .userName, .line, .exitLink {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .exitIconLink{
+    display: none;
+  }
+  .userName {
+    display: inline;
+    margin-left: 10px;
+    text-align: center;
+  }
+  .line{
+    display: block;
+    margin-left: 20px;
+  }
+  .exitLink {
+    display: inline;
+    margin-left: 20px;
+    text-decoration-line: underline;
+  }
 }
