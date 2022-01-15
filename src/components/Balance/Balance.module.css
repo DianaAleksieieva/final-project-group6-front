@@ -1,9 +1,46 @@
 @import url("../../utils/_variables.css");
 
 .container {
+  text-align: right;
   background-color: var(--main-bg-color);
+  padding-bottom: 40px;
+  padding-top: 9px;
   /* padding-left: 442px; */
 }
 .balanceText {
   display: inline-block;
+  margin-right: 21px;
+  color: var(--balance-text-color);
+  font-weight: 500;
+}
+.input {
+  padding: 12px 6px;
+  text-align: right;
+  background-color: transparent;
+  border: solid var(--white-color) 2px ;
+  border-radius: 16px;
+  font-weight: 700;
+}
+.input::placeholder {
+  color: var(--black-text-color);
+}
+
+.confirmButton {
+  margin-left: 15px;
+  padding: 12px 17px;
+  background-color: transparent;
+  border: solid var(--white-color) 2px ;
+  border-radius: 16px;
+  cursor: pointer;
+  color: var(--balance-text-color);
+  font-weight: 400;
+}
+
+.toStatisticButton {
+  margin-left: 205px;
+  color: var(--balance-text-color);
+  background-color: transparent;
+  border:0px;
+  cursor: pointer;
+  font-weight: 500;
 }
