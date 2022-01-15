@@ -12,16 +12,11 @@
     text-decoration: none;
   }
   
-  * {
+ * {
     padding: 0;
     margin: 0;
     color: black;
   }
-  
-  li {
-    list-style: none;
-  }
-  
 
 img {
   display: block;
@@ -37,10 +32,6 @@ h6,
 p {
   margin: 0;
   padding: 0;
-}
-
-a {
-  text-decoration: none;
 }
 
 ul,
@@ -69,7 +60,10 @@ li {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
+  background-image: url(../images/svg/rectangleBg.svg);
+  width: 100%;
 }
+
 .container {
   max-width: 100%;
   margin: auto;
@@ -90,16 +84,4 @@ li {
     max-width: 1280px;
   }
 }
-* {
-  text-decoration: none;
-}
 
-* {
-  padding: 0;
-  margin: 0;
-  color: black;
-}
-
-li {
-  list-style: none;
-}

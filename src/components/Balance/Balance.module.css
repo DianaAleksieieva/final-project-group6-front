@@ -1,4 +1,9 @@
-.balance {
-  background-color: violet;
-  height: 50%;
+@import url("../../utils/_variables.css");
+
+.container {
+  background-color: var(--main-bg-color);
+  /* padding-left: 442px; */
+}
+.balanceText {
+  display: inline-block;
 }

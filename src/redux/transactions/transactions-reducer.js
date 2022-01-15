@@ -18,6 +18,7 @@ const items = createReducer([], {
   [deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
+const balance = createReducer(null, {});
 
 const loading = createReducer(false, {
   [fetchTransactionsRequest]: () => true,
@@ -35,6 +36,7 @@ const error = createReducer(null, {});
 
 export default combineReducers({
   items,
+  balance,
   loading,
   error,
 });
