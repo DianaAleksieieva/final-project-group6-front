@@ -1,5 +1,5 @@
 import css from './App.module.css';
-import { Header, Body, Footer, DayPicker } from '.';
+import { Header, Body, Footer, DayPicker, Droplist } from '.';
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
         <Header />
         <Body />
         {/* <DayPicker /> */}
+        {/* <Droplist /> */}
         <Footer />
       </div>
     </div>
