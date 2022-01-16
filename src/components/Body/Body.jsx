@@ -6,10 +6,10 @@ function Body() {
   const { isLoggedIn } = options;
   return (
     <section className={css.body}>
-      {!isLoggedIn && <Balance />}
-      {!isLoggedIn && <Hero />}
-      {!isLoggedIn && <LoginForm />}
-      {isLoggedIn && <Dashboard />}
+      {!isLoggedIn && <Balance/>}
+      {!isLoggedIn && <Hero/>}
+      {!isLoggedIn && <LoginForm/>}
+      {isLoggedIn && <Dashboard/>}
     </section>
   );
 }
