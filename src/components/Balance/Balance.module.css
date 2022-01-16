@@ -1,4 +1,4 @@
-@import url("../../utils/_variables.css");
+@import url('../../utils/_variables.css');
 
 .container {
   text-align: right;
@@ -17,7 +17,7 @@
   padding: 12px 6px;
   text-align: right;
   background-color: transparent;
-  border: solid var(--white-color) 2px ;
+  border: solid var(--white-color) 2px;
   border-radius: 16px;
   font-weight: 700;
 }
@@ -29,7 +29,7 @@
   margin-left: 15px;
   padding: 12px 17px;
   background-color: transparent;
-  border: solid var(--white-color) 2px ;
+  border: solid var(--white-color) 2px;
   border-radius: 16px;
   cursor: pointer;
   color: var(--balance-text-color);
@@ -40,7 +40,7 @@
   margin-left: 205px;
   color: var(--balance-text-color);
   background-color: transparent;
-  border:0px;
+  border: 0px;
   cursor: pointer;
   font-weight: 500;
 }

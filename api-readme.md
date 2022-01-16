@@ -565,7 +565,7 @@ ResponseBody: {
 GET /api/transactions/category/:month/:year
 Authorization: "Bearer {{token}}"
 RequestBody: {
-    category: ['goods', 'health']
+    categories: ['goods', 'health']
 }
 ```
 
