@@ -2,33 +2,39 @@ import css from './LoginForm.module.css';
 
 function LoginForm() {
   return (
-    <form className={css.loginForm}>
-      <div className={css.formContainer}>
-        <h2 className={css.heading}>
-          Вы можете авторизоваться с помощью Google Account:
-        </h2>
-        <p className={css.google}>Google</p>
-        <p className={css.hint}>
-          Или зайти с помощью e-mail и пароля, предварительно
-          зарегистрировавшись:
-        </p>
-        <label htmlFor={css.mailInput} className={css.label}>
-          Электронная почта:
+    <div className={css.formContainer}>
+      <p className={css.googleText}>
+        Вы можете авторизоваться с помощью Google Account:
+      </p>
+      <p className={css.google}>Google</p>
+      <p className={css.heading}>
+        Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+      </p>
+      <form className={css.form} action="" autoComplete="off">
+        <label className={css.formLabel}>
+          <p className={css.formLabelText}>Электронная почта:</p>
+          <input
+            type="email"
+            name="email"
+            placeholder="your@email.com"
+            className={css.mailInput}
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+            title="Неправильный формат email. Разрешенные символы: '._%+-"
+            required
+          />
         </label>
-        <input
-          className={css.mailInput}
-          type="text"
-          placeholder="your@email.com"
-        />
-        <label htmlFor={css.passwordInput} className={css.label}>
-          Пароль:
+        <label className={css.formLabel}>
+          <p className={css.formLabelText}>Пароль:</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            className={css.passwordInput}
+            title="Пароль может, сoстоять не меньше чем из трех символов"
+            required
+          />
         </label>
-        <input
-          className={css.passwordInput}
-          type="password"
-          placeholder="Пароль"
-        />
-      </div>
+      </form>
       <div className={css.formButtons}>
         <button type="submit" className={css.loginBtn}>
           Войти
@@ -37,7 +43,7 @@ function LoginForm() {
           Регистрация
         </a>
       </div>
-    </form>
+    </div>
   );
 }
 
