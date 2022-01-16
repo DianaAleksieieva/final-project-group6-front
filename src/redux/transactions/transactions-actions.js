@@ -16,7 +16,9 @@ export const addTransactionRequest = createAction(
 export const addTransactionSuccess = createAction(
   'transactions/addTransactionSuccess',
 );
-export const addTransactionError = createAction('transactions/addTransactionError');
+export const addTransactionError = createAction(
+  'transactions/addTransactionError',
+);
 
 export const deleteTransactionRequest = createAction(
   'transactions/TransactionRequest',
@@ -24,4 +26,10 @@ export const deleteTransactionRequest = createAction(
 export const deleteTransactionSuccess = createAction(
   'transactions/TransactionSuccess',
 );
-export const deleteTransactionError = createAction('transactions/TransactionError');
+export const deleteTransactionError = createAction(
+  'transactions/TransactionError',
+);
+
+export const setBalanceRequest = createAction('transactions/setBalanceRequest');
+export const setBalanceSuccess = createAction('transactions/setBalanceSuccess');
+export const setBalanceError = createAction('transactions/setBalanceError');
