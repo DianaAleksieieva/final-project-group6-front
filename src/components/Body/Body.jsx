@@ -6,7 +6,7 @@ import css from './Body.module.css';
 // const Statistics = lazy(() => import("../pages/Statistics"))
 // const Register = lazy(() => import("../pages/Register"));
 
-import { Hero, LoginForm, Dashboard, Balance } from '../';
+import { Hero, LoginForm, Balance } from '../';
 import { options } from '../../db';
 const { isLoggedIn } = options;
 
@@ -16,7 +16,7 @@ function Body() {
       {!isLoggedIn && <Balance/>}
       {!isLoggedIn && <Hero/>}
       {!isLoggedIn && <LoginForm/>}
-      {isLoggedIn && <Dashboard/>}
+      {/* {isLoggedIn && <Dashboard/>} */}
     </section>
   );
 }

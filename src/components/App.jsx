@@ -8,7 +8,7 @@ function App() {
       <div className={css.container}>
         <Header />
         <Body />
-        <DayPicker />
+        {/* <DayPicker /> */}
         <Footer />
       </div>
     </div>
