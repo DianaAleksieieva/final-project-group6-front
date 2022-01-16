@@ -10,6 +10,9 @@ import {
   fetchTransactionsRequest,
   fetchTransactionsSuccess,
   fetchTransactionsError,
+  setBalanceRequest,
+  setBalanceSuccess,
+  setBalanceError,
 } from './transactions-actions';
 
 const items = createReducer([], {
@@ -18,7 +21,9 @@ const items = createReducer([], {
   [deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
-const balance = createReducer(null, {});
+const balance = createReducer(0, {
+  [setBalanceSuccess]: (_, { payload }) => payload,
+});
 
 const loading = createReducer(false, {
   [fetchTransactionsRequest]: () => true,
@@ -30,6 +35,9 @@ const loading = createReducer(false, {
   [deleteTransactionRequest]: () => true,
   [deleteTransactionSuccess]: () => false,
   [deleteTransactionError]: () => false,
+  [setBalanceRequest]: () => true,
+  [setBalanceSuccess]: () => false,
+  [setBalanceError]: () => false,
 });
 
 const error = createReducer(null, {});
