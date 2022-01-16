@@ -9,3 +9,4 @@ export { default as LoginForm } from './LoginForm';
 export { default as Home } from './Home';
 export { default as Footer } from './Footer';
 export { default as ReportsMonths } from './ReportsMonths';
+export { default as DayPicker } from './DayPicker';
