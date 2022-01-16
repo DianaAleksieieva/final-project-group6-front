@@ -1,3 +1,5 @@
+@import url("../../utils/_variables.css");
+
 .nav {
   display: flex;
   width: 100%;
@@ -6,7 +8,6 @@
   font-style: normal;
   font-weight: normal;
   line-height: 1.167;
-  color: #52555f;
   letter-spacing: 0.04em;
 }
 .user {
@@ -22,6 +23,9 @@
 .exit {
   display: flex;
   align-items: center;
+}
+.exitIconLink{
+  cursor: pointer;
 }
 .exitIcon{
   display: block;
@@ -40,6 +44,7 @@
     display: inline;
     margin-left: 10px;
     text-align: center;
+    color: var(--main-text-color);
   }
   .line{
     display: block;
@@ -49,5 +54,7 @@
     display: inline;
     margin-left: 20px;
     text-decoration-line: underline;
+    color: var(--main-text-color);
+    cursor: pointer;
   }
 }

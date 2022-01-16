@@ -6,7 +6,9 @@ export { default as Body } from './Body';
 export { default as Hero } from './Hero';
 export { default as Balance } from './Balance';
 export { default as LoginForm } from './LoginForm';
-export { default as Dashboard } from './Dashboard';
+export { default as Home } from './Home';
 export { default as Footer } from './Footer';
 export { default as ReportsMonths } from './ReportsMonths';
 export { default as TransactionHistory} from './TransactionHistory'
+export { default as DayPicker } from './DayPicker';
+export { default as Droplist } from './Droplist';

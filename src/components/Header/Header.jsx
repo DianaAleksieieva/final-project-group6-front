@@ -8,6 +8,7 @@ function Header() {
   return (
     <section className={css.header}>
       <img src={logo} alt="Kapusta" />
+      {/* Пока навигация открыта без условия */}
       <Nav />
       {/* {isLoggedIn && <Nav />} */}
     </section>

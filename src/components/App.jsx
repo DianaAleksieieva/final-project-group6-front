@@ -1,5 +1,5 @@
 import css from './App.module.css';
-import { Header, Body, Footer } from '.';
+import { Header, Body, Footer, DayPicker, Droplist } from '.';
 
 function App() {
   return (
@@ -7,8 +7,9 @@ function App() {
       <div className={css.container}>
         <Header />
         <Body />
+        {/* <DayPicker /> */}
+        {/* <Droplist /> */}
         <Footer />
-       
       </div>
     </div>
   );
