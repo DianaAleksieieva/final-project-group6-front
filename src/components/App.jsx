@@ -6,7 +6,7 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from '.';
-import { authOperations} from '../redux/auth';
+import { authOperations } from '../redux/auth';
 
 const HomeView = lazy(() =>
   import('../views/HomePage' /* webpackChunkName: "login-page" */),
@@ -40,30 +40,40 @@ function App() {
     <Container>
       <Suspense fallback={<h1>Loading ...</h1>}>
         <Routes>
-          
-          <Route path="/" element={
-            <PrivateRoute>
-              <HomeView />
-            </PrivateRoute>
-          } />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <HomeView />
+              </PrivateRoute>
+            }
+          />
 
-          <Route path="/login" element={
-            <GoHome>
-              <LoginView />
-            </GoHome>
-          } />
+          <Route
+            path="/login"
+            element={
+              <GoHome>
+                <LoginView />
+              </GoHome>
+            }
+          />
 
-          <Route path="/register" element={
-            <GoHome>
-              <RegisterView />
-            </GoHome>
-          } />
-            
-          <Route path="*" element={<h1 style={{ textAlign: "center" }}>Not found!</h1>} />
-          
+          <Route
+            path="/register"
+            element={
+              <GoHome>
+                <RegisterView />
+              </GoHome>
+            }
+          />
+
+          <Route
+            path="*"
+            element={<h1 style={{ textAlign: 'center' }}>Not found!</h1>}
+          />
         </Routes>
       </Suspense>
-     </Container>
+    </Container>
   );
 }
 

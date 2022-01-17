@@ -13,10 +13,10 @@ const token = {
 };
 
 const register = createAsyncThunk(
-  'auth/register',
+  'api/auth/register',
   async (credentials, rejectValue) => {
     try {
-      const { data } = await axios.post('/users/signup', credentials);
+      const { data } = await axios.post('api/auth/register', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -27,23 +27,22 @@ const register = createAsyncThunk(
 );
 
 const logIn = createAsyncThunk(
-  'auth/login',
+  'api/auth/login',
   async (credentials, rejectValue) => {
     try {
-      const { data } = await axios.post('/users/login', credentials);
+      const { data } = await axios.post('api/auth/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
-      console.log('1111');
       alert('Wrong Password');
       return rejectValue(error);
     }
   },
 );
 
-const logOut = createAsyncThunk('auth/logout', async (_, rejectValue) => {
+const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/auth/logout');
     token.unset();
   } catch (error) {
     return rejectValue(error);
@@ -51,7 +50,7 @@ const logOut = createAsyncThunk('auth/logout', async (_, rejectValue) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
+  'api/auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -62,7 +61,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/users/current');
+      const { data } = await axios.get('api/auth/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
