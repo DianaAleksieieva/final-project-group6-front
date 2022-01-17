@@ -1,3 +1,6 @@
+
+import css from './App.module.css';
+import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -28,6 +31,15 @@ function App() {
   }, [dispatch]);
 
   return (
+    <div className={css.app}>
+      <div className={css.container}>
+        <Header />
+        <TransactionInput />
+        <Body />
+        {/* <DayPicker /> */}
+        <Footer />
+      </div>
+    </div>
     <Container>
       <Suspense fallback={<>...</>}>
         <Routes>

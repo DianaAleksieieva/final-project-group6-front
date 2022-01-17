@@ -1,20 +1,36 @@
 import Select from 'react-select';
 import css from './Droplist.module.css';
 
-// Формат списка категорий
-// const options = [
-//   { value: 'chocolate', label: 'Chocolate' },
-//   { value: 'strawberry', label: 'Strawberry' },
-//   { value: 'vanilla', label: 'Vanilla' },
-// ];
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    margin: '0',
+    padding: '10px 20px',
+    border: '2px solid #F5F6FB',
+    color: state.isSelected ? '#52555F' : '#C7CCDC',
+    backgroundColor: state.isSelected ? '#F5F6FB' : '#FFFFFF',
+  }),
+  control: () => ({
+    // none of react-select's styles are passed to <Control />
+    margin: '0',
+    padding: '8px 10px',
+    height: 42,
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
 
-function Droplist({options, onChange}) {
+    return { ...provided, opacity, transition };
+  }
+}
+
+function Droplist({categories, categoryTitle}) {
   return (
       <Select 
+        styles={customStyles}
         className={css.select}
-        placeholder="Категории товара"
-        onChange={(e) => onChange(e.value)}
-        options={options}
+        placeholder={categoryTitle}
+        options={categories}
       />
   );
 }
