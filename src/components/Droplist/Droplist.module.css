@@ -1,19 +1,27 @@
 @import url("../../utils/_variables.css");
 
-
-@media (max-width: 767px){
+.select{
+  width: 282px;
+  height: 44px;
+  border-bottom: 2px solid var(--light-icons-color);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  color: var(--placeholder-text-color);
+}
+@media (max-width: 767px) {
   .select{
-    display: none;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-left: 2px solid var(--light-icons-color);
+    border-right: 2px solid var(--light-icons-color);
+    border-bottom-right-radius: 16px;     
   }
 }
 @media (min-width: 768px) {
   .select{
-    display: block;
-    width: 170px;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.02em;
-    color: var(--placeholder-text-color);
+    width: 171px;
+    border-top: 2px solid var(--light-icons-color);
   }
 }
 @media (min-width: 1280px) {
