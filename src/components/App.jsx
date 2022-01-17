@@ -1,29 +1,26 @@
-
+import PrivateRoute from './helpers/routes/PrivateRoute';
+import GoHome from './helpers/routes/GoHome';
 import css from './App.module.css';
 import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-
-// import HomeView from '../views/HomePage/HomePage';
-// import LoginView from '../views/LoginPage/LoginPage';
-// import PrivateRoute from './PrivateRoute';
-// import PublicRoute from './PublicRoute';
-// import { Container, Header, Body, Footer, DayPicker, Droplist } from '.';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { Container } from '.';
-import { authOperations, authSelectors } from '../redux/auth';
+import { authOperations} from '../redux/auth';
 
 const HomeView = lazy(() =>
-  import('../views/HomePage/HomePage' /* webpackChunkName: "login-page" */),
+  import('../views/HomePage' /* webpackChunkName: "login-page" */),
 );
 
 const LoginView = lazy(() =>
-  import('../views/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
+  import('../views/LoginPage' /* webpackChunkName: "login-page" */),
+);
+
+const RegisterView = lazy(() =>
+  import('../views/RegisterPage' /* webpackChunkName: "register-page" */),
 );
 
 function App() {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
-  // const navigate = useNavigate()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,43 +38,32 @@ function App() {
       </div>
     </div>
     <Container>
-      <Suspense fallback={<>...</>}>
+      <Suspense fallback={<h1>Loading ...</h1>}>
         <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/login" element={<LoginView />} />
+          
+          <Route path="/" element={
+            <PrivateRoute>
+              <HomeView />
+            </PrivateRoute>
+          } />
 
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/login" element={
+            <GoHome>
+              <LoginView />
+            </GoHome>
+          } />
+
+          <Route path="/register" element={
+            <GoHome>
+              <RegisterView />
+            </GoHome>
+          } />
+            
+          <Route path="*" element={<h1 style={{ textAlign: "center" }}>Not found!</h1>} />
+          
         </Routes>
       </Suspense>
-    </Container>
-
-    // Вариант со старым синтаксисом
-
-    // <Container>
-    //   <Suspense fallback={<h1>Loading ...</h1>}>
-    //     <Routes>
-          
-    //       <Route path="/" element={<HomeView />} navigate />
-
-    //       {/* <Route path="/login" element={<LoginView />}  /> */}
-            
-    //       {/* <Route path="*" element={<h1>Not found!</h1>} /> */}
-          
-    //     </Routes>
-    //   </Suspense>
-    // </Container>
-
-    // Что тут было
-
-    // <div className={css.app}>
-    //   <div className={css.container}>
-    //     <Header />
-    //     <Body />
-    //     {/* <DayPicker /> */}
-    //     {/* <Droplist /> */}
-    //     <Footer />
-    //   </div>
-    // </div>
+     </Container>
   );
 }
 
