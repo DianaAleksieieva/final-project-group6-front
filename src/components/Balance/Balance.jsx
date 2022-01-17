@@ -26,7 +26,7 @@ function Balance() {
         <p className={css.balanceText}>Баланс:</p>
         <input
           className={css.input}
-          placeholder={balance + ' ' + 'UAN'}
+          placeholder={balance ? balance + ' ' + 'UAN' : 0 + ' ' + 'UAN'}
           onChange={handleChange}
         ></input>
         {balance === null && <FirstModal />}
