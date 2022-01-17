@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 // import HomeView from '../views/HomePage/HomePage';
 // import LoginView from '../views/LoginPage/LoginPage';

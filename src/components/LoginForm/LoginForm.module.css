@@ -56,6 +56,8 @@
 
 .mailInput,
 .passwordInput {
+  outline: none;
+  border: none;
   background: #f6f7fb;
   border-radius: 30px;
   padding: 17px 20px;
@@ -138,11 +140,6 @@
     font-size: 1rem;
     margin-top: 0.3rem;
   }
-
-  /* .disabled-btn {
-    cursor: not-allowed;
-    background: rgba($primary-color, 0.8);
-  } */
 
 @media screen and (min-width: 768px) {
   
