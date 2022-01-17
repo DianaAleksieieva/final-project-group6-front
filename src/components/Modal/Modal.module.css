@@ -1,0 +1,95 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101; 
+  backdrop-filter: blur(5px);
+  
+
+}
+
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 194px;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  background-color: var(--white-color);
+  @media screen and (max-width: 767px) {
+  width: 280px;
+  height: 174px;
+  }
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  margin: 2px;
+}
+
+.modalCloseIcon {
+  background-image: url(../../images/svg/close.svg);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  
+} 
+
+.textContent {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--main-text-color);
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.btnContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 265px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.btn {
+  width: 125px;
+  height: 44px;
+  border-radius: 16px;
+  background-color: #fff;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid var(--light-icons-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 14px;
+  font-style: normal;
+  font-weight: 700;
+  transition: background-color 300ms linear;
+  color: var(--main-text-color);
+  
+}
+.btn:hover,
+.btn:focus {
+    background-color: var(--accent-orange-color);
+    border: 0;
+    color: #fff;
+  }
