@@ -1,11 +1,13 @@
 .hero {
-  background-color: #f5f6fb;
-  background-image: url(../../images/svg/kapusta.svg);
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-top: 86px;
+  padding-bottom: 76px;
+  background-image: url(../../images/bg-desk-top.15b0eba1.svg);
+
   background-repeat: no-repeat;
-  background-size: 83px;
-  background-position: right -34px top 104px;
-  padding: 86px 88px 137px 49px;
 }
+
 /* .image {
 } */
 .tagline {
