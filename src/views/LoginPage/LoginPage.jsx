@@ -3,7 +3,7 @@ import { Header, Hero, LoginForm } from '../../components';
 function LoginPage() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Hero />
       <LoginForm />
     </>
