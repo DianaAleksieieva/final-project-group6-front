@@ -1,16 +1,17 @@
 import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
 import { authSelectors } from '../redux/auth';
 
 export default function PrivateRoute({
-  children,
-  redirectTo = '/dashboard',
+  path,
+  redirectTo,
   ...routeProps
 }) {
+  const navigate = useNavigate()
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <Route {...routeProps}>
-      {isLoggedIn ? children : <Redirect to={redirectTo} />}
+      {isLoggedIn ? navigate({path}) : navigate({ redirectTo })}
     </Route>
   );
 }
