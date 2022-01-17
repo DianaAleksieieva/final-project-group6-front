@@ -1,0 +1,33 @@
+.goBack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.link {
+  display: flex;
+  font-size: 12px;
+  line-height: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  padding: 10px;
+}
+
+.text {
+  color: rgba(82, 85, 95, 0.7);
+  margin-left: 18px; 
+}
+
+@media screen and (max-width: 767px) {
+  .text {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .goBack {
+    margin-right: auto;
+  }
+}
