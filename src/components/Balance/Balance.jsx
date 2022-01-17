@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Balance() {
   const [firstBalance, setFirstBalance] = useState(0);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const balance = useSelector(transactionsSelectors.getBalance);
   const dispatch = useDispatch();
 
@@ -18,6 +19,7 @@ function Balance() {
     dispatch(transactionsOperations.setBalance(firstBalance));
     console.log(firstBalance);
     console.log(balance)
+    setButtonDisabled(true);
   }
   
   return (
@@ -30,11 +32,11 @@ function Balance() {
           onChange={handleChange}
         ></input>
         {balance === null && <FirstModal />}
-        {/* {transactions.length === 0 && <FirstModal/>} */}
         <button
           type="submit"
           className={css.confirmButton}
           onClick={setBalance}
+          disabled={buttonDisabled}
         >
           ПОДТВЕРДИТЬ
         </button>
