@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Switch, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 // import HomeView from '../views/HomePage/HomePage';
 // import LoginView from '../views/LoginPage/LoginPage';
@@ -8,7 +8,7 @@ import { Switch, Route, Routes } from 'react-router-dom';
 // import PublicRoute from './PublicRoute';
 // import { Container, Header, Body, Footer, DayPicker, Droplist } from '.';
 import { Container } from '.';
-import { authOperations } from '../redux/auth';
+import { authOperations, authSelectors } from '../redux/auth';
 
 const HomeView = lazy(() =>
   import('../views/HomePage/HomePage' /* webpackChunkName: "login-page" */),
@@ -19,6 +19,8 @@ const LoginView = lazy(() =>
 );
 
 function App() {
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
+  // const navigate = useNavigate()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,17 +42,17 @@ function App() {
     // Вариант со старым синтаксисом
 
     // <Container>
-    //   {/* <Suspense fallback={<Spinner />}></Suspense> */}
-    //   <Switch>
-    //     <PrivateRoute exact path="/" redirectTo="/login">
-    //       <HomePage />
-    //     </PrivateRoute>
+    //   <Suspense fallback={<h1>Loading ...</h1>}>
+    //     <Routes>
+          
+    //       <Route path="/" element={<HomeView />} navigate />
 
-    //     <PublicRoute path="/login" restricted redirectTo="/">
-    //       <LoginPage />
-    //     </PublicRoute>
-    //     {/* <Route path="*" element={<NotFound />} /> */}
-    //   </Switch>
+    //       {/* <Route path="/login" element={<LoginView />}  /> */}
+            
+    //       {/* <Route path="*" element={<h1>Not found!</h1>} /> */}
+          
+    //     </Routes>
+    //   </Suspense>
     // </Container>
 
     // Что тут было
