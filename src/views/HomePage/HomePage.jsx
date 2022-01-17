@@ -1,10 +1,10 @@
 import {
-  Container,
+  // Container,
   Header,
   Body,
-  Footer,
-  DayPicker,
-  Droplist,
+  // Footer,
+  // DayPicker,
+  // Droplist,
 } from '../../components';
 
 function HomePage() {
@@ -14,7 +14,7 @@ function HomePage() {
       <Body />
       {/* <DayPicker /> */}
       {/* <Droplist /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

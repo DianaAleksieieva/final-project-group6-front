@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import css from './LoginForm.module.css';
 
 function LoginForm() {
@@ -39,9 +40,9 @@ function LoginForm() {
         <button type="submit" className={css.loginBtn}>
           Войти
         </button>
-        <a href="##" className={css.registrationLink}>
+        <Link to='/register' className={css.registrationLink}>
           Регистрация
-        </a>
+        </Link>
       </div>
     </div>
   );
