@@ -31,7 +31,8 @@
   display: block;
   margin-left: 15px;
 }
-@media (min-width: 320px) {
+
+@media (max-width: 767px) {
   .userName, .line, .exitLink {
     display: none;
   }
