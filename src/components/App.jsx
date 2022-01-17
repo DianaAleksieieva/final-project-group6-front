@@ -1,21 +1,23 @@
+import PrivateRoute from '../helpers/routes/PrivateRoute';
+import GoHome from '../helpers/routes/GoHome';
+// import css from './App.module.css';
+// import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-
-// import HomeView from '../views/HomePage/HomePage';
-// import LoginView from '../views/LoginPage/LoginPage';
-// import PrivateRoute from './PrivateRoute';
-// import PublicRoute from './PublicRoute';
-// import { Container, Header, Body, Footer, DayPicker, Droplist } from '.';
 import { Container } from '.';
 import { authOperations } from '../redux/auth';
 
 const HomeView = lazy(() =>
-  import('../views/HomePage/HomePage' /* webpackChunkName: "login-page" */),
+  import('../views/HomePage' /* webpackChunkName: "login-page" */),
 );
 
 const LoginView = lazy(() =>
-  import('../views/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
+  import('../views/LoginPage' /* webpackChunkName: "login-page" */),
+);
+
+const RegisterView = lazy(() =>
+  import('../views/RegisterPage' /* webpackChunkName: "register-page" */),
 );
 
 function App() {
@@ -26,44 +28,52 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Container>
-      <Suspense fallback={<>...</>}>
-        <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/login" element={<LoginView />} />
-
-          {/* <Route path="*" element={<NotFound />} /> */}
-        </Routes>
-      </Suspense>
-    </Container>
-
-    // Вариант со старым синтаксисом
-
-    // <Container>
-    //   {/* <Suspense fallback={<Spinner />}></Suspense> */}
-    //   <Switch>
-    //     <PrivateRoute exact path="/" redirectTo="/login">
-    //       <HomePage />
-    //     </PrivateRoute>
-
-    //     <PublicRoute path="/login" restricted redirectTo="/">
-    //       <LoginPage />
-    //     </PublicRoute>
-    //     {/* <Route path="*" element={<NotFound />} /> */}
-    //   </Switch>
-    // </Container>
-
-    // Что тут было
-
     // <div className={css.app}>
     //   <div className={css.container}>
     //     <Header />
+    //     <TransactionInput />
     //     <Body />
     //     {/* <DayPicker /> */}
-    //     {/* <Droplist /> */}
     //     <Footer />
     //   </div>
     // </div>
+    <Container>
+      <Suspense fallback={<h1>Loading ...</h1>}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <HomeView />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <GoHome>
+                <LoginView />
+              </GoHome>
+            }
+          />
+
+          <Route
+            path="/register"
+            element={
+              <GoHome>
+                <RegisterView />
+              </GoHome>
+            }
+          />
+
+          <Route
+            path="*"
+            element={<h1 style={{ textAlign: 'center' }}>Not found!</h1>}
+          />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 }
 
