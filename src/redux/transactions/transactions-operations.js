@@ -9,6 +9,9 @@ import {
   fetchTransactionsRequest,
   fetchTransactionsSuccess,
   fetchTransactionsError,
+  setBalanceRequest,
+  setBalanceSuccess,
+  setBalanceError,
 } from './transactions-actions';
 
 const fetchTransactions = () => async dispatch => {
@@ -36,10 +39,18 @@ const deleteTransaction = transactionId => dispatch => {
     .then(() => dispatch(deleteTransactionSuccess(transactionId)))
     .catch(error => dispatch(deleteTransactionError(error.message)));
 };
+const setBalance = () => dispatch => {
+  dispatch(setBalanceRequest());
+  axios
+    .post(`/transactions/balance`)
+    .then(() => dispatch(setBalanceSuccess()))
+    .catch(error => dispatch(setBalanceError(error.message)));
+};
 
 const transactionsOperations = {
   fetchTransactions,
   addTransaction,
   deleteTransaction,
+  setBalance,
 };
 export default transactionsOperations;
