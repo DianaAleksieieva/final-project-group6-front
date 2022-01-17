@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
 
 const token = {
   set(token) {
@@ -12,35 +12,41 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async (credentials, rejectValue) => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    alert('The user with this email is already registered')
-    return rejectValue(error)
-  }
-});
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, rejectValue) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      alert('The user with this email is already registered');
+      return rejectValue(error);
+    }
+  },
+);
 
-const logIn = createAsyncThunk('auth/login', async (credentials, rejectValue) => {
-  try {
-    const { data } = await axios.post('/users/login', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log('1111')
-    alert('Wrong Password')
-    return rejectValue(error)
-  }
-});
+const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, rejectValue) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log('1111');
+      alert('Wrong Password');
+      return rejectValue(error);
+    }
+  },
+);
 
 const logOut = createAsyncThunk('auth/logout', async (_, rejectValue) => {
   try {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    return rejectValue(error)
+    return rejectValue(error);
   }
 });
 
@@ -59,7 +65,7 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue()
+      return thunkAPI.rejectWithValue();
     }
   },
 );

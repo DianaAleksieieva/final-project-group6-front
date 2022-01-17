@@ -12,16 +12,13 @@ function Balance() {
   const dispatch = useDispatch();
 
   const handleChange = event => {
-    setFirstBalance(event.target)
+    setFirstBalance(event.target.value);
   };
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
-    reset();
+    console.log(firstBalance);
+    console.log(balance)
   }
-  const reset = () => {
-    setFirstBalance(0);
-  };
-
   
   return (
     <div className={css.container}>

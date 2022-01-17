@@ -1,8 +1,8 @@
 import { Hero, LoginForm } from '..';
 import { options } from '../../db';
 import Balance from '../Balance';
-import Dashboard from '../pages/Dashboard';
-import Statistics from '../pages/Statistics';
+import Dashboard from '../Dashboard/Dashboard';
+import Statistics from '../Statistics/Statistics';
 import css from './Home.module.css';
 
 function Home() {
