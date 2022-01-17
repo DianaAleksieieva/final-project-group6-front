@@ -11,5 +11,8 @@ export { default as ReportsMonths } from './ReportsMonths';
 export { default as TransactionHistory } from './TransactionHistory';
 export { default as DayPicker } from './DayPicker';
 export { default as Droplist } from './Droplist';
+export { default as TransactionInput } from './TransactionInput';
+export { default as DescriptionInput } from './DescriptionInput';
+export { default as PriceInput } from './PriceInput';
 export { default as Modal } from './Modal';
 export { default as ArrowToGoBack } from './ArrowToGoBack';
