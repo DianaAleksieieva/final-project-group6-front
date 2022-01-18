@@ -21,7 +21,7 @@ const items = createReducer([], {
   [deleteTransactionSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
-const balance = createReducer(0, {
+const balance = createReducer(null, {
   [setBalanceSuccess]: (_, { payload }) => payload,
 });
 

@@ -19,7 +19,7 @@ const HomeView = lazy(() =>
 );
 
 const StatisticsView = lazy(() =>
-  import('../views/StatisticsPage' /* webpackChunkName: "home-page" */),
+  import('../views/StatisticsPage' /* webpackChunkName: "statistics-page" */),
 );
 
 const LoginView = lazy(() =>

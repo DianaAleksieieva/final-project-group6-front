@@ -37,10 +37,15 @@
   margin-left: 15px;
 }
 
-@media (min-width: 320px) {
+
+/* @media (min-width: 320px) {
   .userName,
   .line,
-  .exitLink {
+  .exitLink { */
+    
+
+@media (max-width: 767px) {
+  .userName, .line, .exitLink {
     display: none;
   }
 }

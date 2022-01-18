@@ -1,16 +1,15 @@
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
+import { Nav } from '..';
 import css from './Header.module.css';
 import logo from '../../images/svg/logo.svg';
-// import { options } from '../../db';
-import { Nav } from '..';
 
 function Header() {
-  // const { isLoggedIn } = options;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <section className={css.header}>
       <img src={logo} alt="Kapusta" />
-      {/* Пока навигация открыта без условия */}
-      <Nav />
-      {/* {isLoggedIn && <Nav />} */}
+      {isLoggedIn && <Nav />}
     </section>
   );
 }
