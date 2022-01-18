@@ -57,10 +57,16 @@
   display: none;
 }
 
+
+
+.position {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
 
   .wraper {
-    height: 626px;
+     height: 626px;
     width: 665px;
     background-color: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
@@ -105,17 +111,26 @@
     display: flex;
   }
 
-  .position {
+   .position {
     display: block;
     position: absolute;
+    margin-top: 40px;
   }
+  .report{
+    position: absolute;
+    top: 375px;
+    left: 50%;
+   transform: translateX(-50%);
+    }
 }
 
 @media screen and (min-width: 1280px) {
   .wraper {
     width: 1060px;
     height: 579px;
-  }
+    position: relative;
+    
+ }
 
 
   .flex {
@@ -142,4 +157,20 @@
   .item {
     margin-right: 10px;
   }
+  .position {
+    display: block;
+    position: absolute;
+    z-index: 50;
+    top: 105px;
+    left: 780px;
+    margin-left: 30px;
+  }
+  .report {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  position:static;
+  left: 0;
+   transform: translateX(0);
+}
 }

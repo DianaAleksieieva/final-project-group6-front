@@ -37,7 +37,7 @@ function Dashboard({ onSubmit, type }) {
               <li className={css.item}>
                 <Button
                   type="submit"
-                  text={'Отправить'}
+                  text={'Ввод'}
                   onSubmit={writePrice}
                   active={{ backgroundColor: '#ff751d', color: 'white' }}
                 />
@@ -49,8 +49,10 @@ function Dashboard({ onSubmit, type }) {
           </form>
         </div>
       </div>
-      <div>
+      <div className={css.report}>
         <TransactionHistory />
+      </div>
+      <div className={css.position}>
         <ReportsMonths />
       </div>
     </div>
