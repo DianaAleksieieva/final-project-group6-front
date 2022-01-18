@@ -42,7 +42,9 @@ const deleteTransaction = transactionId => dispatch => {
 const setBalance = () => dispatch => {
   dispatch(setBalanceRequest());
   axios
-    .post(`/transactions/balance`)
+    .put(
+      `https://final-project-group6-back.herokuapp.com/api/transactions/balance`,
+    )
     .then(() => dispatch(setBalanceSuccess()))
     .catch(error => dispatch(setBalanceError(error.message)));
 };

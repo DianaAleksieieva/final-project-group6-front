@@ -1,55 +1,72 @@
-@import url("../../utils/_variables.css");
+@import url('../../utils/_variables.css');
 
 .nav {
   display: flex;
   width: 100%;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
   line-height: 1.167;
   letter-spacing: 0.04em;
 }
+
 .user {
   display: flex;
   align-items: center;
 }
+
 .userAvatar {
   border-radius: 50%;
   width: 32px;
   height: 32px;
   object-fit: cover;
 }
+
 .exit {
   display: flex;
   align-items: center;
 }
-.exitIconLink{
+
+.exitIconLink {
   cursor: pointer;
 }
-.exitIcon{
+
+.exitIcon {
   display: block;
   margin-left: 15px;
 }
-@media (min-width: 320px) {
+
+
+/* @media (min-width: 320px) {
+  .userName,
+  .line,
+  .exitLink { */
+    
+
+@media (max-width: 767px) {
   .userName, .line, .exitLink {
     display: none;
   }
 }
+
 @media (min-width: 768px) {
-  .exitIconLink{
+  .exitIconLink {
     display: none;
   }
+
   .userName {
     display: inline;
     margin-left: 10px;
     text-align: center;
     color: var(--main-text-color);
   }
-  .line{
+
+  .line {
     display: block;
     margin-left: 20px;
   }
+
   .exitLink {
     display: inline;
     margin-left: 20px;

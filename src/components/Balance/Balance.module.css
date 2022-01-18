@@ -42,6 +42,11 @@
   font-weight: 400;
 }
 
+/* .confirmButton:hover, :focus {
+  background-color: var(--accent-orange-color);
+  color: var(--white-color);
+} */
+
 .toStatisticButton {
   margin-left: 205px;
   color: var(--balance-text-color);
