@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -9,6 +9,7 @@ function LoginForm() {
   const dispatch = useDispatch();
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
+  const [actionType, setActionType] = useState('');
 
   const {
     register,
@@ -20,22 +21,32 @@ function LoginForm() {
     mode: 'onChange',
   });
 
-  // const handleChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'email':
-  //       return setEmail(value);
-  //     case 'password':
-  //       return setPassword(value);
+  // const handleChange = () => {
+  //   switch (actionType) {
+  //     case 'login':
+  //       console.log('login switch');
+  //       return;
+  //     case 'register':
+  //       console.log('login switch2');
+  //       return;
   //     default:
   //       return;
   //   }
   // };
 
   const onSubmit = data => {
-    dispatch(authOperations.logIn(data));
-    reset();
-    // setEmail('');
-    // setPassword('');
+    switch (actionType) {
+      case 'login':
+        dispatch(authOperations.logIn(data));
+        reset();
+        return;
+      case 'register':
+        dispatch(authOperations.register(data));
+        reset();
+        return;
+      default:
+        return;
+    }
   };
 
   return (
@@ -94,12 +105,24 @@ function LoginForm() {
           <p className={css.error}>{errors.password?.message}</p>
         </label>
         <div className={css.formButtons}>
-          <button type="submit" className={css.loginBtn}>
+          <button
+            type="submit"
+            className={css.loginBtn}
+            onClick={e => {
+              setActionType('login');
+            }}
+          >
             Войти
           </button>
-          <a href="##" className={css.registrationLink}>
+          <button
+            type="submit"
+            className={css.registrationLink}
+            onClick={e => {
+              setActionType('register');
+            }}
+          >
             Регистрация
-          </a>
+          </button>
         </div>
       </form>
     </div>
