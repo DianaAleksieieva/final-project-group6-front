@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function GoBackButton() {
   return (
-    <Link className={css.GoBackButton} to="/statistics">
+    <Link className={css.GoBackButton} to="/">
       Вернуться на главную
     </Link>
   );
