@@ -31,7 +31,7 @@ function Balance() {
           placeholder={balance ? balance + ' ' + 'UAN' : 0 + ' ' + 'UAN'}
           onChange={handleChange}
         ></input>
-        {balance === 1 && <FirstModal />}
+        {balance === null && <FirstModal />}
         <button
           type="submit"
           className={css.confirmButton}
