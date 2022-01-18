@@ -18,10 +18,10 @@ function Balance() {
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
     console.log(firstBalance);
-    console.log(balance)
+    console.log(balance);
     setButtonDisabled(true);
-  }
-  
+  };
+
   return (
     <div className={css.container}>
       <div className={css.balanceWrap}>
@@ -31,7 +31,7 @@ function Balance() {
           placeholder={balance ? balance + ' ' + 'UAN' : 0 + ' ' + 'UAN'}
           onChange={handleChange}
         ></input>
-        {balance === null && <FirstModal />}
+        {balance === 1 && <FirstModal />}
         <button
           type="submit"
           className={css.confirmButton}
