@@ -1,20 +1,9 @@
-import {
-  // Container,
-  Header,
-  Body,
-  // Footer,
-  // DayPicker,
-  // Droplist,
-} from '../../components';
+import Dashboard from '../../components/Dashboard';
 
 function HomePage() {
   return (
     <>
-      <Header />
-      <Body />
-      {/* <DayPicker /> */}
-      {/* <Droplist /> */}
-      {/* <Footer /> */}
+      <Dashboard />
     </>
   );
 }
