@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    width: 134px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.text {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.color {
+    stroke: #ff751d;
+}
