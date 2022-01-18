@@ -98,6 +98,7 @@
 .loginBtn,
 .registrationLink {
   background: #f5f6fb;
+   cursor: pointer;
   border-radius: 16px;
   margin: auto;
   padding: 12px 34px;
@@ -118,14 +119,17 @@
 }
 
 .loginBtn {
+  transition-duration: 0.7s;
   margin-right: 15px;
 }
 .registrationLink {
+   transition-duration: 0.7s;
   padding: 12px 15px;
 }
 
 .loginBtn:hover,
 .registrationLink:hover {
+     transform: scale(1.05);
   filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
   background: #ff751d;
   color: #ffffff;
@@ -138,7 +142,9 @@
   color: #eb5757;
   margin-top: 4px;
   }
-
+.errorSbl{
+  color: #eb5757;  
+}
 @media screen and (min-width: 768px) {
   
 .formContainer {

@@ -54,7 +54,10 @@ function LoginForm() {
         autoComplete="off"
       >
         <label className={css.formLabel}>
-          <p className={css.formLabelText}>Электронная почта:</p>
+          <p className={css.formLabelText}>
+            <span className={css.errorSbl}>{errors.email && <>*</>}</span>
+            Электронная почта:
+          </p>
           <input
             type="email"
             name="email"
@@ -71,7 +74,10 @@ function LoginForm() {
           <p className={css.error}>{errors.email?.message}</p>
         </label>
         <label className={css.formLabel}>
-          <p className={css.formLabelText}>Пароль:</p>
+          <p className={css.formLabelText}>
+            <span className={css.errorSbl}>{errors.password && <>*</>}</span>
+            Пароль:
+          </p>
           <input
             type="password"
             name="password"
