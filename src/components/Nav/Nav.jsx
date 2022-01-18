@@ -16,10 +16,7 @@ function Nav() {
       </div>
       <img className={css.line} src={line} alt="logout" />
       <div className={css.exit}>
-        <span
-          className={css.exitIconLink}
-          onClick={() => console.log('logout modal is open')}
-        >
+        <span className={css.exitIconLink} onClick={() => toggle(console.log('logout modal is open'))}>
           <img className={css.exitIcon} src={logout} alt="line" />
         </span>
         <span
