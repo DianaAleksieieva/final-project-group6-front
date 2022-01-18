@@ -18,10 +18,10 @@ function Balance() {
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
     console.log(firstBalance);
-    console.log(balance)
+    console.log(balance);
     setButtonDisabled(true);
-  }
-  
+  };
+
   return (
     <div className={css.container}>
       <div className={css.balanceWrap}>
