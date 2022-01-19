@@ -24,11 +24,11 @@ const expenseCategory = [
 
 function TransactionInput(){
   return(
-    <form className={css.form} onSubmit={() => console.log('added transaction')}>
+    <div className={css.container}>
       <DescriptionInput descriptionTitle='Описание расхода'/>
       <Droplist categories={expenseCategory} categoryTitle='Категория расхода'/>
       <PriceInput/>
-    </form>
+    </div>
   )
 }
 
