@@ -40,5 +40,11 @@
 <symbol id="icon-backspace" viewBox="0 0 32 32">
 <path fill="#ff751d" style="fill: var(--color3, #ff751d)" d="M28 14.667h-18.893l4.773-4.787-1.88-1.88-8 8 8 8 1.88-1.88-4.773-4.787h18.893v-2.667z"></path>
 </symbol>
+<symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12" id="icon-arrowGoBack">
+<path d="M18 5H3.83l3.58-3.59L6 0 0 6l6 6 1.41-1.41L3.83 7H18V5Z" fill="#FF751D"></path>
+</symbol>
+<symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="icon-stats">
+    <path d="M0 4.2H3V14H0V4.2ZM5.6 0H8.4V14H5.6V0ZM11.2 8H14V14H11.2V8Z" fill="#52555F"></path>
+  </symbol>
 </defs>
 </svg>
