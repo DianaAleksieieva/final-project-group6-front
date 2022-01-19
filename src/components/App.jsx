@@ -25,10 +25,6 @@ const LoginView = lazy(() =>
   import('../views/LoginPage' /* webpackChunkName: "login-page" */),
 );
 
-const RegisterView = lazy(() =>
-  import('../views/RegisterPage' /* webpackChunkName: "register-page" */),
-);
-
 function App() {
   const dispatch = useDispatch();
 
@@ -70,15 +66,6 @@ function App() {
               element={
                 <GoHome>
                   <LoginView />
-                </GoHome>
-              }
-            />
-
-            <Route
-              path="/register"
-              element={
-                <GoHome>
-                  <RegisterView />
                 </GoHome>
               }
             />
