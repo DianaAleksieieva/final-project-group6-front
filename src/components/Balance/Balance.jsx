@@ -20,9 +20,9 @@ function Balance() {
   };
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
+    setButtonDisabled(true);
     console.log(firstBalance);
     console.log(balance);
-    setButtonDisabled(true);
   };
   const location = useLocation();
 
@@ -40,7 +40,7 @@ function Balance() {
             placeholder={balance ? balance : '0'}
             onChange={handleChange}
           ></input>
-          <span className={css.UA}> UA</span>
+          <span className={css.UA}> UAH</span>
           {balance === null && <FirstModal />}
           <button
             type="submit"
