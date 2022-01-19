@@ -48,3 +48,9 @@
 
   color: #000000;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+  margin: 0 auto;
+}
+}

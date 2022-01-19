@@ -1,7 +1,9 @@
 import { React, useState } from 'react';
 import { format } from 'date-fns';
-import ru from 'date-fns/locale/ru';
-import Controls from './Controls';
+import { ReactComponent as ArrowLeft } from '../../images/svg/ArrowLeft.svg';
+import { ReactComponent as ArrowRight } from '../../images/svg/ArrowRight.svg';
+import css from './MonthAndYearButton.module.css';
+import { Month } from '../../constans/index';
 
 function MonthAndYearButton() {
   //   const date = new Date();
@@ -9,7 +11,6 @@ function MonthAndYearButton() {
   const [month, setMonth] = useState(1);
   const [year, setYear] = useState(2022);
 
-  console.log(month, year);
   const onIncrement = () => {
     if (month < 12) {
       setMonth(month + 1);
@@ -32,12 +33,30 @@ function MonthAndYearButton() {
 
   return (
     <div>
-      <Controls
-        month={month}
-        year={year}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
-      />
+      <div className={css.container}>
+        <p className={css.title}>Текущий период:</p>
+        <div className={css.wrapper_buttons}>
+          <button
+            className={css.button}
+            onClick={month => {
+              onDecrement(month);
+            }}
+          >
+            <ArrowLeft />
+          </button>
+          <p className={css.text}>
+            {Month[month]} {year}
+          </p>
+          <button
+            className={css.button}
+            onClick={month => {
+              onIncrement(month);
+            }}
+          >
+            <ArrowRight />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
