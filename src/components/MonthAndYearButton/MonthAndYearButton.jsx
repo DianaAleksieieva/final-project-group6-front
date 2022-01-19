@@ -1,7 +1,5 @@
 import { React, useState } from 'react';
-import { format } from 'date-fns';
-import { ReactComponent as ArrowLeft } from '../../images/svg/ArrowLeft.svg';
-import { ReactComponent as ArrowRight } from '../../images/svg/ArrowRight.svg';
+import sprite from '../../images/svg/sprite.svg';
 import css from './MonthAndYearButton.module.css';
 import { Month } from '../../constans/index';
 
@@ -42,7 +40,9 @@ function MonthAndYearButton() {
               onDecrement(month);
             }}
           >
-            <ArrowLeft />
+            <svg width="12" height="12">
+              <use href={`${sprite}#icon-arrowLeft`}></use>
+            </svg>
           </button>
           <p className={css.text}>
             {Month[month]} {year}
@@ -53,7 +53,9 @@ function MonthAndYearButton() {
               onIncrement(month);
             }}
           >
-            <ArrowRight />
+            <svg width="12" height="12">
+              <use href={`${sprite}#icon-arrowRight`}></use>
+            </svg>
           </button>
         </div>
       </div>
