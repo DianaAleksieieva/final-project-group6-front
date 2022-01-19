@@ -1,10 +1,12 @@
 import css from './Balance.module.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import FirstModal from './FirstModal';
 import { transactionsSelectors } from '../../redux/transactions';
 import { transactionsOperations } from '../../redux/transactions';
 import { useSelector, useDispatch } from 'react-redux';
+import StatisticButton from './StatisticButton';
+import GoBackButton from './GoBackButton';
+import { useLocation } from 'react-router-dom';
 
 function Balance() {
   const [firstBalance, setFirstBalance] = useState(0);
@@ -18,19 +20,22 @@ function Balance() {
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
     console.log(firstBalance);
-    console.log(balance)
+    console.log(balance);
     setButtonDisabled(true);
-  }
-  
+  };
+  const location = useLocation();
+
   return (
     <div className={css.container}>
-      <div className={css.balanceWrap}>
+      {location.pathname === '/statistics' && <GoBackButton />}
+      <form className={css.balanceWrap}>
         <p className={css.balanceText}>Баланс:</p>
         <input
           className={css.input}
-          placeholder={balance ? balance + ' ' + 'UAN' : 0 + ' ' + 'UAN'}
+          placeholder={balance ? balance : '0'}
           onChange={handleChange}
         ></input>
+        <p className={css.UAN}> UAN</p>
         {balance === null && <FirstModal />}
         <button
           type="submit"
@@ -40,10 +45,8 @@ function Balance() {
         >
           ПОДТВЕРДИТЬ
         </button>
-      </div>
-      <Link className={css.toStatisticButton} to="/statistics">
-        Перейти к отчетам
-      </Link>
+      </form>
+      {location.pathname === '/' && <StatisticButton />}
     </div>
   );
 }
