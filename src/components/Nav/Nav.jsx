@@ -1,12 +1,16 @@
+import { useDispatch } from "react-redux";
+import { authOperations } from "../../redux/auth";
 import css from './Nav.module.css';
 import logout from '../../images/svg/logout.svg';
 import line from '../../images/svg/line.svg';
 import { options } from '../../db';
 import Modal from '../Modal/Modal';
 import useModal from '../Modal/useModal';
+
 function Nav() {
   const { userName, avatarUrl } = options;
   const { isShowingModal, toggle } = useModal();
+  const dispatch = useDispatch();
 
   return (
     <nav className={css.nav}>
@@ -28,7 +32,10 @@ function Nav() {
         {isShowingModal && (
           <Modal
             text={'Вы действительно хотите выйти?'}
-            // toLogout={logOut}
+            toLogout={() => {
+              dispatch(authOperations.logOut);
+              toggle();
+            }}
             onClose={toggle}
           />
         )}

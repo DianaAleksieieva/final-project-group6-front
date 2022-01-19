@@ -13,7 +13,7 @@ import { ReactComponent as Calendar } from '../../images/svg/calendar.svg';
 // const changeDate = (date) => {
 // setDate(date);
 //}
-const CalendarPicker = (date, changeDate) => {
+const CalendarPicker = ({ date, changeDate }) => {
   const selectDate = date => {
     changeDate(date);
   };

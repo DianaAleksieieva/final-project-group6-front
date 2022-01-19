@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -7,8 +6,6 @@ import css from './LoginForm.module.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
   const [actionType, setActionType] = useState('');
 
   const {
@@ -20,19 +17,6 @@ function LoginForm() {
     delayError: 500,
     mode: 'onChange',
   });
-
-  // const handleChange = () => {
-  //   switch (actionType) {
-  //     case 'login':
-  //       console.log('login switch');
-  //       return;
-  //     case 'register':
-  //       console.log('login switch2');
-  //       return;
-  //     default:
-  //       return;
-  //   }
-  // };
 
   const onSubmit = data => {
     switch (actionType) {
