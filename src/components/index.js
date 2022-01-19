@@ -16,3 +16,4 @@ export { default as DescriptionInput } from './DescriptionInput';
 export { default as PriceInput } from './PriceInput';
 export { default as Modal } from './Modal';
 export { default as ArrowToGoBack } from './ArrowToGoBack';
+export { default as MonthAndYearButton } from './MonthAndYearButton';
