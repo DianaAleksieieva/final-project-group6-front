@@ -54,13 +54,7 @@
 .UA {
   color: var(--black-text-color);
   font-weight: 700;
-<<<<<<< HEAD
   margin-left: -40px;
-=======
-  position: absolute;
-  top:14px;
-  left: 150px;
->>>>>>> dev
 }
 
 .confirmButton {
