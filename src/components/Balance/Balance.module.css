@@ -1,10 +1,11 @@
 @import url('../../utils/_variables.css');
 
 .container {
-  text-align: right;
+  position: relative;
+  text-align: center;
   background-color: var(--main-bg-color);
   padding-bottom: 40px;
-  padding-top: 9px;
+  padding-top: 40px;
   /* padding-left: 442px; */
 }
 .balanceWrap {
@@ -18,7 +19,9 @@
   font-weight: 500;
 }
 .input {
+  position: relative;
   padding: 12px 6px;
+  padding-right: 55px;
   text-align: right;
   background-color: transparent;
   border: solid var(--white-color) 2px;
@@ -28,7 +31,15 @@
 }
 .input::placeholder {
   color: var(--black-text-color);
-  margin-right: 20px;
+  font-weight: 700;
+}
+
+.UAN {
+  color: var(--black-text-color);
+  font-weight: 700;
+  position: absolute;
+  top:10px;
+  left: 150px;
 }
 
 .confirmButton {
@@ -42,18 +53,38 @@
   font-weight: 400;
 }
 
-/* .confirmButton:hover, :focus {
+/* .confirmButton:hover {
   background-color: var(--accent-orange-color);
   color: var(--white-color);
 } */
 
-.toStatisticButton {
-  margin-left: 205px;
+.statisticButton {
   color: var(--balance-text-color);
   background-color: transparent;
   border: 0px;
   cursor: pointer;
   font-weight: 500;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.rightPosition {
+  position: absolute;
+  right: 10px;
+}
+.leftPosition {
+  position: absolute;
+  left: 10px;
+}
+.GoBackButton {
+  color: var(--balance-text-color);
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-block;
+  position: absolute;
+  left: 10px;
 }
 
 .modal {

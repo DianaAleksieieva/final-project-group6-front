@@ -6,7 +6,7 @@ export default function LayoutPage() {
   return (
     <>
       <Header />
-      <Balance />
+      <Balance/>
       <Outlet />
     </>
   )
