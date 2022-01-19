@@ -1,16 +1,27 @@
 @import url('../../utils/_variables.css');
 
 .container {
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   text-align: center;
-  background-color: var(--main-bg-color);
+  /* background-color: var(--main-bg-color); */
   padding-bottom: 40px;
   padding-top: 40px;
+  font-size: 12px;
   /* padding-left: 442px; */
 }
+.contArrow {
+  min-width: 161px;
+  padding: 13px 0;
+}
+
+.contStats {
+  min-width: 171px;
+}
 .balanceWrap {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  align-items:center;
 }
 .balanceText {
   display: inline-block;
@@ -33,17 +44,21 @@
   color: var(--black-text-color);
   font-weight: 700;
 }
+.imageState {
+  margin-left: 15px;
+}
+.text_statistic {
+  margin-top: -5px;
+}
 
-.UAN {
+.UA {
   color: var(--black-text-color);
   font-weight: 700;
-  position: absolute;
-  top:14px;
-  left: 150px;
+  margin-left: -40px;
 }
 
 .confirmButton {
-  margin-left: 15px;
+  margin-left: 30px;
   padding: 12px 17px;
   background-color: transparent;
   border: solid var(--white-color) 2px;
@@ -64,9 +79,9 @@
   border: 0px;
   cursor: pointer;
   font-weight: 500;
-  display: inline-block;
-  position: absolute;
-  right: 10px;
+  margin-top: 15px;
+  display: block;
+  text-align: end;
 }
 .rightPosition {
   position: absolute;
@@ -82,10 +97,13 @@
   border: 0px;
   cursor: pointer;
   font-weight: 500;
-  display: inline-block;
-  position: absolute;
-  left: 10px;
+  padding: 15px 0;
 }
+.text {
+  color: rgba(82, 85, 95, 0.7);
+  margin-left: 18px; 
+}
+
 
 .modal {
   background-image: var(--modal-balance-gradient);
@@ -112,4 +130,33 @@
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 16px solid #1D346A;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+  flex-direction: column;
+}
+  .statisticButton {
+    text-align: center;
+  }
+  .balanceWrap {
+    margin-bottom: 40px;
+  }
+  .contArrow {
+    margin-bottom: 40px;
+  }
+  .text {
+    display: none;
+  }
+  .GoBackButton {
+    display: block;
+    text-align: left;
+    margin-left: 19px;
+  }
+  .balanceWrap {
+  flex-direction: column;
+  }
+  .balanceText {
+    margin-bottom: 8px;
+  }
 }
