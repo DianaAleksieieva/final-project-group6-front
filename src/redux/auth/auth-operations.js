@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:4321/';
+// axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:4321/';
 
 const token = {
   set(token) {
@@ -57,19 +57,33 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    console.log(persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('api/user/current');
-      console.log(data);
+      const { data } = await axios.get('api/auth/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
+  },
+);
+
+const googleIn = createAsyncThunk(
+  'api/auth/google',
+  async (token, thunkAPI) => {
+    if (token === null) {
+      return thunkAPI.rejectWithValue("Token neded");
+    }
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    try {
+      const { data } = await axios.get('/api/auth/current');
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+      }
   },
 );
 
@@ -78,5 +92,6 @@ const operations = {
   logOut,
   logIn,
   fetchCurrentUser,
+  googleIn,
 };
 export default operations;

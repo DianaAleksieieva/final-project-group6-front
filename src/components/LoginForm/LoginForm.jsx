@@ -38,7 +38,10 @@ function LoginForm() {
       <p className={css.googleText}>
         Вы можете авторизоваться с помощью Google Account:
       </p>
-      <p className={css.google}>Google</p>
+      {/* <p className={css.google}>Google</p> */}
+      <a className={css.google} href="http://localhost:4321/api/auth/google">
+        Google!
+      </a>
       <p className={css.heading}>
         Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
       </p>

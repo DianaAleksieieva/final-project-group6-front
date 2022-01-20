@@ -1,10 +1,10 @@
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
-import { lazy, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useLocation, Navigate} from 'react-router-dom';
 import { Container } from '.';
-import { authOperations } from '../redux/auth';
+import { authOperations, authSelectors } from '../redux/auth';
 
 // import css from './App.module.css';
 // import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
@@ -30,22 +30,23 @@ const RegisterView = lazy(() =>
 );
 
 function App() {
+  const location = useLocation();
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
+  if (location.search) {
+    const token = location.search.slice(1, location.search.length);
+    dispatch(authOperations.googleIn(token))
+     if (isLoggedIn === true) {
+    return <Navigate to='/'/>
+  };
+}
+
   return (
-    // <div className={css.app}>
-    //   <div className={css.container}>
-    //     <Header />
-    //     <TransactionInput />
-    //     <Body />
-    //     {/* <DayPicker /> */}
-    //     <Footer />
-    //   </div>
-    // </div>
 
     <Container>
       <Suspense fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}>
