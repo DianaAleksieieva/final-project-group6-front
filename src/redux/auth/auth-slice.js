@@ -33,6 +33,17 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isLoggedIn = true;
     },
+    [authOperations.googleIn.pending](state, action) {
+      state.token = action.meta.arg;
+    },
+    [authOperations.googleIn.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.meta.arg;
+      state.isLoggedIn = true;
+    },
+    [authOperations.googleIn.rejected]: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
