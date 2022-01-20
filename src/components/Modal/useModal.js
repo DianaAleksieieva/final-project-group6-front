@@ -6,10 +6,16 @@ const useModal = () => {
   function toggle() {
     setIsShowingModal(!isShowingModal);
   }
-
+  const handleBackdropClick = event => {
+    if (event.currentTarget === event.target) {
+     toggle();
+    }
+  };
+ 
   return {
     isShowingModal,
     toggle,
+    handleBackdropClick,
   }
 };
 
