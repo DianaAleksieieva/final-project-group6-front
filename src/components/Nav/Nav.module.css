@@ -35,14 +35,8 @@
 .exitIcon {
   display: block;
   margin-left: 15px;
-}
-
-
-/* @media (min-width: 320px) {
-  .userName,
-  .line,
-  .exitLink { */
-    
+  cursor: pointer;
+} 
 
 @media (max-width: 767px) {
   .userName, .line, .exitLink {
@@ -51,7 +45,7 @@
 }
 
 @media (min-width: 768px) {
-  .exitIconLink {
+  .exitIcon{
     display: none;
   }
 

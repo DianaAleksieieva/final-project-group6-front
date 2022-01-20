@@ -1,9 +1,8 @@
 .container{
   display: flex;
+  height: 44px;
 }
 .input{
-  width: 66px;
-  height: 44px;
   padding-right: 15px;
   outline: none;
   border: 2px solid var(--light-icons-color);
@@ -16,10 +15,10 @@
 .input::placeholder{
   color: var(--placeholder-text-color);
 }
-.calculator{
-  display: block;
-  height: 44px;
-  padding: 12px 20px;
+.calcContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid var(--light-icons-color);
   border-left: none;
   border-top-right-radius: 16px;
@@ -31,20 +30,24 @@
   }
   .input{
     width: 125px;
+    border-color: var(--white-color);
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px; 
   }
-  .calculator{
+  .calcContainer{
     width: 60px;
+    border-color: var(--white-color);
   }
 }
 @media (min-width: 768px) {
   .input{
+    width: 64px;
     padding-right: 10px;
     border-right: none;
   }
-  .calculator {
-    padding-left: 0;
+  .calcContainer{
+    width: 40px;
+    justify-content: flex-start;
   }
 }
 @media (min-width: 1280px) {

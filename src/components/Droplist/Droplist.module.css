@@ -6,7 +6,6 @@
   padding: 0 16px;
   outline: none;
   border: none;
-  border-bottom: 2px solid var(--light-icons-color);
   background-color: inherit;
   color: var(--placeholder-text-color);
   font-size: 12px;
@@ -17,8 +16,9 @@
   .select{
     margin: 0 auto;
     margin-bottom: 30px;
-    border-left: 2px solid var(--light-icons-color);
-    border-right: 2px solid var(--light-icons-color);
+    border-left: 2px solid var(--white-color);
+    border-right: 2px solid var(--white-color);
+    border-bottom: 2px solid var(--white-color);
     border-bottom-right-radius: 16px;     
   }
 }
@@ -26,6 +26,7 @@
   .select{
     width: 171px;
     border-top: 2px solid var(--light-icons-color);
+    border-bottom: 2px solid var(--light-icons-color);
   }
 }
 @media (min-width: 1280px) {

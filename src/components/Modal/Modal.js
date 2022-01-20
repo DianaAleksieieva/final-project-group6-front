@@ -27,12 +27,10 @@ export default class Modal extends Component {
 
   closeModal = e => {
     this.props.onClose();
-    console.log('logout modal is closed');
   };
 
   toLogout = e => {
     this.props.toLogout();
-    console.log('toLogout');
   };
 
 
