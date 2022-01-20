@@ -1,8 +1,8 @@
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
-import { lazy, Suspense, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, useLocation, Navigate} from 'react-router-dom';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { Container } from '.';
 import { authOperations, authSelectors } from '../redux/auth';
 
@@ -30,6 +30,32 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+  let date = new Date();
+  let selectedMonth = date.getMonth() + 1;
+  let selectedYear = date.getFullYear();
+  const [month, setMonth] = useState(selectedMonth);
+  const [year, setYear] = useState(selectedYear);
+
+  const onIncrement = (month, year) => {
+    if (month < 12) {
+      setMonth(month + 1);
+    }
+    if (month === 12) {
+      setMonth(1);
+      setYear(year + 1);
+    }
+  };
+
+  const onDecrement = (month, year) => {
+    if (month > 1) {
+      setMonth(month - 1);
+    }
+    if (month === 1) {
+      setMonth(12);
+      setYear(year - 1);
+    }
+  };
+
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
@@ -54,12 +80,20 @@ function App() {
               path="/"
               element={
                 <PrivateRoute>
-                  <LayoutView />
+                  <LayoutView
+                    month={month}
+                    year={year}
+                    onIncrement={onIncrement}
+                    onDecrement={onDecrement}
+                  />
                 </PrivateRoute>
               }
             >
               <Route index element={<HomeView />} />
-              <Route path="/statistics" element={<StatisticsView />} />
+              <Route
+                path="/statistics"
+                element={<StatisticsView month={month} year={year} />}
+              />
             </Route>
 
             <Route

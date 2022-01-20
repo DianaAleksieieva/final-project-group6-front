@@ -3,7 +3,7 @@ import React from 'react';
 import css from './CostsAndIncome.module.css';
 import { ReactComponent as Band } from '../../images/svg/band.svg';
 
-const CostsAndIncome = () => {
+const CostsAndIncome = ({ month, year }) => {
   return (
     <div className={css.section}>
       <div className={css.transactionWrapper}>

@@ -1,13 +1,17 @@
-import { Outlet } from 'react-router-dom'
-import { Balance, Header } from '../../components'
+import { Outlet } from 'react-router-dom';
+import { Balance, Header } from '../../components';
 
-
-export default function LayoutPage() {
+export default function LayoutPage({ month, year, onIncrement, onDecrement }) {
   return (
     <>
       <Header />
-      <Balance/>
+      <Balance
+        month={month}
+        year={year}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+      />
       <Outlet />
     </>
-  )
+  );
 }
