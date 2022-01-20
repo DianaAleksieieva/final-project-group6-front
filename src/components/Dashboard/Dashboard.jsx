@@ -1,62 +1,55 @@
 import css from './Dashboard.module.css';
-import DayPicker from '../DayPicker/index';
-import React, { useState } from 'react';
 import Button from '../Button/Button';
-import TransactionInput from '../TransactionInput/index';
-import { ReportsMonths, TransactionHistory } from '..';
+import ExpencesAndIncomes from './ExpencesAndIncomes';
+import { useEffect, useState } from 'react';
+import { EXPENCES, INCOMES } from '../../constans';
 
-function Dashboard({ onSubmit, type }) {
-  const writePrice = e => {
-    e.preventDefault();
-    onSubmit(() => console.log('gogogo'));
-    clearForm();
-  };
+const buttons = ['Расход', 'Доход']
+const style = (active, text) => ({
+  backgroundColor: active === text ? '#FEFEFE' : '#f5f6fb',
+  color: active === text ? '#FF751D' : 'black', 
+  borderBottomRightRadius: '0',
+  borderBottomLeftRadius: '0',
+  padding: "13px 34px",
+  boxShadow: 'none',
+  width: '138px'
+})
 
-  const clearForm = () => {
-    setDate(initialDate);
-  };
 
-  const initialDate = new Date();
-  const [date, setDate] = useState(initialDate);
-  const changeDate = date => {
-    setDate(date);
-  };
+function Dashboard() {
+  const [active, setActive] = useState("Расход"); 
+  const [transactionType, setTransactionType] = useState(EXPENCES)
+  
+  useEffect(() => {
+    if (active === 'Доход') {
+      setTransactionType(INCOMES)
+    } else if (active === 'Расход') {
+      setTransactionType(EXPENCES)
+    }
+  }, [active])
+
+  const handleClick = (e) => {
+    const { innerHTML } = e.target
+    setActive(innerHTML)
+  }
 
   return (
-    <div className={css.wraper}>
-      <div className={css.imgBack}>
-        <div className={css.conteiner}>
-          <form className={css.form} onSubmit={writePrice}>
-            <div className={css.flex}>
-              <div className={css.box}>
-                <DayPicker date={date} changeDate={changeDate} />
-              </div>
-              <TransactionInput />
-            </div>
-            <ul className={css.list}>
-              <li className={css.item}>
-                <Button
-                  type="submit"
-                  text={'Ввод'}
-                  onSubmit={writePrice}
-                  active={{ backgroundColor: '#ff751d', color: 'white' }}
-                />
-              </li>
-              <li>
-                <Button type="button" text={'Очистить'} onClick={clearForm} />
-              </li>
-            </ul>
-          </form>
-        </div>
+    <>
+      <div className={css.buttonWrapper}>
+        {buttons.map(text => 
+          <Button 
+            key={text}
+            type='button'
+            style={style(active, text)}
+            text={text}
+            onClick={handleClick}
+          />
+        )}
       </div>
-      <div className={css.report}>
-        <TransactionHistory />
-      </div>
-      <div className={css.position}>
-        <ReportsMonths />
-      </div>
-    </div>
-  );
+
+      <ExpencesAndIncomes transactionType={transactionType} />
+    </>
+  )
 }
 
 export default Dashboard;
