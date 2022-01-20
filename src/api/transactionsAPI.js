@@ -35,7 +35,7 @@ export async function getByTypeYearly(params) {
 
 export async function getByTypeMonthly(params) {
   const { type, year, month } = params;
-  api
+  return api
     .get(`/transactions/getByType/${type}/${year}/${month}`)
     .then(({ data }) => data)
     .catch(error => notifyError(error));
