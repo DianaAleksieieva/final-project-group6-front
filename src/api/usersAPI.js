@@ -1,5 +1,5 @@
 import { Notify } from 'notiflix';
-import { api } from './settings';
+import { api, tokenToAxios } from './settings';
 import notifyError from '../helpers/api/notifyError';
 
 export async function getCurrentUser() {
@@ -25,6 +25,18 @@ export async function updateUserBalance(body) {
     .then(({ data }) => {
       Notify.success(`Текущий баланс ${data.currentBalance}`);
       return true;
+    })
+    .catch(error => notifyError(error));
+}
+
+export async function refreshToken(params) {
+  const { refreshToken } = params;
+  tokenToAxios.set(refreshToken);
+  return await api
+    .get(`/user/token/refresh/${refreshToken}`)
+    .then(({ token, user, refreshToken }) => {
+      tokenToAxios.set(token);
+      return { token, user, refreshToken };
     })
     .catch(error => notifyError(error));
 }

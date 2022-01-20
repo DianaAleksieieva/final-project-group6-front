@@ -24,18 +24,6 @@ export async function login(body) {
     .catch(error => notifyError(error));
 }
 
-export async function refreshToken(params) {
-  const { refreshToken } = params;
-  tokenToAxios.set(refreshToken);
-  return await api
-    .get(`/auth/refresh/${refreshToken}`)
-    .then(({ token, user, refreshToken }) => {
-      tokenToAxios.set(token);
-      return { token, user, refreshToken };
-    })
-    .catch(error => notifyError(error));
-}
-
 export async function logout() {
   return await api
     .post('/auth/logout')
