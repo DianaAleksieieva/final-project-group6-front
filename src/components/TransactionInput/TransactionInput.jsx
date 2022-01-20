@@ -1,34 +1,16 @@
-import { DescriptionInput } from '..';
-import { Droplist } from '..';
-import { PriceInput } from '..';
 import css from './TransactionInput.module.css';
+import { DescriptionInput, Droplist, PriceInput } from '..';
 
-const expenseCategory = [
-  { value: 'Продукты', label: 'Продукты' },
-  { value: 'Алкоголь', label: 'Алкоголь' },
-  { value: 'Развлечение', label: 'Развлечение' },
-  { value: 'Здоровье', label: 'Здоровье' },
-  { value: 'Транспорт', label: 'Транспорт' },
-  { value: 'Все для дома', label: 'Все для дома' },
-  { value: 'Техника', label: 'Техника' },
-  { value: 'Комуналка, Связь', label: 'Комуналка, Связь' },
-  { value: 'Спорт, Хобби', label: 'Спорт, Хобби' },
-  { value: 'Образование', label: 'Образование' },
-  { value: 'Прочее', label: 'Прочее' },
-];
 
-// const profitCategory = [
-//   { value: 'ЗП', label: 'ЗП' },
-//   { value: 'Доп. доход', label: 'Доп. доход' },
-// ]
-
-function TransactionInput(){
+function TransactionInput({ transactionType }) {
+  const { category, title, description } = transactionType;
+  
   return(
-    <form className={css.form} onSubmit={() => console.log('added transaction')}>
-      <DescriptionInput descriptionTitle='Описание расхода'/>
-      <Droplist categories={expenseCategory} categoryTitle='Категория расхода'/>
+    <div className={css.container}>
+      <DescriptionInput descriptionTitle={description}/>
+      <Droplist categories={category} categoryTitle={title}/>
       <PriceInput/>
-    </form>
+    </div>
   )
 }
 

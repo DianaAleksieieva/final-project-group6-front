@@ -63,3 +63,20 @@ li {
   background-image: url(../images/svg/rectangleBg.svg);
   width: 100%;
 }
+
+.background {
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 583px;
+  background-image: url(../images/imgKap.8d475dd6.png),
+    linear-gradient(rgba(245, 246, 251, 1), rgba(245, 246, 251, 1));
+  background-repeat: repeat-x;
+
+  background-position-y: 84px, 0px;
+  border-bottom-left-radius: 200px;
+  box-shadow: 4px 0px 4px 0px #00000025;
+  top: 62px;
+  /* margin-top: 48px; */
+}

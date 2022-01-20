@@ -30,7 +30,7 @@ function MonthAndYearButton() {
   };
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <div className={css.container}>
         <p className={css.title}>Текущий период:</p>
         <div className={css.wrapper_buttons}>

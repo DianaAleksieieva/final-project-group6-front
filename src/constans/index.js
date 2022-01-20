@@ -12,3 +12,32 @@ export const Month = {
   11: 'Ноябрь',
   12: 'Декабрь',
 };
+
+export const EXPENCES = {
+  category: [
+    { value: 'Продукты', label: 'Продукты' },
+    { value: 'Алкоголь', label: 'Алкоголь' },
+    { value: 'Развлечение', label: 'Развлечение' },
+    { value: 'Здоровье', label: 'Здоровье' },
+    { value: 'Транспорт', label: 'Транспорт' },
+    { value: 'Все для дома', label: 'Все для дома' },
+    { value: 'Техника', label: 'Техника' },
+    { value: 'Комуналка, Связь', label: 'Комуналка, Связь' },
+    { value: 'Спорт, Хобби', label: 'Спорт, Хобби' },
+    { value: 'Образование', label: 'Образование' },
+    { value: 'Прочее', label: 'Прочее' },
+  ],
+
+  title: 'Категория товара',
+  description: 'Описание товара'
+}
+
+export const INCOMES = {
+  category: [
+    { value: 'ЗП', label: 'ЗП' },
+    { value: 'Доп. доход', label: 'Доп. доход' },
+  ],
+  
+  title: 'Категория дохода',
+  description: 'Описание дохода'
+}

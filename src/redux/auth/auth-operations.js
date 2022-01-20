@@ -31,9 +31,7 @@ const logIn = createAsyncThunk(
   'api/auth/login',
   async (credentials, rejectValue) => {
     try {
-      const {
-        data: { data },
-      } = await axios.post('api/auth/login', credentials);
+      const {data} = await axios.post('api/auth/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -53,7 +51,7 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'api/refresh',
+  'api/auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -79,7 +77,7 @@ const googleIn = createAsyncThunk(
     }
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
-      const { data } = await axios.get('/api/auth/current');
+      const { data } = await axios.get('/api/user/current');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();

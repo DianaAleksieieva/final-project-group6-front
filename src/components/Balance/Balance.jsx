@@ -6,6 +6,7 @@ import { transactionsOperations } from '../../redux/transactions';
 import { useSelector, useDispatch } from 'react-redux';
 import StatisticButton from './StatisticButton';
 import GoBackButton from './GoBackButton';
+import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 
 function Balance() {
@@ -19,34 +20,45 @@ function Balance() {
   };
   const setBalance = () => {
     dispatch(transactionsOperations.setBalance(firstBalance));
+    setButtonDisabled(true);
     console.log(firstBalance);
     console.log(balance);
-    setButtonDisabled(true);
   };
   const location = useLocation();
 
   return (
     <div className={css.container}>
-      {location.pathname === '/statistics' && <GoBackButton />}
+      <div className={css.contArrow}>
+        {location.pathname === '/statistics' && <GoBackButton />}
+      </div>
+
       <form className={css.balanceWrap}>
         <p className={css.balanceText}>Баланс:</p>
-        <input
-          className={css.input}
-          placeholder={balance ? balance : '0'}
-          onChange={handleChange}
-        ></input>
-        <p className={css.UAN}> UAN</p>
-        {balance === null && <FirstModal />}
-        <button
-          type="submit"
-          className={css.confirmButton}
-          onClick={setBalance}
-          disabled={buttonDisabled}
-        >
-          ПОДТВЕРДИТЬ
-        </button>
+        <div className={css.wrapperButton}>
+          <input
+            className={css.input}
+            placeholder={balance ? balance : '0'}
+            onChange={handleChange}
+          ></input>
+          <span className={css.UA}> UAH</span>
+          {balance === null && <FirstModal />}
+          <button
+            type="submit"
+            className={css.confirmButton}
+            onClick={setBalance}
+            disabled={buttonDisabled}
+          >
+            ПОДТВЕРДИТЬ
+          </button>
+        </div>
       </form>
-      {location.pathname === '/' && <StatisticButton />}
+      <div className={css.contStats}>
+        {location.pathname === '/' ? (
+          <StatisticButton />
+        ) : (
+          <MonthAndYearButton />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,11 +1,10 @@
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
-import css from './Nav.module.css';
-import logout from '../../images/svg/logout.svg';
-import line from '../../images/svg/line.svg';
-import { options } from '../../db';
 import Modal from '../Modal/Modal';
 import useModal from '../Modal/useModal';
+import css from './Nav.module.css';
+import sprite from '../../images/svg/sprite.svg';
+import { options } from '../../db';
 
 function Nav() {
   const { userName, avatarUrl } = options;
@@ -18,24 +17,20 @@ function Nav() {
         <img className={css.userAvatar} src={avatarUrl} alt="user avatar" />
         <span className={css.userName}>{userName}</span>
       </div>
-      <img className={css.line} src={line} alt="logout" />
+      <svg className={css.line} width='2' height='36'>
+        <use href={`${sprite}#icon-line`}></use>
+      </svg>
       <div className={css.exit}>
-        <span className={css.exitIconLink} onClick={() => toggle(console.log('logout modal is open'))}>
-          <img className={css.exitIcon} src={logout} alt="line" />
-        </span>
-        <span
-          className={css.exitLink}
-          onClick={() => toggle(console.log('logout modal is open'))}
-        >
+        <svg className={css.exitIcon} onClick={() => toggle()} width='16' height='16'>
+          <use href={`${sprite}#icon-logout`}></use>
+        </svg>
+        <span className={css.exitLink} onClick={() => toggle()}>
           Выйти
         </span>
         {isShowingModal && (
           <Modal
             text={'Вы действительно хотите выйти?'}
-            toLogout={() => {
-              dispatch(authOperations.logOut);
-              toggle();
-            }}
+            toLogout={() => dispatch(authOperations.logOut())}
             onClose={toggle}
           />
         )}
