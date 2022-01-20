@@ -1,8 +1,8 @@
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Container } from '.';
 import { authOperations, authSelectors } from '../redux/auth';
 
@@ -62,15 +62,15 @@ function App() {
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
-    dispatch(authOperations.googleIn(token))
-     if (isLoggedIn === true) {
-    return <Navigate to='/'/>
-  };
-}
+    dispatch(authOperations.googleIn(token));
+    if (isLoggedIn === true) {
+      return <Navigate to="/" />;
+    }
+  }
 
   return (
     <>
-        <div className={css.background}></div>
+      <div className={css.background}></div>
       <Container>
         <Suspense
           fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}
