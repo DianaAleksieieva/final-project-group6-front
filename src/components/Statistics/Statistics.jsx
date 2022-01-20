@@ -17,10 +17,10 @@ export default function Statistics({ month, year }) {
     <>
       <div className={css.containerButton}>
         <ButtonChangeCategories costs={costs} changeStatus={changeStatus} />
-        {/* <CategoryImage/> - тут должен быть компонент с категориями  */}
+        {/* <CategoryImage costs={costs} month={month} year={year}/> - тут должен быть компонент с категориями  */}
       </div>
       <div className={css.containerGraph}>
-        {/* <Graph/> - тут должны быть графики для описаний */}
+        {/* <Graph costs={costs} month={month} year={year}/> - тут должны быть графики для описаний */}
       </div>
     </>
   );
