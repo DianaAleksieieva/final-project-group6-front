@@ -9,7 +9,7 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 
-function Balance() {
+function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const balance = useSelector(transactionsSelectors.getBalance);
@@ -56,7 +56,12 @@ function Balance() {
         {location.pathname === '/' ? (
           <StatisticButton />
         ) : (
-          <MonthAndYearButton />
+          <MonthAndYearButton
+            month={month}
+            year={year}
+            onIncrement={onIncrement}
+            onDecrement={onDecrement}
+          />
         )}
       </div>
     </div>
