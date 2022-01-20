@@ -5,8 +5,8 @@ import {
   ReportsMonths, TransactionHistory, TransactionInput, DayPicker
 } from '../..';
 
-export default function ExpencesAndIncomes({ transactionType }) {  
-
+export default function ExpencesAndIncomes({ transactionType, active}) {  
+  
   const writePrice = e => {
     e.preventDefault();
     // onSubmit(() => console.log('gogogo'));
@@ -61,7 +61,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
         <TransactionHistory />
       </div>
       <div className={css.position}>
-        <ReportsMonths />
+        <ReportsMonths  active={active} date={date}/>
       </div>
     </div>
   );

@@ -47,7 +47,11 @@ function Dashboard() {
         )}
       </div>
 
-      <ExpencesAndIncomes transactionType={transactionType} />
+      <ExpencesAndIncomes 
+        transactionType={transactionType} 
+        active={active}
+      />
+      
     </>
   )
 }
