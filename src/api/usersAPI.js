@@ -33,7 +33,7 @@ export async function refreshToken(params) {
   const { refreshToken } = params;
   tokenToAxios.set(refreshToken);
   return await api
-    .get(`/user/token/refresh/${refreshToken}`)
+    .get(`/user/token/refresh`)
     .then(({ token, user, refreshToken }) => {
       tokenToAxios.set(token);
       return { token, user, refreshToken };
