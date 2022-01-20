@@ -35,12 +35,13 @@ import css from './Droplist.module.css';
 //   );
 // }
 
-function Droplist({categories, categoryTitle}) {
+function Droplist({ categories, categoryTitle }) {
   return (
-    <select className={css.select} placeholder={categoryTitle}>
-      { categories.map(({value, label}) => (
-        <option key={value}>{label}</option>
-      ))}
+    <select className={css.select} >
+      <option>{categoryTitle}</option>
+        { categories.map(({value, label}) => (
+          <option key={value}>{label}</option>
+        ))}
     </select>
   );
 }

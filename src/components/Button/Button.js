@@ -1,13 +1,17 @@
 import React from "react";
 import css from "./Button.module.css";
 
-function Button({ text, type, onClick, onSubmit, active }) {
+function Button({
+  text, type, id, onClick, onSubmit, style
+}) {
+
   return (
     <button
+      id={id}
       type={type}
       className={css.button}
       onClick={onClick}
-      style={active}
+      style={style}
       onSubmit={onSubmit}
     >
       {text}
