@@ -1,14 +1,10 @@
-import css from './Statistics.module.css'
+import css from './Statistics.module.css';
+import ButtonChangeCategories from '../ButtonChangeCategories';
 
 export default function Statistics() {
-
   return (
-    <div>
-      <button type="button">Расход</button>
-      <button type="button">Доход</button>
-      <div className={css.innerContainer}>
-        Statistics
-      </div>
+    <div className={css.wrapper}>
+      <ButtonChangeCategories />
     </div>
-  )
+  );
 }
