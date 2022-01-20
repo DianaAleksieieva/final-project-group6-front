@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
 import Modal from '../Modal/Modal';
@@ -11,8 +12,22 @@ import line from '../../images/svg/line.svg';
 
 function Nav() {
   const { userName, avatarUrl } = options;
-  const { isShowingModal, toggle } = useModal();
+  const { isShowingModal, toggle, handleBackdropClick} = useModal();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === "Escape") {
+        toggle();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
 
   return (
     <nav className={css.nav}>
@@ -30,9 +45,10 @@ function Nav() {
         </span>
         {isShowingModal && (
           <Modal
-            text={'Вы действительно хотите выйти?'}
+            textContent ={'Вы действительно хотите выйти?'}
             toLogout={() => dispatch(authOperations.logOut())}
-            onClose={toggle}
+            closeModal={toggle}
+            handleBackdropClick={handleBackdropClick}
           />
         )}
       </div>
