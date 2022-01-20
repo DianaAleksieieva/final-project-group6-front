@@ -6,9 +6,6 @@ import css from './Nav.module.css';
 import sprite from '../../images/svg/sprite.svg';
 import { options } from '../../db';
 
-import line from '../../images/svg/line.svg';
-
-
 function Nav() {
   const { userName, avatarUrl } = options;
   const { isShowingModal, toggle } = useModal();
@@ -20,7 +17,9 @@ function Nav() {
         <img className={css.userAvatar} src={avatarUrl} alt="user avatar" />
         <span className={css.userName}>{userName}</span>
       </div>
-      <img className={css.line} src={line} alt="logout" />
+      <svg className={css.line} width='2' height='36'>
+        <use href={`${sprite}#icon-line`}></use>
+      </svg>
       <div className={css.exit}>
         <svg className={css.exitIcon} onClick={() => toggle()} width='16' height='16'>
           <use href={`${sprite}#icon-logout`}></use>
