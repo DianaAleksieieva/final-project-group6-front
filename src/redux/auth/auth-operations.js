@@ -70,7 +70,7 @@ const fetchCurrentUser = createAsyncThunk(
 );
 
 const googleIn = createAsyncThunk(
-  'api/auth/google',
+  'api/auth/googleIn',
   async (token, thunkAPI) => {
     if (token === null) {
       return thunkAPI.rejectWithValue('Token neded');
