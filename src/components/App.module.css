@@ -126,8 +126,8 @@ li {
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    bottom: -100%;
-    right: 10%;
+    bottom: -650px;
+    right: 15%;
   }
 }
 

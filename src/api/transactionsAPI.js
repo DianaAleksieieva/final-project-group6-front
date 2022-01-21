@@ -38,7 +38,7 @@ export async function getByTypeMonthly(params) {
   return api
     .get(`/transactions/getByType/${type}/${year}/${month}`)
     .then(({ data }) => data)
-    .catch(error => notifyError(error));
+    .catch(error => error);
 }
 
 export async function getByCategoryMonthly(params) {
