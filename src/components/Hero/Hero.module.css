@@ -1,11 +1,11 @@
 .hero {
   max-width: 1260px;
-  margin: 0 auto;
-  padding-top: 86px;
+  /* margin: 0 auto; */
+  /* padding-top: 86px; */
   padding-bottom: 76px;
-  background-image: url(../../images/bg-desk-top.15b0eba1.svg);
+  /* background-image: url(../../images/bg-desk-top.15b0eba1.svg);
 
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .tagline {

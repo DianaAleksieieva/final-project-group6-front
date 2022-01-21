@@ -29,6 +29,8 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  let backgroundLocation = useLocation();
+  console.log(backgroundLocation.pathname === '/');
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
@@ -68,7 +70,12 @@ function App() {
 
   return (
     <>
-      <div className={css.background}></div>
+      {backgroundLocation.pathname === '/' ||
+      backgroundLocation.pathname === '/statistics' ? (
+        <div className={css.backgroundLogin}></div>
+      ) : (
+        <div className={css.background}></div>
+      )}
       <Container>
         <Suspense
           fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}
@@ -110,6 +117,14 @@ function App() {
           </Routes>
         </Suspense>
       </Container>
+      {backgroundLocation.pathname === '/' ||
+      backgroundLocation.pathname === '/statistics' ? (
+        <div className={css.backgroundStatistic}></div>
+      ) : (
+        <div className={css.backgroundCabbage}>
+          <div className={css.cabbageSmall}></div>
+        </div>
+      )}
     </>
   );
 }
