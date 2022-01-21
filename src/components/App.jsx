@@ -30,7 +30,6 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   let backgroundLocation = useLocation();
-  console.log(backgroundLocation.pathname === '/');
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
