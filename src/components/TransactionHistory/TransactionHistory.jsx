@@ -1,7 +1,7 @@
 import css from './TransactionHistory.module.css'
 
 function TransactionHistory({ transactions }) {
-    // console.log(transactions);
+    console.log(transactions);
 
     return(
         <div className= {css.container}>

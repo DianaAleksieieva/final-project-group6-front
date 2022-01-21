@@ -44,23 +44,21 @@ export default function ExpencesAndIncomes({ transactionType, active }) {
     fetchData()
   }, [type, year]);
 
-
-  // useEffect(() => {
-  //   if (monthTransactions !== []) {
-  //     monthTransactions.forEach((transaction) => {
-
-  //       const match = lightFormat(parseISO(`${transaction.date}`), 'dd.MM.yyyy') === lightFormat(date, 'dd.MM.yyyy')
-  //       if (match) {
-  //         dayTransactions.forEach(el => {
-  //           if (el._id !== transaction._id) {
-  //             setDayTransactions(...dayTransactions, transaction);
-  //           }
-  //         })
-  //         // return 
-  //       }
-  //     })
-  //   }
-  // }, [date, dayTransactions, monthTransactions]);
+  // const filerTransactions = (month) => {
+  //   return month.filter(trans => 
+  //     lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') === lightFormat(date, 'dd.MM.yyyy')
+  //   )
+  // }
+ 
+  useEffect(() => {
+    if (monthTransactions !== []) {
+      const filerTransactions = month =>
+        month.filter(trans =>
+          lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') === lightFormat(date, 'dd.MM.yyyy')
+        )
+      setDayTransactions(filerTransactions(monthTransactions))
+    }
+  }, [date, monthTransactions]);
   
 
   const handleSubmit = e => {
