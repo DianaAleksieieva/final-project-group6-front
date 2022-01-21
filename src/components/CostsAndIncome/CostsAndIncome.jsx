@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 
 import css from './CostsAndIncome.module.css';
 import { ReactComponent as Band } from '../../images/svg/band.svg';
-import { getByTypeMonthly } from '../../API/transactionsAPI';
+import { getByTypeMonthly } from '../../api/transactionsAPI';
 
 const CostsAndIncome = ({ month, year }) => {
   const [income, setIncome] = useState({});
