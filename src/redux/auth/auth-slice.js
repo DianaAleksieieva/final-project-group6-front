@@ -35,7 +35,7 @@ const authSlice = createSlice({
     },
     [authOperations.googleIn.pending](state, action) {
       state.token = action.meta.arg;
-      state.isLogged = true;
+      state.isLoggedIn = true;
     },
     [authOperations.googleIn.fulfilled]: (state, action) => {
       state.user = action.payload.user;
