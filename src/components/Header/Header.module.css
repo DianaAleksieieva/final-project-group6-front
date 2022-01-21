@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  padding: 12px 20px;
+}
+@media (min-width: 768px) {
+  .header {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+}

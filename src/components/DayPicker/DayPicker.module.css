@@ -1,0 +1,19 @@
+.datepickerButton {
+  margin-right: 25px;
+
+  font-weight: 900;
+  color: #52555f;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.icon {
+  margin-right: 10px;
+}

@@ -1,0 +1,162 @@
+@import url('../../utils/_variables.css');
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  /* background-color: var(--main-bg-color); */
+  padding-bottom: 40px;
+  padding-top: 40px;
+  font-size: 12px;
+  /* padding-left: 442px; */
+}
+.contArrow {
+  min-width: 161px;
+  padding: 13px 0;
+}
+
+.contStats {
+  min-width: 171px;
+}
+.balanceWrap {
+  display: flex;
+  align-items:center;
+}
+.balanceText {
+  display: inline-block;
+  margin-right: 21px;
+  color: var(--balance-text-color);
+  font-weight: 500;
+}
+.input {
+  position: relative;
+  padding: 12px 6px;
+  padding-right: 55px;
+  text-align: right;
+  background-color: transparent;
+  border: solid var(--white-color) 2px;
+  border-radius: 16px;
+  font-weight: 700;
+  width: 125px;
+}
+.input::placeholder {
+  color: var(--black-text-color);
+  font-weight: 700;
+}
+.imageState {
+  margin-left: 15px;
+}
+.text_statistic {
+  margin-top: -5px;
+}
+
+.UA {
+  color: var(--black-text-color);
+  font-weight: 700;
+  margin-left: -40px;
+}
+
+.confirmButton {
+  margin-left: 30px;
+  padding: 12px 17px;
+  background-color: transparent;
+  border: solid var(--white-color) 2px;
+  border-radius: 16px;
+  cursor: pointer;
+  color: var(--balance-text-color);
+  font-weight: 400;
+}
+
+/* .confirmButton:hover {
+  background-color: var(--accent-orange-color);
+  color: var(--white-color);
+} */
+
+.statisticButton {
+  color: var(--balance-text-color);
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 15px;
+  display: block;
+  text-align: end;
+}
+.rightPosition {
+  position: absolute;
+  right: 10px;
+}
+.leftPosition {
+  position: absolute;
+  left: 10px;
+}
+.GoBackButton {
+  color: var(--balance-text-color);
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 15px 0;
+}
+.text {
+  color: rgba(82, 85, 95, 0.7);
+  margin-left: 18px; 
+}
+
+
+.modal {
+  background-image: var(--modal-balance-gradient);
+  position: absolute;
+  top:60px;
+  left:80px;
+  border-radius: 30px;
+  padding: 15px;
+  max-width: 292px;
+  text-align: center;
+}
+
+.modalInfo {
+  color: var(--white-color);
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.triangle {
+  position: absolute;
+  top:-16px;
+  left:47px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 16px solid #1D346A;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+  flex-direction: column;
+}
+  .statisticButton {
+    text-align: center;
+  }
+  .balanceWrap {
+    margin-bottom: 40px;
+  }
+  .contArrow {
+    margin-bottom: 40px;
+  }
+  .text {
+    display: none;
+  }
+  .GoBackButton {
+    display: block;
+    text-align: left;
+    margin-left: 19px;
+  }
+  .balanceWrap {
+  flex-direction: column;
+  }
+  .balanceText {
+    margin-bottom: 8px;
+  }
+}

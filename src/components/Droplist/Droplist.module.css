@@ -1,0 +1,36 @@
+@import url("../../utils/_variables.css");
+
+.select{
+  width: 282px;
+  height: 44px;
+  padding: 0 16px;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  color: var(--placeholder-text-color);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+@media (max-width: 767px) {
+  .select{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-left: 2px solid var(--white-color);
+    border-right: 2px solid var(--white-color);
+    border-bottom: 2px solid var(--white-color);
+    border-bottom-right-radius: 16px;     
+  }
+}
+@media (min-width: 768px) {
+  .select{
+    width: 171px;
+    border-top: 2px solid var(--light-icons-color);
+    border-bottom: 2px solid var(--light-icons-color);
+  }
+}
+@media (min-width: 1280px) {
+  .select{
+    width: 188px;
+  }
+}

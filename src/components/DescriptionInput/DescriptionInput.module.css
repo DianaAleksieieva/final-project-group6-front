@@ -1,0 +1,37 @@
+@import url("../../utils/_variables.css");
+
+.input{
+  width: 282px;
+  height: 44px;
+  padding: 0 20px;
+  outline: none;
+  border: 2px solid var(--light-icons-color);
+  border-top-left-radius: 16px;
+  background-color: inherit;
+  color: var(--main-text-color);
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+.input::placeholder{
+  color: var(--placeholder-text-color);
+}
+
+@media (max-width: 767px) {
+  .input{
+    margin: 0 auto;
+    border-color: var(--white-color);
+    border-top-right-radius: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .input{
+    width: 195px;
+  }
+}
+@media (min-width: 1280px) {
+  .input{
+    width: 289px;
+  }
+}

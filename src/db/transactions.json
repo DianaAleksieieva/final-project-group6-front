@@ -1,0 +1,155 @@
+[
+  {
+    "_id": {
+      "$oid": "61e2c2c61b24af28c9cdc1de"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "expense",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "goods",
+    "amount": 5,
+    "month": 11,
+    "year": 2019,
+    "date": {
+      "$date": "2019-10-31T22:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "61e2c89d1b24af28c9cdc1ed"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "expense",
+    "date": {
+      "$date": "2019-11-09T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "goods",
+    "amount": 5,
+    "month": 10,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2c8d21b24af28c9cdc1ee"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "expense",
+    "date": {
+      "$date": "2019-10-26T21:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "goods",
+    "amount": 15,
+    "month": 10,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2c8ef1b24af28c9cdc1ef"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "expense",
+    "date": {
+      "$date": "2019-10-10T21:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "goods",
+    "amount": 55,
+    "month": 10,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2ca7a1b24af28c9cdc1f1"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "income",
+    "date": {
+      "$date": "2019-07-21T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "salary",
+    "amount": 500,
+    "month": 7,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2ca7a1b24af28c9cdc1f2"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "income",
+    "date": {
+      "$date": "2019-06-21T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "salary",
+    "amount": 50,
+    "month": 6,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2ca7a1b24af28c9cdc1f3"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "income",
+    "date": {
+      "$date": "2019-06-27T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "freelance",
+    "amount": 105,
+    "month": 6,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2ca7a1b24af28c9cdc1f4"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "income",
+    "date": {
+      "$date": "2019-06-11T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "salary",
+    "amount": 550,
+    "month": 6,
+    "year": 2019
+  },
+  {
+    "_id": {
+      "$oid": "61e2cfd11b24af28c9cdc1f9"
+    },
+    "owner": {
+      "$oid": "61e09dc909927ca3105b32b4"
+    },
+    "type": "expense",
+    "date": {
+      "$date": "2018-06-11T22:00:00Z"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "category": "goods",
+    "amount": 5,
+    "month": 10,
+    "year": 2018
+  }
+]

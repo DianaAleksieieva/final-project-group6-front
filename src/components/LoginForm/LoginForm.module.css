@@ -1,0 +1,176 @@
+
+.formContainer {
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  transform: translateY(-87px);
+  background: #ffffff;
+
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  margin: auto;
+  padding: 40px 18px;
+}
+
+.heading,
+ .googleText {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: justify;
+  letter-spacing: 0.04em;
+  margin: 0 29px;
+  color: #52555f;
+  margin-bottom: 24px;
+}
+.googleText{max-width: 222px;}
+.google {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+ 
+  color: #000000;
+}
+.google::before {
+  content: '';
+  background-image: url(../../images/svg/googleSymbol.svg);
+  width: 17.58px;
+  height: 18px;
+  margin-right: 9.76px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+ justify-content: center;
+ margin-left: 27px;
+}
+
+.mailInput,
+.passwordInput {
+  outline: none;
+  border: none;
+  background: #f6f7fb;
+  border-radius: 30px;
+  padding: 17px 20px;
+  border: hidden;
+  width: 213px;
+
+}
+.formLabel {
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: left;
+  color:  #000000;
+  margin-bottom: 30px;
+  width: 253px;
+  
+  &:last-child {
+    margin-bottom: 75px;
+  }
+ 
+}
+.formLabelText {
+    width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  margin-bottom: 12px;
+  color: black;
+}
+
+.formButtons {
+  margin-top: 10px;
+  justify-content: space-between;
+  display: flex;
+}
+.loginBtn,
+.registrationLink {
+  background: #f5f6fb;
+   cursor: pointer;
+  border-radius: 16px;
+  margin: auto;
+  padding: 12px 34px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 0;
+  display: flex;
+  justify-content: center;
+
+  color: #52555f;
+  width: 125px;
+}
+
+.loginBtn {
+  transition-duration: 0.7s;
+  margin-right: 15px;
+}
+.registrationLink {
+   transition-duration: 0.7s;
+  padding: 12px 15px;
+}
+
+.loginBtn:hover,
+.registrationLink:hover {
+     transform: scale(1.05);
+  filter: drop-shadow(1px 3px 5px rgba(255, 107, 8, 0.35));
+  background: #ff751d;
+  color: #ffffff;
+}
+
+.error {
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: #eb5757;
+  margin-top: 4px;
+  }
+.errorSbl{
+  color: #eb5757;  
+}
+@media screen and (min-width: 768px) {
+  
+.formContainer {
+  width: 436px;
+  padding: 52px 85px;
+}
+  .googleText,
+  .heading {
+    font-size: 12px;
+  line-height: 14px;
+  text-align: left;
+  margin: 0;
+   margin-bottom: 20px;
+  }
+
+  .formLabelText {
+  font-size: 12px;
+  line-height: 14px;
+  }
+
+  .form {
+ margin-left: 0;
+}
+.mailInput,
+.passwordInput {
+  width: 265px;
+}
+
+}

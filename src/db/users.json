@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "61e09dc909927ca3105b32b4"
+  },
+  "password": "123456",
+  "email": "grozny@mail.com",
+  "token": null,
+  "userName": "Иван Васильевич",
+  "avatarUrl": "https://cdn.tvc.ru/pictures/o/246/533.jpg",
+  "currentBalance": "5",
+  "startBalance": "10000",
+  "verify": false,
+  "createdAt": {
+    "$date": "2022-01-13T21:46:49.779Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-13T21:46:49.779Z"
+  }
+},{
+  "_id": {
+    "$oid": "61e2c63f1b24af28c9cdc1e9"
+  },
+  "password": "123456",
+  "email": "arnold@mail.com",
+  "token": null,
+  "userName": "Арнольд Шварценеггер",
+  "avatarUrl": "https://b1.filmpro.ru/c/482493.700xp.jpg",
+  "currentBalance": "500",
+  "startBalance": "2000",
+  "verify": false,
+  "createdAt": {
+    "$date": "2022-01-13T21:46:49.779Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-13T21:46:49.779Z"
+  }
+}]

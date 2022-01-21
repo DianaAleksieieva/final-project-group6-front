@@ -1,0 +1,21 @@
+.hero {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-top: 86px;
+  padding-bottom: 76px;
+  background-image: url(../../images/bg-desk-top.15b0eba1.svg);
+
+  background-repeat: no-repeat;
+}
+
+.tagline {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.1875;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
