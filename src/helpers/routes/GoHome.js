@@ -4,6 +4,6 @@ import { authSelectors } from '../../redux/auth';
 
 export default function GoHome({ children }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  
-  return ( !isLoggedIn ? children : <Navigate to='/' /> );
+
+  return !isLoggedIn ? children : <Navigate to="/" />;
 }
