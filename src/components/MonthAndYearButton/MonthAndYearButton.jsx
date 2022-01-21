@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React from 'react';
 import sprite from '../../images/svg/sprite.svg';
 import css from './MonthAndYearButton.module.css';
 import { Month } from '../../constans/index';
