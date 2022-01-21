@@ -5,26 +5,34 @@ import { ReactComponent as Band } from '../../images/svg/band.svg';
 import { getByTypeMonthly } from '../../api/transactionsAPI';
 
 const CostsAndIncome = ({ month, year }) => {
-  const [data, setData] = useState({});
+  const [income, setIncome] = useState({});
+  const [expense, setExpense] = useState({});
+
   useEffect(() => {
-    const type = 'income';
+    let type = 'income';
     getByTypeMonthly({ month, year, type })
-      .then(data => setData(data))
-      .catch(error => setData({ sum: null }));
+      .then(data => setIncome(data))
+      .catch(error => setIncome({ sum: null }));
+
+    type = 'expense';
+    getByTypeMonthly({ month, year, type })
+      .then(data => setExpense(data))
+      .catch(error => setExpense({ sum: null }));
   }, [month, year]);
-  console.log(data);
 
   return (
     <div className={css.section}>
       <div className={css.transactionWrapper}>
         <p className={css.title}>Расходы:</p>
-        <span className={css.redText}>- 18 000.00 грн.</span>
+        <span className={css.redText}>
+          - {!expense.sum ? 0 : expense.sum}.00 грн.
+        </span>
       </div>
       <Band className={css.band} />
       <div className={css.transactionWrapper}>
         <p className={css.title}>Доходы:</p>
         <span className={css.greenText}>
-          + {!data.sum ? 0 : data.sum}.00 грн.
+          + {!income.sum ? 0 : income.sum}.00 грн.
         </span>
       </div>
     </div>
