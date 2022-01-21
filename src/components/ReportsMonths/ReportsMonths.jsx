@@ -1,16 +1,10 @@
-
 import css from './ReportsMonths.module.css'
-import {Month} from '../../constans'
+// import {Month} from '../../constans'
 // import {getByTypeYearly} from '../../api/transactionsAPI';
 
 
-function ReportsMonths ({active, date}){
-    
-    const month = date.getMonth()+1;
-    const year = date.getFullYear();
-    // console.log(year)
-    // console.log(Month[month]);
-    // console.log(active)
+function ReportsMonths ({report}){
+    // console.log('report:', report);
     
     return (
         <div className={css.container}>

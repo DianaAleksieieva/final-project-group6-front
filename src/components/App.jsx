@@ -1,13 +1,12 @@
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
+import css from './App.module.css';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Container } from '.';
 import { authOperations, authSelectors } from '../redux/auth';
 
-import css from './App.module.css';
-// import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -60,6 +59,7 @@ function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
+  
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
     dispatch(authOperations.googleIn(token));

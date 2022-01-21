@@ -29,7 +29,8 @@ export const EXPENCES = {
   ],
 
   title: 'Категория товара',
-  description: 'Описание товара'
+  description: 'Описание товара',
+  type:'expense'
 }
 
 export const INCOMES = {
@@ -39,5 +40,6 @@ export const INCOMES = {
   ],
   
   title: 'Категория дохода',
-  description: 'Описание дохода'
+  description: 'Описание дохода',
+  type: 'income'
 }
