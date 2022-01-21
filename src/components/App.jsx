@@ -121,7 +121,9 @@ function App() {
       backgroundLocation.pathname === '/statistics' ? (
         <div className={css.backgroundStatistic}></div>
       ) : (
-        <div className={css.backgroundCabbage}></div>
+        <div className={css.backgroundCabbage}>
+          <div className={css.cabbageSmall}></div>
+        </div>
       )}
     </>
   );
