@@ -1,6 +1,8 @@
 import css from './TransactionHistory.module.css'
 
-function TransactionHistory() {
+function TransactionHistory({ transactions }) {
+    // console.log(transactions);
+
     return(
         <div className= {css.container}>
             <div className={css.header}>

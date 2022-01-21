@@ -1,25 +1,84 @@
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { parseISO, lightFormat } from 'date-fns'
 import {
-  ReportsMonths, TransactionHistory, TransactionInput, DayPicker
-} from '../..';
+    getByTypeMonthly, getByTypeYearly
+  } from '../../../api/transactionsAPI';
+import {
+    ReportsMonths, TransactionHistory, TransactionInput, DayPicker
+  } from '../..';
 
-export default function ExpencesAndIncomes({ transactionType, active}) {  
+export default function ExpencesAndIncomes({ transactionType, active }) {
+  const initialDate = new Date();
+  const { type } = transactionType;
+  const [date, setDate] = useState(initialDate);
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const [transaction, setTransaction] = useState({
+    date: null, description: null, category: null, amount: null
+  });
+  const [yearTransactions, setYearTransactions] = useState([]);
+  const [monthTransactions, setMonthTransactions] = useState([]);
+  const [dayTransactions, setDayTransactions] = useState([]);
+
+  // console.log(monthTransactions);
+  // console.log(parseISO(`${monthTransactions[0].date}`));
+  // console.log(JSON.stringify(initialDate));
+  // console.log(lightFormat(initialDate, 'dd.MM.yyyy'));
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getByTypeMonthly({ type, year, month })
+      setMonthTransactions(data.transactions)
+    }
+    fetchData()
+  }, [month, type, year]);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getByTypeYearly({ type, year })
+      setYearTransactions(data.result)
+    }
+    fetchData()
+  }, [type, year]);
+
+
+  // useEffect(() => {
+  //   if (monthTransactions !== []) {
+  //     monthTransactions.forEach((transaction) => {
+
+  //       const match = lightFormat(parseISO(`${transaction.date}`), 'dd.MM.yyyy') === lightFormat(date, 'dd.MM.yyyy')
+  //       if (match) {
+  //         dayTransactions.forEach(el => {
+  //           if (el._id !== transaction._id) {
+  //             setDayTransactions(...dayTransactions, transaction);
+  //           }
+  //         })
+  //         // return 
+  //       }
+  //     })
+  //   }
+  // }, [date, dayTransactions, monthTransactions]);
   
-  const writePrice = e => {
+
+  const handleSubmit = e => {
     e.preventDefault();
-    // onSubmit(() => console.log('gogogo'));
-    clearForm();
+    const {description, category, amount} = e.target
+    const newTransaction = {date: JSON.stringify(date), description: description.value, category: category.value, amount: `${amount.value} грн`}
+
+
+    setTransaction(newTransaction)
+    e.target.reset()
   };
+
 
   const clearForm = (e) => {
     setDate(initialDate);
     e.target.form.reset()
   };
 
-  const initialDate = new Date();
-  const [date, setDate] = useState(initialDate);
 
   const changeDate = date => {
     setDate(date);
@@ -30,21 +89,21 @@ export default function ExpencesAndIncomes({ transactionType, active}) {
       <div className={css.imgBack}>
         <div className={css.conteiner}>
 
-          <form className={css.form} onSubmit={writePrice}>
-            
-            <div className={css.flex}>
+          <div className={css.flex}>
               <div className={css.box}>
                 <DayPicker date={date} changeDate={changeDate} />
-              </div>
-              <TransactionInput transactionType={transactionType} />
+              </div>    
             </div>
+          
+          <form className={css.form} onSubmit={handleSubmit}>
+            
+            <TransactionInput transactionType={transactionType} />
 
             <ul className={css.list}>
               <li className={css.item}>
                 <Button
                   type="submit"
                   text={'Ввод'}
-                  onSubmit={writePrice}
                   style={{ backgroundColor: '#ff751d', color: 'white' }}
                 />
               </li>
@@ -58,10 +117,10 @@ export default function ExpencesAndIncomes({ transactionType, active}) {
         </div>
       </div>
       <div className={css.report}>
-        <TransactionHistory />
+        <TransactionHistory transactions={dayTransactions}/>
       </div>
       <div className={css.position}>
-        <ReportsMonths  active={active} date={date}/>
+        <ReportsMonths report={yearTransactions}/>
       </div>
     </div>
   );

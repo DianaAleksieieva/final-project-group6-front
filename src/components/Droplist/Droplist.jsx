@@ -37,8 +37,8 @@ import css from './Droplist.module.css';
 
 function Droplist({ categories, categoryTitle }) {
   return (
-    <select className={css.select} >
-      <option>{categoryTitle}</option>
+    <select id='category' className={css.select} defaultValue='0' required>
+      <option value="0" >{categoryTitle}</option>
         { categories.map(({value, label}) => (
           <option key={value}>{label}</option>
         ))}
