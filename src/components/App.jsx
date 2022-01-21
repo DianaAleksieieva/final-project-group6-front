@@ -1,10 +1,10 @@
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Container } from '.';
-import { authOperations, authSelectors } from '../redux/auth';
+import { authOperations } from '../redux/auth';
 
 import css from './App.module.css';
 // import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
@@ -28,7 +28,7 @@ const LoginView = lazy(() =>
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   let backgroundLocation = useLocation();
 
   let date = new Date();
