@@ -63,9 +63,7 @@ function App() {
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
     dispatch(authOperations.googleIn(token));
-    if (isLoggedIn === true) {
-      return <Navigate to="/" />;
-    }
+    return <Navigate to="/" />;
   }
 
   return (
