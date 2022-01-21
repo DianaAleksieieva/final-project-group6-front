@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    align-items: center;margin-top: 117px;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}
