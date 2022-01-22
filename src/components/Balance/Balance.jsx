@@ -1,27 +1,31 @@
 import css from './Balance.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FirstModal from './FirstModal';
 import { useSelector, useDispatch } from 'react-redux';
 import StatisticButton from './StatisticButton';
 import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
+import { balanceOperations } from '../../redux/balance';
+import { authSelectors } from '../../redux/auth';
+import {getCurrentUser} from '../../API/usersAPI'
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const balance = 0
   const dispatch = useDispatch();
+  const balance = useSelector(authSelectors.getUserBalance);
+  
 
   const handleChange = event => {
     setFirstBalance(event.target.value);
   };
-  const setBalance = () => {
-    // dispatch(transactionsOperations.setBalance(firstBalance));
+  const setStartBalance = e => {
+    e.preventDefault();
+    dispatch(balanceOperations.setBalance(firstBalance));
     setButtonDisabled(true);
-    console.log(firstBalance);
-    console.log(balance);
   };
+
   const location = useLocation();
 
   return (
@@ -43,7 +47,7 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           <button
             type="submit"
             className={css.confirmButton}
-            onClick={setBalance}
+            onClick={setStartBalance}
             disabled={buttonDisabled}
           >
             ПОДТВЕРДИТЬ
