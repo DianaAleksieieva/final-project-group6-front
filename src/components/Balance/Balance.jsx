@@ -6,6 +6,7 @@ import StatisticButton from './StatisticButton';
 import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
+import { balanceOperations } from '../../redux/balance';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
@@ -16,9 +17,10 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   const handleChange = event => {
     setFirstBalance(event.target.value);
   };
-  const setBalance = () => {
-    // dispatch(transactionsOperations.setBalance(firstBalance));
-    setButtonDisabled(true);
+  const setStartBalance = (e) => {
+    e.preventDefault()
+    dispatch(balanceOperations.setBalance(firstBalance));
+    // setButtonDisabled(true);
     console.log(firstBalance);
     console.log(balance);
   };
@@ -43,7 +45,7 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           <button
             type="submit"
             className={css.confirmButton}
-            onClick={setBalance}
+            onClick={setStartBalance}
             disabled={buttonDisabled}
           >
             ПОДТВЕРДИТЬ
