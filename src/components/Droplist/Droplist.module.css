@@ -1,5 +1,124 @@
 @import url("../../utils/_variables.css");
 
+.dropdown {
+  position: relative;
+  width: 282px;
+  height: 44px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+.dropdown .arrow {
+  content: " ";
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  width: 10px;
+  height: 4px;
+  margin-top: 0.3rem;
+  background-image: url('../../images/svg/arrowBottom.svg');
+  background-position: center;
+}
+
+.dropdown .arrow.open {
+  background-image: url('../../images/svg/arrowTop.svg');
+  pointer-events: auto;
+}
+
+.dropdown .selectedValue {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  outline: none;
+  border: none;
+  color: var(--placeholder-text-color);
+  transition: all 200ms ease;
+}
+
+.dropdown .options {
+  display: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  width: 282px;
+  margin-left: -2px;
+  border: 2px solid var(--light-icons-color);
+  background-color: var(--white-color);
+  -webkit-overflow-scrolling: touch;
+}
+
+.dropdown .options.open {
+  display: block;
+}
+
+.dropdown .option {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 20px;
+  color: var(--placeholder-text-color);
+  cursor: pointer;
+}
+
+.dropdown .option.selected,
+.dropdown .option:hover {
+  background-color: var(--light-icons-color);
+  color: var(--main-text-color);
+}
+
+@media (max-width: 767px) {
+  .dropdown{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-left: 2px solid var(--white-color);
+    border-right: 2px solid var(--white-color);
+    border-bottom: 2px solid var(--white-color);
+    border-bottom-right-radius: 16px;  
+  }
+  .dropdown .options{
+    border-color: var(--white-color);
+    background-color: var(--light-icons-color);
+  }
+  .dropdown .option{
+    border-color: var(--white-color);
+  }
+  .dropdown .option.selected,
+  .dropdown .option:hover {
+  background-color: var(--white-color);
+  color: var(--main-text-color);
+}
+}
+@media (min-width: 768px) {
+  .dropdown{
+    width: 171px;
+    border-top: 2px solid var(--light-icons-color);
+    border-bottom: 2px solid var(--light-icons-color);
+  }
+  .dropdown .selectedValue{
+    height: 40px;
+  }
+  .dropdown .options{
+    width: 175px;
+  }
+}
+@media (min-width: 1280px) {
+  .dropdown{
+    width: 188px;
+  }
+  .dropdown .options{
+    width: 192px;
+  }
+}
+
+/* @import url("../../utils/_variables.css");
+
 .select{
   width: 282px;
   height: 44px;
@@ -33,4 +152,4 @@
   .select{
     width: 188px;
   }
-}
+} */
