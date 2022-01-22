@@ -15,3 +15,4 @@ export { default as PriceInput } from './PriceInput';
 export { default as Modal } from './Modal';
 export { default as ArrowToGoBack } from './ArrowToGoBack';
 export { default as MonthAndYearButton } from './MonthAndYearButton';
+export { default as Loader } from './Loader';

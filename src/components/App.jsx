@@ -1,13 +1,11 @@
-import PrivateRoute from '../helpers/routes/PrivateRoute';
-import GoHome from '../helpers/routes/GoHome';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { Container } from '.';
+import { Container, Loader } from '.';
+import PrivateRoute from '../helpers/routes/PrivateRoute';
+import GoHome from '../helpers/routes/GoHome';
 import { authOperations } from '../redux/auth';
-
 import css from './App.module.css';
-// import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -30,7 +28,6 @@ function App() {
   const dispatch = useDispatch();
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   let backgroundLocation = useLocation();
-  console.log(backgroundLocation.pathname === '/');
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
@@ -77,9 +74,7 @@ function App() {
         <div className={css.background}></div>
       )}
       <Container>
-        <Suspense
-          fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}
-        >
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route
               path="/"

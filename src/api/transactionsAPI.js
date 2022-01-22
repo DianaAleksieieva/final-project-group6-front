@@ -27,7 +27,7 @@ export async function deleteTransaction(params) {
 
 export async function getByTypeYearly(params) {
   const { type, year } = params;
-  api
+  return api
     .get(`/transactions/getByType/${type}/${year}`)
     .then(({ data }) => data)
     .catch(error => notifyError(error));
@@ -38,13 +38,18 @@ export async function getByTypeMonthly(params) {
   return api
     .get(`/transactions/getByType/${type}/${year}/${month}`)
     .then(({ data }) => data)
-    .catch(error => notifyError(error));
+    .catch(error => error);
 }
 
 export async function getByCategoryMonthly(params) {
   const { category, year, month } = params;
-  api
+  return api
     .get(`/transactions/getByCategory/${category}/${year}/${month}`)
     .then(({ data }) => data)
     .catch(error => notifyError(error));
+}
+
+export  async function fetchMonthlyData(type, year, month) {
+  const data = await getByTypeMonthly({ type, year, month })
+  return data.transactions
 }
