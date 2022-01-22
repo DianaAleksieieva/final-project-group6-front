@@ -7,26 +7,26 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
-import { balanceSelectors } from '../../redux/balance';
+import { authSelectors } from '../../redux/auth';
+import {getCurrentUser} from '../../API/usersAPI'
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const balance = useSelector(balanceSelectors.getBalance);
   const dispatch = useDispatch();
+  const balance = useSelector(authSelectors.getUserBalance);
+  
 
   const handleChange = event => {
     setFirstBalance(event.target.value);
   };
-  const setStartBalance = (e) => {
-    e.preventDefault()
+  const setStartBalance = e => {
+    e.preventDefault();
     dispatch(balanceOperations.setBalance(firstBalance));
-    // setButtonDisabled(true);
-    console.log(balance);
+    setButtonDisabled(true);
   };
 
   const location = useLocation();
-
 
   return (
     <div className={css.container}>

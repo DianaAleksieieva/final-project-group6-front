@@ -8,10 +8,7 @@ const balanceSlice = createSlice({
   initialState,
   extraReducers: {
     [balanceOperations.setBalance.fulfilled](state, action) {
-      state.balance = action.payload.startBalance;
-    },
-    [balanceOperations.getBalance.fulfilled](state, action) {
-      state.balance = action.payload;
+      state.balance = action.payload.currentBalance;
     },
   },
 });
