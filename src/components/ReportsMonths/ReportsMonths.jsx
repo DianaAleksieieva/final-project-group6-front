@@ -1,7 +1,5 @@
 import css from './ReportsMonths.module.css'
 // import {Month} from '../../constans'
-// import {getByTypeYearly} from '../../api/transactionsAPI';
-
 
 function ReportsMonths({ report }) {
     // console.log('report:', report);
