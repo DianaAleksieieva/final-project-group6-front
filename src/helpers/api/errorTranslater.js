@@ -1,6 +1,6 @@
 function translateError(message) {
   switch (message) {
-    case '"email" is not allowed to be empty':
+    case 'ValidationError: "email" is not allowed to be empty':
       return 'Поле email должно быть заполнено';
     case '"email" must be a valid email':
       return 'Введите правильный email';
@@ -28,7 +28,7 @@ function translateError(message) {
       return 'Не найдено';
 
     default:
-      return 'Неизвестная ошибка';
+      return message;
   }
 }
 
