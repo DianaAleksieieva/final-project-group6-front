@@ -6,8 +6,8 @@ import {
   addTransaction,
   deleteTransaction,
   fetchMonthlyData,
-  getByTypeYearly
-  } from '../../../API/transactionsAPI';
+  getByTypeYearly,
+} from '../../../api/transactionsAPI';
 
 import {
   ReportsMonths,
@@ -30,23 +30,21 @@ export default function ExpencesAndIncomes({ transactionType }) {
 
   const [idToDelete, setIdToDelete] = useState('');
 
-
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchMonthlyData(type, year, month)
-      setMonthTransactions(data)
+      const data = await fetchMonthlyData(type, year, month);
+      setMonthTransactions(data);
     }
     fetchData();
   }, [month, type, year]);
 
   useEffect(() => {
     async function fetchYearlyData() {
-      const data = await getByTypeYearly({ type, year })
-      setYearTransactions(data.result)
+      const data = await getByTypeYearly({ type, year });
+      setYearTransactions(data.result);
     }
-    fetchYearlyData()
+    fetchYearlyData();
   }, [type, year]);
-
 
   useEffect(() => {
     if (monthTransactions && monthTransactions !== []) {
@@ -63,24 +61,29 @@ export default function ExpencesAndIncomes({ transactionType }) {
   useEffect(() => {
     if (dayTransactions && idToDelete && dayTransactions !== []) {
       const filteredTransactions = dayTransactions.filter(
-        el => el._id !== idToDelete
-      )
-      setDayTransactions(filteredTransactions)
+        el => el._id !== idToDelete,
+      );
+      setDayTransactions(filteredTransactions);
     }
   }, [dayTransactions, idToDelete]);
-    
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { description, category, amount } = e.target
-    const stringifyDate = JSON.parse(JSON.stringify(date))
-    const newTransaction = { type, category: category.value, date: stringifyDate, amount: Number(amount.value), description: description.value }
-    
-    await addTransaction(newTransaction)
-    e.target.reset()
+    const { description, category, amount } = e.target;
+    const stringifyDate = JSON.parse(JSON.stringify(date));
+    const newTransaction = {
+      type,
+      category: category.value,
+      date: stringifyDate,
+      amount: Number(amount.value),
+      description: description.value,
+    };
 
-    const data = await fetchMonthlyData(type, year, month)
-    setMonthTransactions(data)
+    await addTransaction(newTransaction);
+    e.target.reset();
+
+    const data = await fetchMonthlyData(type, year, month);
+    setMonthTransactions(data);
   };
 
   const clearForm = e => {
@@ -93,10 +96,10 @@ export default function ExpencesAndIncomes({ transactionType }) {
   };
 
   const getIdToDelete = async id => {
-    setIdToDelete(id)
-    const deleted = await deleteTransaction(id)
+    setIdToDelete(id);
+    const deleted = await deleteTransaction(id);
     console.log(deleted);
-  }
+  };
 
   return (
     <div className={css.wraper}>
@@ -105,7 +108,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
           <div className={css.flex}>
             <div className={css.box}>
               <DayPicker date={date} changeDate={changeDate} />
-            </div>    
+            </div>
           </div>
           <form className={css.form} onSubmit={handleSubmit}>
             <TransactionInput transactionType={transactionType} />
