@@ -9,21 +9,21 @@ import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
 import { authSelectors, } from '../../redux/auth';
 
-function Balance() {
-  const [firstBalance, setFirstBalance] = useState(0);
+function Balance({ month, year, onIncrement, onDecrement }) {
+  const [handledBalance, setHandleBalance] = useState(0);
   const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const dispatch = useDispatch();
-  
+
   const balance = useSelector(authSelectors.getUserBalance);
 
   const handleChange = event => {
-    setFirstBalance(event.target.value);
+    setHandleBalance(event.target.value);
   };
   const putStartBalance = e => {
     e.preventDefault();
-    dispatch(balanceOperations.setBalance(firstBalance));
-    setStartBalance(firstBalance);
+    dispatch(balanceOperations.setBalance(handledBalance));
+    setStartBalance(handledBalance);
     setButtonDisabled(true);
   };
 
