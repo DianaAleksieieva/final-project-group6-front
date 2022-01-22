@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { Container, Loader } from '.';
@@ -28,12 +28,22 @@ function App() {
   const dispatch = useDispatch();
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   let backgroundLocation = useLocation();
+  const isFirstRender = useRef(true);
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch, isFirstRender]);
 
   const onIncrement = (month, year) => {
     if (month < 12) {
@@ -55,9 +65,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
