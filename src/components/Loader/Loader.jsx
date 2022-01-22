@@ -5,8 +5,8 @@ function Loader() {
   return (
     <div className={css.loaderWrapper}>
       <img className={css.loader} src={Kapusta} alt="Kapusta" />
-      {/* <img className={css.loader} src={Kapusta} alt="Kapusta" />
-      <img className={css.loader} src={Kapusta} alt="Kapusta" /> */}
+      <img className={css.loader} src={Kapusta} alt="Kapusta" />
+      <img className={css.loader} src={Kapusta} alt="Kapusta" />
     </div>
   );
 }
