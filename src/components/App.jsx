@@ -55,9 +55,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  // useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+  // }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
