@@ -1,4 +1,4 @@
-const getBalance = state => state.balance
+const getBalance = state => state.balance.balance
 
 const balanceSelectors = {
   getBalance,

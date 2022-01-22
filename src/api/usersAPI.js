@@ -20,7 +20,6 @@ export async function patchUserAvatar(body) {
 }
 
 export async function updateUserBalance(body) {
-  console.log(body)
   api
     .put('/user/balance/', body)
     .then(({ data }) => {

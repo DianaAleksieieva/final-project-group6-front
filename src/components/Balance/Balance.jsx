@@ -8,7 +8,6 @@ import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
 import { balanceSelectors } from '../../redux/balance';
-import {setBalance} from '../../API/usersAPI'
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
@@ -23,7 +22,6 @@ function Balance({ month, year, onIncrement, onDecrement }) {
     e.preventDefault()
     dispatch(balanceOperations.setBalance(firstBalance));
     // setButtonDisabled(true);
-    console.log(firstBalance);
     console.log(balance);
   };
 

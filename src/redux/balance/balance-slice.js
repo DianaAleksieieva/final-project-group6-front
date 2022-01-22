@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import balanceOperations from './balance-operations';
 
-const initialState = 0
+const initialState = {balance:0}
 
 const balanceSlice = createSlice({
   name: 'balance',
@@ -9,6 +9,9 @@ const balanceSlice = createSlice({
   extraReducers: {
     [balanceOperations.setBalance.fulfilled](state, action) {
       state.balance = action.payload.startBalance;
+    },
+    [balanceOperations.getBalance.fulfilled](state, action) {
+      state.balance = action.payload;
     },
   },
 });
