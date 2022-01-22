@@ -40,7 +40,7 @@ function Droplist({ categories, categoryTitle }) {
     <select id='category' className={css.select} defaultValue='0' required>
       <option value="0" >{categoryTitle}</option>
         { categories.map(({value, label}) => (
-          <option key={value}>{label}</option>
+          <option key={value} value={value}>{label}</option>
         ))}
     </select>
   );

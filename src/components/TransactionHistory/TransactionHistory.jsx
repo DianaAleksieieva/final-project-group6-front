@@ -1,7 +1,11 @@
 import css from './TransactionHistory.module.css'
 
-function TransactionHistory({ transactions }) {
-    console.log(transactions);
+function TransactionHistory({ transactions, handleDelete }) {
+    // на кнопку видалити добавляэш onClick={(id) => deleteTransaction(id)}
+
+    // const deleteTransaction = (id) => {
+    //     handleDelete(id)
+    // }
 
     return(
         <div className= {css.container}>

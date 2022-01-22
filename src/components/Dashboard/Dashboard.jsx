@@ -6,7 +6,7 @@ import { EXPENCES, INCOMES } from '../../constans';
 
 const buttons = ['Расход', 'Доход']
 const style = (active, text) => ({
-  backgroundColor: active === text ? '#FEFEFE' : '#f5f6fb',
+  backgroundColor: active === text ? '#FEFEFE' : '#FAFBFD',
   color: active === text ? '#FF751D' : 'black', 
   borderBottomRightRadius: '0',
   borderBottomLeftRadius: '0',

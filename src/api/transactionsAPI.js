@@ -48,3 +48,8 @@ export async function getByCategoryMonthly(params) {
     .then(({ data }) => data)
     .catch(error => notifyError(error));
 }
+
+export  async function fetchMonthlyData(type, year, month) {
+  const data = await getByTypeMonthly({ type, year, month })
+  return data.transactions
+}
