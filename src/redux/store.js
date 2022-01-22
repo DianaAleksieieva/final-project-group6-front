@@ -15,6 +15,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth';
+import { balanceReducer } from './balance';
 
 const authPersistConfig = {
   key: 'auth',
@@ -22,8 +23,10 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
+  balance:  balanceReducer,
 });
 
 export const store = configureStore({
