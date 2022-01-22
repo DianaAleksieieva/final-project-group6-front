@@ -7,7 +7,7 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
-import { authSelectors, } from '../../redux/auth';
+import { authSelectors, authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [handledBalance, setHandleBalance] = useState(0);
@@ -16,6 +16,14 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   const dispatch = useDispatch();
 
   const balance = useSelector(authSelectors.getUserBalance);
+
+    useEffect(
+      () => {
+        dispatch(authOperations.fetchCurrentUser());
+      },
+      [dispatch],
+      balance,
+    );
 
   const handleChange = event => {
     setHandleBalance(event.target.value);
