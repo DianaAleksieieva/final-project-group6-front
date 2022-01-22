@@ -1,5 +1,5 @@
 import css from './Balance.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FirstModal from './FirstModal';
 import { useSelector, useDispatch } from 'react-redux';
 import StatisticButton from './StatisticButton';
@@ -7,11 +7,13 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
+import { balanceSelectors } from '../../redux/balance';
+import {setBalance} from '../../API/usersAPI'
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const balance = 0
+  const balance = useSelector(balanceSelectors.getBalance);
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -24,7 +26,9 @@ function Balance({ month, year, onIncrement, onDecrement }) {
     console.log(firstBalance);
     console.log(balance);
   };
+
   const location = useLocation();
+
 
   return (
     <div className={css.container}>
