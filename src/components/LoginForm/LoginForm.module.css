@@ -16,14 +16,16 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  text-align: center;
+  text-align: left;
   letter-spacing: 0.04em;
   margin: 0 29px;
   color: #52555f;
   margin-bottom: 24px;
 }
 
-.googleText{max-width: 222px;
+.googleText{
+  max-width: 222px;
+  text-align: center;
  }
 
 .google {
@@ -66,9 +68,20 @@
   display: flex;
   flex-direction: column;
  justify-content: center;
- margin-left: 27px;
+ margin-left: 12px;
 }
 
+.passwordWrapper{
+  position: relative;
+  display: flex;
+  width: 298px;
+}
+.eye {
+  position: absolute;
+  top: 38%;
+  right: 18%;
+  padding: 0;
+}
 .mailInput,
 .passwordInput {
   border: none;
@@ -76,7 +89,7 @@
   border-radius: 30px;
   padding: 17px 20px;
   border: hidden;
-  width: 213px;
+  width: 253px;
     outline-color: #ff751d;
 
 }
@@ -192,9 +205,18 @@
   .form {
  margin-left: 0;
 }
-.mailInput,
-.passwordInput {
+
+.passwordWrapper{
+  width: 312px;
+}
+
+.mailInput
+ {
   width: 265px;
+}
+
+.passwordInput {
+ width: 265px;
 }
 
 }

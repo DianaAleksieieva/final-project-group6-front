@@ -1,12 +1,27 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { authOperations } from '../../redux/auth';
 import css from './LoginForm.module.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [actionType, setActionType] = useState('');
+  const [values, setValues] = useState({
+    password: '',
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
   const {
     register,
@@ -78,19 +93,29 @@ function LoginForm() {
             <span className={css.errorSbl}>{errors.password && <>*</>}</span>
             Пароль:
           </p>
-          <input
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            className={css.passwordInput}
-            {...register('password', {
-              required: 'это обязательное поле',
-              minLength: {
-                value: 6,
-                message: 'Минимальная длина должна быть не менее 6 символов',
-              },
-            })}
-          />
+          <div className={css.passwordWrapper}>
+            <input
+              type={values.showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Пароль"
+              className={css.passwordInput}
+              {...register('password', {
+                required: 'это обязательное поле',
+                minLength: {
+                  value: 6,
+                  message: 'Минимальная длина должна быть не менее 6 символов',
+                },
+              })}
+            ></input>
+            <IconButton
+              className={css.eye}
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+            >
+              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </div>
+
           <p className={css.error}>{errors.password?.message}</p>
         </label>
         <div className={css.formButtons}>
