@@ -25,10 +25,14 @@ function Balance({ month, year, onIncrement, onDecrement }) {
     setButtonDisabled(true);
   };
 
+  const changeFlexContainer = () => {
+    return location.pathname === '/' ? css.containerReverse : css.container;
+  };
+
   const location = useLocation();
 
   return (
-    <div className={css.container}>
+    <div className={changeFlexContainer()}>
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>

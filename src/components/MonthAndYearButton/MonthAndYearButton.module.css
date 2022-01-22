@@ -55,6 +55,9 @@
 
 @media screen and (max-width: 767px) {
   .container {
-  margin: 0 auto;
-}
+    margin: 0 auto;
+  }
+  .wrapper {
+    margin-top: 40px;
+  }
 }
