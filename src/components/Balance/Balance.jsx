@@ -8,7 +8,6 @@ import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
 import { authSelectors } from '../../redux/auth';
-// import { authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
