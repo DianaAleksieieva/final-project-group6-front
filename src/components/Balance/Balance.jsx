@@ -7,20 +7,23 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
-import { authSelectors } from '../../redux/auth';
+import { authSelectors, } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [firstBalance, setFirstBalance] = useState(0);
+  const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const dispatch = useDispatch();
   const balance = useSelector(authSelectors.getUserBalance);
+  console.log(authSelectors.startBalance)
 
   const handleChange = event => {
     setFirstBalance(event.target.value);
   };
-  const setStartBalance = e => {
+  const putStartBalance = e => {
     e.preventDefault();
     dispatch(balanceOperations.setBalance(firstBalance));
+    setStartBalance(firstBalance);
     setButtonDisabled(true);
   };
 
@@ -41,11 +44,11 @@ function Balance({ month, year, onIncrement, onDecrement }) {
             onChange={handleChange}
           ></input>
           <span className={css.UA}> UAH</span>
-          {balance === null && <FirstModal />}
+          {startBalance === null && <FirstModal />}
           <button
             type="submit"
             className={css.confirmButton}
-            onClick={setStartBalance}
+            onClick={putStartBalance}
             disabled={buttonDisabled}
           >
             ПОДТВЕРДИТЬ
