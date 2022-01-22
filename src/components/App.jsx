@@ -1,12 +1,11 @@
-import PrivateRoute from '../helpers/routes/PrivateRoute';
-import GoHome from '../helpers/routes/GoHome';
-import css from './App.module.css';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { Container } from '.';
+import { Container, Loader } from '.';
+import PrivateRoute from '../helpers/routes/PrivateRoute';
+import GoHome from '../helpers/routes/GoHome';
 import { authOperations } from '../redux/auth';
-
+import css from './App.module.css';
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -60,7 +59,6 @@ function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
     dispatch(authOperations.googleIn(token));
@@ -76,9 +74,7 @@ function App() {
         <div className={css.background}></div>
       )}
       <Container>
-        <Suspense
-          fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}
-        >
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route
               path="/"
