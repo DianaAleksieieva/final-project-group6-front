@@ -120,7 +120,10 @@ export default function ExpencesAndIncomes({ transactionType, active }) {
         </div>
       </div>
       <div className={css.report}>
-        <TransactionHistory transactions={dayTransactions} />
+
+        <TransactionHistory transactions={dayTransactions}
+        transactionType={transactionType}/>
+
       </div>
       <div className={css.position}>
         <ReportsMonths report={yearTransactions} />
