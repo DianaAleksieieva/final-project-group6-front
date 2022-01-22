@@ -5,11 +5,7 @@ import { Container, Loader } from '.';
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
-import { Container, Loader } from '.';
-import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 
 
 const LayoutView = lazy(() =>
