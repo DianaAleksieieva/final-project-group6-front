@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { authOperations } from "../../redux/auth";
-import Modal from '../Modal/Modal';
-import useModal from '../Modal/useModal';
+import { useSelector, useDispatch } from 'react-redux';
+import { authOperations } from "../../../redux/auth";
+import Modal from '../../Modal/Modal';
+import useModal from '../../Modal/useModal';
 import css from './Nav.module.css';
-import sprite from '../../images/svg/sprite.svg';
-import { options } from '../../db';
+import sprite from '../../../images/svg/sprite.svg';
+import { authSelectors } from '../../../redux/auth';
 
 function Nav() {
-  const { userName, avatarUrl } = options;
-  const { isShowingModal, toggle, handleBackdropClick} = useModal();
+  const { isShowingModal, toggle, handleBackdropClick } = useModal();
   const dispatch = useDispatch();
+  const userEmail = useSelector(authSelectors.getUserEmail)
+  const userName = userEmail.split('@',1);
+  const avatarUrl = useSelector(authSelectors.avatarURL);
 
   useEffect(() => {
     const handleKeyDown = e => {
-      if (e.code === "Escape") {
+      if (e.code === 'Escape') {
         toggle();
       }
     };
@@ -25,18 +27,22 @@ function Nav() {
     };
   });
 
-
   return (
     <nav className={css.nav}>
       <div className={css.user}>
         <img className={css.userAvatar} src={avatarUrl} alt="user avatar" />
         <span className={css.userName}>{userName}</span>
       </div>
-      <svg className={css.line} width='2' height='36'>
+      <svg className={css.line} width="2" height="36">
         <use href={`${sprite}#icon-line`}></use>
       </svg>
       <div className={css.exit}>
-        <svg className={css.exitIcon} onClick={() => toggle()} width='16' height='16'>
+        <svg
+          className={css.exitIcon}
+          onClick={() => toggle()}
+          width="16"
+          height="16"
+        >
           <use href={`${sprite}#icon-logout`}></use>
         </svg>
         <span className={css.exitLink} onClick={() => toggle()}>
@@ -44,7 +50,7 @@ function Nav() {
         </span>
         {isShowingModal && (
           <Modal
-            textContent ={'Вы действительно хотите выйти?'}
+            textContent={'Вы действительно хотите выйти?'}
             toLogout={() => dispatch(authOperations.logOut())}
             closeModal={toggle}
             handleBackdropClick={handleBackdropClick}

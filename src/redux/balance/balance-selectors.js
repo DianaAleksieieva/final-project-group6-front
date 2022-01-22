@@ -1,6 +1,6 @@
-const setBalance = state => state.balancen;
+// const getBalance = state => state.user.currentBalance
 
-const balanceSelectors = {
-  setBalance,
-};
-export default balanceSelectors;
+// const balanceSelectors = {
+//   getBalance,
+// };
+// export default balanceSelectors;

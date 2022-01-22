@@ -30,8 +30,8 @@ export default function ExpencesAndIncomes({ transactionType }) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchMonthlyData(type, year, month)
-      setMonthTransactions(data)
+      const data = await fetchMonthlyData(type, year, month);
+      setMonthTransactions(data);
     }
     fetchData();
   }, [month, type, year]);
@@ -39,12 +39,11 @@ export default function ExpencesAndIncomes({ transactionType }) {
 
   useEffect(() => {
     async function fetchYearlyData() {
-      const data = await getByTypeYearly({ type, year })
-      setYearTransactions(data.result)
+      const data = await getByTypeYearly({ type, year });
+      setYearTransactions(data.result);
     }
-    fetchYearlyData()
+    fetchYearlyData();
   }, [type, year]);
-
 
   useEffect(() => {
     if (monthTransactions && monthTransactions !== []) {
@@ -57,19 +56,25 @@ export default function ExpencesAndIncomes({ transactionType }) {
       setDayTransactions(filerTransactions(monthTransactions));
     }
   }, [date, monthTransactions]);
-    
+
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const { description, category, amount } = e.target
-    const stringifyDate = JSON.parse(JSON.stringify(date))
-    const newTransaction = { type, category: category.value, date: stringifyDate, amount: Number(amount.value), description: description.value }
-    
-    await addTransaction(newTransaction)
-    e.target.reset()
+    const { description, category, amount } = e.target;
+    const stringifyDate = JSON.parse(JSON.stringify(date));
+    const newTransaction = {
+      type,
+      category: category.value,
+      date: stringifyDate,
+      amount: Number(amount.value),
+      description: description.value,
+    };
 
-    const data = await fetchMonthlyData(type, year, month)
-    setMonthTransactions(data)
+    await addTransaction(newTransaction);
+    e.target.reset();
+
+    const data = await fetchMonthlyData(type, year, month);
+    setMonthTransactions(data);
   };
 
   const clearForm = e => {
@@ -81,6 +86,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
     setDate(date);
   };
 
+
   const handleDelete = async id => { 
     const filteredTransactions = dayTransactions.filter(
       el => el._id !== id
@@ -90,6 +96,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
     await deleteTransaction(`${id}`)
   }
 
+
   return (
     <div className={css.wraper}>
       <div className={css.imgBack}>
@@ -97,7 +104,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
           <div className={css.flex}>
             <div className={css.box}>
               <DayPicker date={date} changeDate={changeDate} />
-            </div>    
+            </div>
           </div>
           <form className={css.form} onSubmit={handleSubmit}>
             <TransactionInput transactionType={transactionType} />

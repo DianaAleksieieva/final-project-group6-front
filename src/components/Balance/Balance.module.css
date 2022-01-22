@@ -1,6 +1,6 @@
 @import url('../../utils/_variables.css');
 
-.container {
+.container, .containerReverse {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -139,11 +139,8 @@
   .statisticButton {
     text-align: center;
   }
-  .balanceWrap {
-    margin-bottom: 40px;
-  }
   .contArrow {
-    margin-bottom: 40px;
+    padding: 0;
   }
   .text {
     display: none;
@@ -158,5 +155,16 @@
   }
   .balanceText {
     margin-bottom: 8px;
+  }
+  .containerReverse {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 12px;
+  }
+  .contStats {
+    margin-bottom: 40px;
   }
 }

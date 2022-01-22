@@ -1,31 +1,40 @@
 import css from './Balance.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FirstModal from './FirstModal';
 import { useSelector, useDispatch } from 'react-redux';
 import StatisticButton from './StatisticButton';
 import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
+import { balanceOperations } from '../../redux/balance';
+import { authSelectors, } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
-  const [firstBalance, setFirstBalance] = useState(0);
+  const [handledBalance, setHandleBalance] = useState(0);
+  const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const balance = 0
   const dispatch = useDispatch();
 
+  const balance = useSelector(authSelectors.getUserBalance);
+
   const handleChange = event => {
-    setFirstBalance(event.target.value);
+    setHandleBalance(event.target.value);
   };
-  const setBalance = () => {
-    // dispatch(transactionsOperations.setBalance(firstBalance));
+  const putStartBalance = e => {
+    e.preventDefault();
+    dispatch(balanceOperations.setBalance(handledBalance));
+    setStartBalance(handledBalance);
     setButtonDisabled(true);
-    console.log(firstBalance);
-    console.log(balance);
   };
+
+  const changeFlexContainer = () => {
+    return location.pathname === '/' ? css.containerReverse : css.container;
+  };
+
   const location = useLocation();
 
   return (
-    <div className={css.container}>
+    <div className={changeFlexContainer()}>
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>
@@ -39,11 +48,11 @@ function Balance({ month, year, onIncrement, onDecrement }) {
             onChange={handleChange}
           ></input>
           <span className={css.UA}> UAH</span>
-          {balance === null && <FirstModal />}
+          {startBalance === null && <FirstModal />}
           <button
             type="submit"
             className={css.confirmButton}
-            onClick={setBalance}
+            onClick={putStartBalance}
             disabled={buttonDisabled}
           >
             ПОДТВЕРДИТЬ
