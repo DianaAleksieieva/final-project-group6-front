@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 
 function TransactionHistory({ transactions, handleDelete }) {
   const { format } = require('date-fns');
-  const type = transactionType.type.toString();
-  const trueType = type === 'expense'
+//   const type = transactionType.type.toString();
+//   const trueType = type === 'expense'
 
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
   const dispatch = useDispatch();
@@ -37,9 +37,9 @@ function TransactionHistory({ transactions, handleDelete }) {
               <span className={css.itemDate}>{format(new Date(date), "dd.MM.yyyy")}</span>
               <span className={css.itemDesc}>{description}</span>
               <span className={css.itemCategory}>{category}</span>
-              {!trueType ?
+              {/* {!trueType ?
                 <span className={css.itemSum}>{amount} грн.</span> :
-                <span className={css.itemSumRed} >- {amount} грн.</span>}
+                <span className={css.itemSumRed} >- {amount} грн.</span>} */}
               <span className={css.itemBtn}>
                 <button className={css.itemBtn} onClick={() => toggle()}>
                   <svg className={css.itemSvg} width='20' height='20'>
