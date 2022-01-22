@@ -39,10 +39,7 @@ function LoginForm() {
         Вы можете авторизоваться с помощью Google Account:
       </p>
       {/* <p className={css.google}>Google</p> */}
-      <a
-        className={css.google}
-        href="https://final-project-group6-back.herokuapp.com/api/auth/google"
-      >
+      <a className={css.google} href="http://localhost:4321/api/auth/google">
         Google!
       </a>
       <p className={css.heading}>

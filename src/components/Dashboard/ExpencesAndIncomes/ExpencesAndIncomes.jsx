@@ -1,16 +1,20 @@
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
 import { useEffect, useState } from 'react';
-import { parseISO, lightFormat } from 'date-fns'
+import { parseISO, lightFormat } from 'date-fns';
 import {
   addTransaction,
   deleteTransaction,
   fetchMonthlyData,
   getByTypeYearly
   } from '../../../api/transactionsAPI';
+
 import {
-    ReportsMonths, TransactionHistory, TransactionInput, DayPicker
-  } from '../..';
+  ReportsMonths,
+  TransactionHistory,
+  TransactionInput,
+  DayPicker,
+} from '../..';
 
 export default function ExpencesAndIncomes({ transactionType }) {
   const { type } = transactionType;
@@ -32,9 +36,8 @@ export default function ExpencesAndIncomes({ transactionType }) {
       const data = await fetchMonthlyData(type, year, month)
       setMonthTransactions(data)
     }
-    fetchData()
+    fetchData();
   }, [month, type, year]);
-
 
   useEffect(() => {
     async function fetchYearlyData() {
@@ -44,17 +47,18 @@ export default function ExpencesAndIncomes({ transactionType }) {
     fetchYearlyData()
   }, [type, year]);
 
- 
+
   useEffect(() => {
     if (monthTransactions && monthTransactions !== []) {
       const filerTransactions = month =>
-        month.filter(trans =>
-          lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') === lightFormat(date, 'dd.MM.yyyy')
-        )
-      setDayTransactions(filerTransactions(monthTransactions))
+        month.filter(
+          trans =>
+            lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') ===
+            lightFormat(date, 'dd.MM.yyyy'),
+        );
+      setDayTransactions(filerTransactions(monthTransactions));
     }
   }, [date, monthTransactions]);
-
 
   useEffect(() => {
     if (dayTransactions && idToDelete && dayTransactions !== []) {
@@ -79,12 +83,10 @@ export default function ExpencesAndIncomes({ transactionType }) {
     setMonthTransactions(data)
   };
 
-
-  const clearForm = (e) => {
+  const clearForm = e => {
     setDate(initialDate);
-    e.target.form.reset()
+    e.target.form.reset();
   };
-
 
   const changeDate = date => {
     setDate(date);
@@ -129,7 +131,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
         />
       </div>
       <div className={css.position}>
-        <ReportsMonths report={yearTransactions}/>
+        <ReportsMonths report={yearTransactions} />
       </div>
     </div>
   );

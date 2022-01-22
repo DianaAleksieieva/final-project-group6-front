@@ -71,7 +71,7 @@
   width: 125px;
   height: 44px;
   border-radius: 16px;
-  background-color: #fff;
+  background-color: var(--white-color);
   text-align: center;
   display: inline-block;
   border: 2px solid var(--light-icons-color);
@@ -91,5 +91,5 @@
 .btn:focus {
     background-color: var(--accent-orange-color);
     border: 0;
-    color: #fff;
+    color: var(--white-color);
   }
