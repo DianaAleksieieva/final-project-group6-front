@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 20px auto;
+    z-index: 1;
 }
 
 .button {
