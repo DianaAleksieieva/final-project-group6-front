@@ -52,6 +52,7 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           <input
             className={css.input}
             placeholder={balance ? balance : '0'}
+            disabled={startBalance !== null && 'disabled'}
             onChange={handleChange}
           ></input>
           <span className={css.UA}> UAH</span>
