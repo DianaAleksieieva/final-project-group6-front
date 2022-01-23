@@ -7,7 +7,7 @@ import {
   deleteTransaction,
   fetchMonthlyData,
   getByTypeYearly,
-} from '../../../API/transactionsAPI';
+} from '../../../api/transactionsAPI';
 
 import {
   ReportsMonths,

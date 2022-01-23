@@ -20,7 +20,7 @@ import { balanceReducer } from './balance';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshTtoken'],
 };
 
 

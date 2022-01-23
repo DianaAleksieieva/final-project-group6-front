@@ -55,6 +55,7 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+    const persistedRefreshToken = state.auth.refreshToken;
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -64,6 +65,8 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('api/user/current');
       return data;
     } catch (error) {
+      if ((error.message = 'jwt expired'))
+        return refreshHelper(persistedRefreshToken);
       return thunkAPI.rejectWithValue();
     }
   },
@@ -84,7 +87,6 @@ const googleIn = createAsyncThunk(
     }
   },
 );
-
 
 const operations = {
   register,
