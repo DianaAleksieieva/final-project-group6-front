@@ -87,7 +87,6 @@ const googleIn = createAsyncThunk(
     }
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
-      console.log(data);
       const { data } = await axios.get('/api/user/current');
       Notify.success(`Добро пожаловать ${data.user.email}`);
       return data;

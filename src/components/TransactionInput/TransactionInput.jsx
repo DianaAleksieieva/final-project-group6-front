@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import css from './TransactionInput.module.css';
 import { DescriptionInput, Droplist, PriceInput } from '..';
 
 
-function TransactionInput({ transactionType }) {
+function TransactionInput({ transactionType, value, onChange }) {
   const { category, title, description } = transactionType;
-  const [categotyValue, setCategotyValue] = useState(null);
   
   return(
     <div className={css.container}>
       <DescriptionInput descriptionTitle={description}/>
-      <Droplist categories={category} categoryTitle={title} data={categotyValue} onChange={(v) => setCategotyValue(v)}/>
+      <Droplist categories={category} categoryTitle={title} data={value} onChange={onChange}/>
       <PriceInput/>
     </div>
   )

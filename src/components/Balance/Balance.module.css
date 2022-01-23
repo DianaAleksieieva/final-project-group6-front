@@ -60,18 +60,29 @@
 .confirmButton {
   margin-left: 30px;
   padding: 12px 17px;
-  background-color: transparent;
-  border: solid var(--white-color) 2px;
+  background-color: var(--accent-orange-color);
+  border: transparent;
   border-radius: 16px;
   cursor: pointer;
   color: var(--balance-text-color);
-  font-weight: 400;
+  font-weight: 600;
+  color: var(--white-color)
 }
 
-/* .confirmButton:hover {
+.confirmButton:hover {
   background-color: var(--accent-orange-color);
   color: var(--white-color);
-} */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.disabledButton {
+  margin-left: 30px;
+  padding: 12px 17px;
+  background-color: transparent;
+  border: solid var(--white-color) 2px;
+  border-radius: 16px;
+  color: var(--balance-text-color);
+  font-weight: 400;
+}
 
 .statisticButton {
   color: var(--balance-text-color);
@@ -108,12 +119,14 @@
 .modal {
   background-image: var(--modal-balance-gradient);
   position: absolute;
-  top:60px;
-  left:80px;
+  top:155px;
+  left:50%;
+  transform: translateX(-50%);
   border-radius: 30px;
   padding: 15px;
   max-width: 292px;
   text-align: center;
+  z-index: 1;
 }
 
 .modalInfo {
@@ -167,4 +180,6 @@
   .contStats {
     margin-bottom: 40px;
   }
+  .modal {
+   top:245px;}
 }
