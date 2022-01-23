@@ -9,10 +9,19 @@ import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
 import { authSelectors, authOperations } from '../../redux/auth';
 
-function Balance({ month, year, onIncrement, onDecrement }) {
+function Balance({
+  month,
+  year,
+  onIncrement,
+  onDecrement,
+  active,
+  stateDashboardButton,
+}) {
   const [handledBalance, setHandleBalance] = useState(0);
   const [startBalance, setStartBalance] = useState(null);
   const dispatch = useDispatch();
+
+  // const [activeState, setActiveState] = useState(false);
 
   const balance = useSelector(authSelectors.getUserBalance);
   const userStartBalance = useSelector(authSelectors.getStartBalance);
@@ -20,10 +29,10 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch, userStartBalance, balance]);
-  
+
   useEffect(() => {
     setStartBalance(userStartBalance);
-    }, [userStartBalance]);
+  }, [userStartBalance]);
 
   const handleChange = event => {
     setHandleBalance(event.target.value);
@@ -41,7 +50,11 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   const location = useLocation();
 
   return (
-    <div className={changeFlexContainer()}>
+    <div
+      className={`${changeFlexContainer()} ${
+        stateDashboardButton === true ? css.showBalance : css.hideBalance
+      }`}
+    >
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>

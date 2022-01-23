@@ -18,8 +18,13 @@ const changeStyle = (active, text) => {
   return active === text ? css.activeButton : css.button;
 };
 
-function Dashboard() {
-  const [active, setActive] = useState('Расход');
+function Dashboard({
+  active,
+  changeActiveState,
+  stateDashboardButton,
+  changestateDashboardButton,
+}) {
+  // const [active, setActive] = useState('Расход');
   const [transactionType, setTransactionType] = useState(EXPENCES);
 
   useEffect(() => {
@@ -32,7 +37,8 @@ function Dashboard() {
 
   const handleClick = e => {
     const { innerHTML } = e.target;
-    setActive(innerHTML);
+    changeActiveState(innerHTML);
+    // setActive(innerHTML);
   };
 
   return (
@@ -50,7 +56,12 @@ function Dashboard() {
         ))}
       </div>
 
-      <ExpencesAndIncomes transactionType={transactionType} active={active} />
+      <ExpencesAndIncomes
+        transactionType={transactionType}
+        active={active}
+        stateDashboardButton={stateDashboardButton}
+        changestateDashboardButton={changestateDashboardButton}
+      />
     </>
   );
 }

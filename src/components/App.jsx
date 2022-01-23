@@ -34,6 +34,8 @@ function App() {
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+  const [active, setActive] = useState('Расход');
+  const [stateDashboardButton, setStateDashboardButton] = useState(true);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -63,6 +65,19 @@ function App() {
       setYear(year - 1);
     }
   };
+
+  const changeActiveState = data => {
+    setActive(data);
+    setStateDashboardButton(false);
+  };
+
+  const changestateDashboardButton = data => {
+    setStateDashboardButton(data);
+  };
+
+  // useEffect(() => {
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -94,11 +109,23 @@ function App() {
                     year={year}
                     onIncrement={onIncrement}
                     onDecrement={onDecrement}
+                    active={active}
+                    stateDashboardButton={stateDashboardButton}
                   />
                 </PrivateRoute>
               }
             >
-              <Route index element={<HomeView />} />
+              <Route
+                index
+                element={
+                  <HomeView
+                    active={active}
+                    changeActiveState={changeActiveState}
+                    stateDashboardButton={stateDashboardButton}
+                    changestateDashboardButton={changestateDashboardButton}
+                  />
+                }
+              />
               <Route
                 path="/statistics"
                 element={<StatisticsView month={month} year={year} />}
