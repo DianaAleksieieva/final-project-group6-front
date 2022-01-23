@@ -150,7 +150,9 @@ function App() {
       </Container>
       {backgroundLocation.pathname === '/' ||
       backgroundLocation.pathname === '/statistics' ? (
-        <div className={css.backgroundStatistic}></div>
+        <div className={css.wrapperBackgroundStatistic}>
+          <div className={css.backgroundStatistic}></div>
+        </div>
       ) : (
         <div className={css.backgroundCabbage}>
           <div className={css.cabbageSmall}></div>

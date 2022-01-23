@@ -121,21 +121,32 @@ li {
   margin-top: -25px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .backgroundStatistic {
     width: 163px;
     height: 142px;
     background-image: url(../images/cabbageSmall.png);
     background-size: 100%;
     background-repeat: no-repeat;
-    position: absolute;
-    bottom: -45vh;
-    right: 15%;
+    margin-left: auto;
+    margin-top: 188px;
+  }
+  .wrapperBackgroundStatistic {
+    width: 100%;
+    padding-right: 88px;
   }
 }
 
 @media (max-width: 320px) {
   .backgroundStatistic {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .backgroundLogin {
+    height: 342px;
+  }
+  .wrapperBackgroundStatistic {
     display: none;
   }
 }
