@@ -10,7 +10,7 @@ const balanceSlice = createSlice({
     [balanceOperations.setBalance.fulfilled](state, action) {
       state.balance = action.payload.currentBalance;
     },
-  },
+  }
 });
 
 export default balanceSlice.reducer;

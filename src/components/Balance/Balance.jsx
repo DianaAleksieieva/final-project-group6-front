@@ -17,6 +17,7 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   const balance = useSelector(authSelectors.getUserBalance);
   const userStartBalance = useSelector(authSelectors.getStartBalance);
 
+
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch, userStartBalance, balance]);
