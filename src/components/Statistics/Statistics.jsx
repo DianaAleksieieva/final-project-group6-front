@@ -3,6 +3,7 @@ import css from './Statistics.module.css';
 import ButtonChangeCategories from './ButtonChangeCategories';
 import StatisticsCategoies from './StatisticsCategories/StatisticCategories';
 import { EXPENCES, INCOMES } from '../../constans';
+import Charts  from '../Charts/Charts';
 
 export default function Statistics({ month, year }) {
   const [active, setActive] = useState('Расход');
@@ -36,7 +37,7 @@ export default function Statistics({ month, year }) {
         <StatisticsCategoies month={month} year={year} transactionType={transactionType} changeCategory={changeCategory} />
       </div>
       <div className={css.containerGraph}>
-        {/* <Graph costs={costs} month={month} year={year}/> - тут должны быть графики для описаний */}
+        <Charts  month={month} year={year}/> 
       </div>
     </>
   );
