@@ -1,4 +1,4 @@
-@import url('../../utils/_variables.css');
+@import url('../../../utils/_variables.css');
 
 .nav {
   display: flex;

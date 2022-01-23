@@ -3,16 +3,8 @@ import DatePicker from 'react-datepicker';
 import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
 import css from './DayPicker.module.css';
-import { ReactComponent as Calendar } from '../../images/svg/calendar.svg';
+import sprite from '../../images/svg/sprite.svg';
 
-// date - принимает текущую дату из родительского компонента
-// changeDate - ссылка на функцию которая изменяет дату на выбранную.
-// в родительском компоненте должно быть:
-// const initialDate = new Date();
-// const [date, setDate] = useState(initialDate);
-// const changeDate = (date) => {
-// setDate(date);
-//}
 const CalendarPicker = ({ date, changeDate }) => {
   const selectDate = date => {
     changeDate(date);
@@ -21,7 +13,9 @@ const CalendarPicker = ({ date, changeDate }) => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className={css.datepickerButton} onClick={onClick} ref={ref}>
       <div className={css.wrapper}>
-        <Calendar className={css.icon} />
+        <svg width="20" height="20" className={css.icon}>
+          <use href={`${sprite}#icon-calendar`}></use>
+        </svg>
         {value}
       </div>
     </button>

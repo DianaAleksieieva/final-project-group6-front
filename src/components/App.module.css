@@ -70,13 +70,71 @@ li {
   position: absolute;
   width: 100%;
   height: 583px;
-  background-image: url(../images/imgKap.8d475dd6.png),
-    linear-gradient(rgba(245, 246, 251, 1), rgba(245, 246, 251, 1));
+  background-image: url(../images/cabbage.png);
   background-repeat: repeat-x;
+  background-color: #F5F6FB;
 
   background-position-y: 84px, 0px;
   border-bottom-left-radius: 200px;
   box-shadow: 4px 0px 4px 0px #00000025;
   top: 62px;
   /* margin-top: 48px; */
+}
+
+.backgroundLogin {
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 583px;
+  background-color: #F5F6FB;
+
+  background-position-y: 84px, 0px;
+  border-bottom-left-radius: 200px;
+  box-shadow: 4px 0px 4px 0px #00000025;
+  top: 62px;
+  /* margin-top: 48px; */
+}
+
+.backgroundStatistic {
+  width: 100%;
+  height: 232px;
+  background-image: url(../images/cabbage.png);
+  background-repeat: repeat-x;
+  margin-top: -130px;
+  position: relative;
+  z-index: -1;
+}
+.backgroundCabbage {
+  z-index: -1;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+.cabbageSmall {
+  width: 163px;
+  height: 142px;
+  background-image: url(../images/cabbageSmall.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-top: -25px;
+}
+
+@media (max-width: 768px) {
+  .backgroundStatistic {
+    width: 163px;
+    height: 142px;
+    background-image: url(../images/cabbageSmall.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -45vh;
+    right: 15%;
+  }
+}
+
+@media (max-width: 320px) {
+  .backgroundStatistic {
+    display: none;
+  }
 }

@@ -1,14 +1,20 @@
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
-import { Nav } from '..';
+import { Nav } from '../';
 import css from './Header.module.css';
-import logo from '../../images/svg/logo.svg';
+import sprite from '../../images/svg/sprite.svg';
+
 
 function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <section className={css.header}>
-      <img src={logo} alt="Kapusta" />
+      <Link to='/'>
+      <svg width="90" height="31">
+        <use href={`${sprite}#icon-kapusta`}></use>
+      </svg>
+      </Link>
       {isLoggedIn && <Nav />}
     </section>
   );

@@ -4,7 +4,7 @@ import sprite from '../../images/svg/sprite.svg';
 function PriceInput(){
   return(
     <div className={css.container}>
-      <input className={css.input} type='text' placeholder='00.0'/>
+      <input id='amount' className={css.input} type='number' min='0' step='1'  placeholder='00' required/>
       <div className={css.calcContainer}>
         <svg width='20' height='20'>
           <use href={`${sprite}#icon-calculator`}></use>  

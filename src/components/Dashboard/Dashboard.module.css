@@ -1,3 +1,55 @@
 .buttonWrapper {
   display: flex;
 }
+button.button {
+  background-color:  #FAFBFD;
+  color: black;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 13px 34px;
+  box-shadow: none;
+  width: 138px;
+}
+button.activeButton {
+  background-color: #FEFEFE;
+  color: #FF751D;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 13px 34px;
+  box-shadow: none;
+  width: 138px;
+}
+
+button.activeButton:hover, button.activeButton:focus {
+    background-color: #FEFEFE;
+    color: #FF751D;
+}
+
+@media (max-width: 320px) {
+  .buttonWrapper {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+  }
+  button.button {
+    background-color:  #F5F6FB;
+    color: #000000;
+    border-radius: 0;
+    padding: 13px 34px;
+    box-shadow: none;
+    width: 50%;
+  }
+    button.activeButton {
+    background-color: #FF751D;
+    color: #FFFFFF;
+    border-radius: 0;
+    padding: 13px 34px;
+    box-shadow: none;
+    width: 50%;
+  }
+  button.activeButton:hover, button.activeButton:focus {
+    background-color: #FF751D;
+    color: #FFFFFF;
+}
+}

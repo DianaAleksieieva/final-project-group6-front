@@ -1,33 +1,48 @@
 import css from './Balance.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FirstModal from './FirstModal';
-import { transactionsSelectors } from '../../redux/transactions';
-import { transactionsOperations } from '../../redux/transactions';
 import { useSelector, useDispatch } from 'react-redux';
 import StatisticButton from './StatisticButton';
 import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
+import { balanceOperations } from '../../redux/balance';
+import { authSelectors, authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
-  const [firstBalance, setFirstBalance] = useState(0);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const balance = useSelector(transactionsSelectors.getBalance);
+  const [handledBalance, setHandleBalance] = useState(0);
+  const [startBalance, setStartBalance] = useState(null);
   const dispatch = useDispatch();
 
+  const balance = useSelector(authSelectors.getUserBalance);
+  const userStartBalance = useSelector(authSelectors.getStartBalance);
+
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch, userStartBalance, balance]);
+  
+  useEffect(() => {
+    setStartBalance(userStartBalance);
+    }, [userStartBalance]);
+
   const handleChange = event => {
-    setFirstBalance(event.target.value);
+    setHandleBalance(event.target.value);
   };
-  const setBalance = () => {
-    dispatch(transactionsOperations.setBalance(firstBalance));
-    setButtonDisabled(true);
-    console.log(firstBalance);
-    console.log(balance);
+  const putStartBalance = e => {
+    e.preventDefault();
+    dispatch(balanceOperations.setBalance(handledBalance));
+    setStartBalance(handledBalance);
   };
+
+  const changeFlexContainer = () => {
+    return location.pathname === '/' ? css.containerReverse : css.container;
+  };
+
   const location = useLocation();
 
   return (
-    <div className={css.container}>
+    <div className={changeFlexContainer()}>
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>
@@ -38,18 +53,28 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           <input
             className={css.input}
             placeholder={balance ? balance : '0'}
+            disabled={startBalance !== null && 'disabled'}
             onChange={handleChange}
           ></input>
           <span className={css.UA}> UAH</span>
-          {balance === null && <FirstModal />}
-          <button
-            type="submit"
-            className={css.confirmButton}
-            onClick={setBalance}
-            disabled={buttonDisabled}
-          >
-            ПОДТВЕРДИТЬ
-          </button>
+          {startBalance === null && <FirstModal />}
+          {startBalance !== null ? (
+            <button
+              type="submit"
+              className={css.disabledButton}
+              disabled="disabled"
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={css.confirmButton}
+              onClick={putStartBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          )}
         </div>
       </form>
       <div className={css.contStats}>

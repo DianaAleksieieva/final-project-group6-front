@@ -2,7 +2,8 @@ import css from './DescriptionInput.module.css';
 
 function DescriptionInput({descriptionTitle}){
   return(
-    <input className={css.input} type="text" placeholder={descriptionTitle} />
+    <input id='description' className={css.input} type="text"
+      placeholder={descriptionTitle} required autoComplete="off"/>
   )
 }
 

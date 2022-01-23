@@ -5,7 +5,7 @@
 }
 
 .imgBack {
-  background-image: url('../../../images/back.png');
+  /* background-image: url('../../../images/back.png'); */
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -62,7 +62,6 @@
 @media screen and (min-width: 768px) {
   .wraper {
     height: 626px;
-    width: 665px;
     background-color: #ffffff;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
     border-radius: 0px 30px 30px 30px;
@@ -85,7 +84,7 @@
   .flex {
     position: relative;
     z-index: 25;
-    flex-direction: row;
+    margin-top: 13px;
     margin-bottom: 30px;
   }
 
@@ -97,9 +96,8 @@
 
   .list {
     position: static;
-    justify-content: center;
     padding: 0px;
-    margin: 0px;
+    margin: 20px 0 0 30px;
     padding-bottom: 480px;
     display: flex;
   }

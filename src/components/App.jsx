@@ -1,13 +1,11 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { Container, Loader } from '.';
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { Container } from '.';
-import { authOperations, authSelectors } from '../redux/auth';
-
 import css from './App.module.css';
-// import { Header, Body, Footer, DayPicker, TransactionInput } from '.';
+import { authOperations } from '../redux/auth';
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -28,13 +26,23 @@ const LoginView = lazy(() =>
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  let backgroundLocation = useLocation();
+  const isFirstRender = useRef(true);
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch, isFirstRender]);
 
   const onIncrement = (month, year) => {
     if (month < 12) {
@@ -68,11 +76,14 @@ function App() {
 
   return (
     <>
-      <div className={css.background}></div>
+      {backgroundLocation.pathname === '/' ||
+      backgroundLocation.pathname === '/statistics' ? (
+        <div className={css.backgroundLogin}></div>
+      ) : (
+        <div className={css.background}></div>
+      )}
       <Container>
-        <Suspense
-          fallback={<h1 style={{ textAlign: 'center' }}>Loading ...</h1>}
-        >
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route
               path="/"
@@ -110,6 +121,14 @@ function App() {
           </Routes>
         </Suspense>
       </Container>
+      {backgroundLocation.pathname === '/' ||
+      backgroundLocation.pathname === '/statistics' ? (
+        <div className={css.backgroundStatistic}></div>
+      ) : (
+        <div className={css.backgroundCabbage}>
+          <div className={css.cabbageSmall}></div>
+        </div>
+      )}
     </>
   );
 }
