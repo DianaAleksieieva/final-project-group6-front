@@ -36,7 +36,6 @@ function App() {
   const [year, setYear] = useState(selectedYear);
   const [active, setActive] = useState('Расход');
   const [stateDashboardButton, setStateDashboardButton] = useState(true);
-  console.log(stateDashboardButton);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -79,6 +78,10 @@ function App() {
   // useEffect(() => {
   //   dispatch(authOperations.fetchCurrentUser());
   // }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);

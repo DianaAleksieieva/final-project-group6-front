@@ -1,23 +1,35 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import css from './Statistics.module.css';
-import ButtonChangeCategories from '../ButtonChangeCategories';
+import ButtonChangeCategories from './ButtonChangeCategories';
+import StatisticsCategoies from './StatisticsCategories/StatisticCategories';
+import { EXPENCES, INCOMES } from '../../constans';
 
 export default function Statistics({ month, year }) {
-  const [costs, setCosts] = useState(false);
-  const changeStatus = () => {
-    if (!costs) {
-      setCosts(true);
+  const [active, setActive] = useState('Расход');
+  const [transactionType, setTransactionType] = useState(EXPENCES);
+
+  useEffect(() => {
+    if (active === 'Доход') {
+      setTransactionType(INCOMES);
+    } else if (active === 'Расход') {
+      setTransactionType(EXPENCES);
     }
-    if (costs) {
-      setCosts(false);
+  }, [active]);
+
+  const changeStatus = () => {
+    if (active === 'Доход') {
+      setActive('Расход');
+    } else if (active === 'Расход') {
+      setActive('Доход');
     }
   };
+
 
   return (
     <>
       <div className={css.containerButton}>
-        <ButtonChangeCategories costs={costs} changeStatus={changeStatus} />
-        {/* <CategoryImage costs={costs} month={month} year={year}/> - тут должен быть компонент с категориями  */}
+        <ButtonChangeCategories active={active} changeStatus={changeStatus} />
+        <StatisticsCategoies month={month} year={year} transactionType={transactionType} />
       </div>
       <div className={css.containerGraph}>
         {/* <Graph costs={costs} month={month} year={year}/> - тут должны быть графики для описаний */}

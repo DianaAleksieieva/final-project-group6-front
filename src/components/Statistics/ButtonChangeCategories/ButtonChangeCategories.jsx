@@ -1,18 +1,9 @@
 import { React } from 'react';
-import { ReactComponent as ArrowLeft } from '../../images/svg/ArrowLeft.svg';
-import { ReactComponent as ArrowRight } from '../../images/svg/ArrowRight.svg';
+import { ReactComponent as ArrowLeft } from '../../../images/svg/ArrowLeft.svg';
+import { ReactComponent as ArrowRight } from '../../../images/svg/ArrowRight.svg';
 import css from './ButtonChangeCategories.module.css';
 
-const ButtonChangeCategories = ({ costs, changeStatus }) => {
-  // const [costs, setCosts] = useState(false);
-  // const onClick = () => {
-  //   if (!costs) {
-  //     setCosts(true);
-  //   }
-  //   if (costs) {
-  //     setCosts(false);
-  //   }
-  // };
+export default function ButtonChangeCategories({ active, changeStatus }) {
 
   return (
     <div className={css.container}>
@@ -20,7 +11,7 @@ const ButtonChangeCategories = ({ costs, changeStatus }) => {
         <ArrowLeft className={css.color} />
       </button>
 
-      {!costs ? (
+      {active === "Доход" ? (
         <p className={css.text}>Доходы</p>
       ) : (
         <p className={css.text}>Paсходы</p>
@@ -32,4 +23,3 @@ const ButtonChangeCategories = ({ costs, changeStatus }) => {
     </div>
   );
 };
-export default ButtonChangeCategories;

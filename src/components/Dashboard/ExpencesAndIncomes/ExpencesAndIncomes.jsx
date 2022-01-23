@@ -15,6 +15,8 @@ import {
   TransactionInput,
   DayPicker,
 } from '../..';
+import { authOperations } from '../../../redux/auth';
+import { useDispatch } from 'react-redux';
 
 export default function ExpencesAndIncomes({
   transactionType,
@@ -32,6 +34,8 @@ export default function ExpencesAndIncomes({
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -79,6 +83,7 @@ export default function ExpencesAndIncomes({
 
     const data = await fetchMonthlyData(type, year, month);
     setMonthTransactions(data);
+    dispatch(authOperations.fetchCurrentUser());
   };
 
   const clearForm = e => {
