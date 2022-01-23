@@ -6,6 +6,7 @@ import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
 import { authOperations } from '../redux/auth';
+import Footer from './Footer';
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -129,6 +130,7 @@ function App() {
           <div className={css.cabbageSmall}></div>
         </div>
       )}
+      <Footer />
     </>
   );
 }
