@@ -112,6 +112,7 @@ li {
   justify-content: center;
 }
 .cabbageSmall {
+  z-index: -1;
   width: 163px;
   height: 142px;
   background-image: url(../images/cabbageSmall.png);
