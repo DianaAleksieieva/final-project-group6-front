@@ -26,6 +26,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
   const [yearTransactions, setYearTransactions] = useState([]);
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
+  const [categotyValue, setCategotyValue] = useState(null);
 
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
 
     await addTransaction(newTransaction);
     e.target.reset();
+    setCategotyValue(null);
 
     const data = await fetchMonthlyData(type, year, month);
     setMonthTransactions(data);
@@ -80,6 +82,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
   const clearForm = e => {
     setDate(initialDate);
     e.target.form.reset();
+    setCategotyValue(null);
   };
 
   const changeDate = date => {
@@ -107,7 +110,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
             </div>
           </div>
           <form className={css.form} onSubmit={handleSubmit}>
-            <TransactionInput transactionType={transactionType} />
+            <TransactionInput transactionType={transactionType} value={categotyValue} onChange={v => setCategotyValue(v)}/>
             <ul className={css.list}>
               <li className={css.item}>
                 <Button
