@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import notifyError from '../../helpers/api/notifyError';
 import { useSelector, useDispatch } from 'react-redux';
-import { authOperations } from "../../redux/auth";
-import Modal from '../Modal/Modal';
-import useModal from '../Modal/useModal';
+import { authOperations } from "../../../redux/auth";
+import Modal from '../../Modal/Modal';
+import useModal from '../../Modal/useModal';
 import css from './Nav.module.css';
-import sprite from '../../images/svg/sprite.svg';
-import { authSelectors } from '../../redux/auth';
-import { miniSerializeError } from "@reduxjs/toolkit";
+import sprite from '../../../images/svg/sprite.svg';
+import { authSelectors } from '../../../redux/auth';
 
 function Nav() {
   const { isShowingModal, toggle, handleBackdropClick } = useModal();

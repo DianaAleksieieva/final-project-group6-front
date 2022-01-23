@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const apiUrl = 'https://final-project-group6-back.herokuapp.com/api/';
+// const apiUrl = 'http://localhost:4321/api/';
 
 export const api = axios.create({
   baseURL: apiUrl,
