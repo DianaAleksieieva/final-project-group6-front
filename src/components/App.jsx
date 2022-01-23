@@ -7,7 +7,6 @@ import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
 import { authOperations } from '../redux/auth';
 
-
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
 );
@@ -65,9 +64,9 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);

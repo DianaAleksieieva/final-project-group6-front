@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { authOperations } from "../../../redux/auth";
+import { authOperations } from '../../../redux/auth';
 import Modal from '../../Modal/Modal';
 import useModal from '../../Modal/useModal';
 import css from './Nav.module.css';
@@ -10,8 +10,8 @@ import { authSelectors } from '../../../redux/auth';
 function Nav() {
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
   const dispatch = useDispatch();
-  const userEmail = useSelector(authSelectors.getUserEmail)
-  const userName = userEmail.split('@',1);
+  const userEmail = useSelector(authSelectors.getUserEmail);
+  const userName = userEmail?.split('@', 1);
   const avatarUrl = useSelector(authSelectors.avatarURL);
 
   useEffect(() => {
