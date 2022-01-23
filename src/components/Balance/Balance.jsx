@@ -11,19 +11,21 @@ import { authSelectors, authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [handledBalance, setHandleBalance] = useState(0);
-  const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
+  const [startBalance, setStartBalance] = useState(null);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const dispatch = useDispatch();
 
   const balance = useSelector(authSelectors.getUserBalance);
+  const userStartBalance = useSelector(authSelectors.getStartBalance);
 
-    useEffect(
-      () => {
-        dispatch(authOperations.fetchCurrentUser());
-      },
-      [dispatch],
-      balance,
-    );
+  useEffect(() => {
+      dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch, userStartBalance, balance]);
+  
+  useEffect(() => {
+      console.log(userStartBalance);
+      setStartBalance(userStartBalance);
+    }, [userStartBalance]);
 
   const handleChange = event => {
     setHandleBalance(event.target.value);
