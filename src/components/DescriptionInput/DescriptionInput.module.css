@@ -20,6 +20,7 @@
 
 @media (max-width: 767px) {
   .input{
+    width: 100%;
     margin: 0 auto;
     border-color: var(--white-color);
     border-top-right-radius: 16px;

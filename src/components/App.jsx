@@ -7,7 +7,6 @@ import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
 import { authOperations } from '../redux/auth';
 
-
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
 );
@@ -35,6 +34,9 @@ function App() {
   let selectedYear = date.getFullYear();
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
+  const [active, setActive] = useState('Расход');
+  const [stateDashboardButton, setStateDashboardButton] = useState(true);
+  console.log(stateDashboardButton);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -63,6 +65,15 @@ function App() {
       setMonth(12);
       setYear(year - 1);
     }
+  };
+
+  const changeActiveState = data => {
+    setActive(data);
+    setStateDashboardButton(false);
+  };
+
+  const changestateDashboardButton = data => {
+    setStateDashboardButton(data);
   };
 
   // useEffect(() => {
@@ -95,11 +106,23 @@ function App() {
                     year={year}
                     onIncrement={onIncrement}
                     onDecrement={onDecrement}
+                    active={active}
+                    stateDashboardButton={stateDashboardButton}
                   />
                 </PrivateRoute>
               }
             >
-              <Route index element={<HomeView />} />
+              <Route
+                index
+                element={
+                  <HomeView
+                    active={active}
+                    changeActiveState={changeActiveState}
+                    stateDashboardButton={stateDashboardButton}
+                    changestateDashboardButton={changestateDashboardButton}
+                  />
+                }
+              />
               <Route
                 path="/statistics"
                 element={<StatisticsView month={month} year={year} />}

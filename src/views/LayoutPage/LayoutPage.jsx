@@ -1,7 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Balance, Header } from '../../components';
 
-export default function LayoutPage({ month, year, onIncrement, onDecrement }) {
+export default function LayoutPage({
+  month,
+  year,
+  onIncrement,
+  onDecrement,
+  active,
+  stateDashboardButton,
+}) {
   return (
     <>
       <Header />
@@ -10,6 +17,8 @@ export default function LayoutPage({ month, year, onIncrement, onDecrement }) {
         year={year}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
+        active={active}
+        stateDashboardButton={stateDashboardButton}
       />
       <Outlet />
     </>
