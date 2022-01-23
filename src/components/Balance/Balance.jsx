@@ -11,19 +11,19 @@ import { authSelectors, authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
   const [handledBalance, setHandleBalance] = useState(0);
-  const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [startBalance, setStartBalance] = useState(null);
   const dispatch = useDispatch();
 
   const balance = useSelector(authSelectors.getUserBalance);
+  const userStartBalance = useSelector(authSelectors.getStartBalance);
 
-    useEffect(
-      () => {
-        dispatch(authOperations.fetchCurrentUser());
-      },
-      [dispatch],
-      balance,
-    );
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch, userStartBalance, balance]);
+  
+  useEffect(() => {
+    setStartBalance(userStartBalance);
+    }, [userStartBalance]);
 
   const handleChange = event => {
     setHandleBalance(event.target.value);
@@ -32,7 +32,6 @@ function Balance({ month, year, onIncrement, onDecrement }) {
     e.preventDefault();
     dispatch(balanceOperations.setBalance(handledBalance));
     setStartBalance(handledBalance);
-    setButtonDisabled(true);
   };
 
   const changeFlexContainer = () => {
@@ -57,14 +56,23 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           ></input>
           <span className={css.UA}> UAH</span>
           {startBalance === null && <FirstModal />}
-          <button
-            type="submit"
-            className={css.confirmButton}
-            onClick={putStartBalance}
-            disabled={buttonDisabled}
-          >
-            ПОДТВЕРДИТЬ
-          </button>
+          {startBalance !== null ? (
+            <button
+              type="submit"
+              className={css.disabledButton}
+              disabled="disabled"
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={css.confirmButton}
+              onClick={putStartBalance}
+            >
+              ПОДТВЕРДИТЬ
+            </button>
+          )}
         </div>
       </form>
       <div className={css.contStats}>
