@@ -7,30 +7,42 @@ import GoBackButton from './GoBackButton';
 import MonthAndYearButton from '../MonthAndYearButton';
 import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
-import { authSelectors, } from '../../redux/auth';
+import { authSelectors, authOperations } from '../../redux/auth';
 
 function Balance({ month, year, onIncrement, onDecrement }) {
-  const [firstBalance, setFirstBalance] = useState(0);
+  const [handledBalance, setHandleBalance] = useState(0);
   const [startBalance, setStartBalance] = useState(authSelectors.startBalance);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const dispatch = useDispatch();
+
   const balance = useSelector(authSelectors.getUserBalance);
-  console.log(authSelectors.startBalance)
+
+    useEffect(
+      () => {
+        dispatch(authOperations.fetchCurrentUser());
+      },
+      [dispatch],
+      balance,
+    );
 
   const handleChange = event => {
-    setFirstBalance(event.target.value);
+    setHandleBalance(event.target.value);
   };
   const putStartBalance = e => {
     e.preventDefault();
-    dispatch(balanceOperations.setBalance(firstBalance));
-    setStartBalance(firstBalance);
+    dispatch(balanceOperations.setBalance(handledBalance));
+    setStartBalance(handledBalance);
     setButtonDisabled(true);
+  };
+
+  const changeFlexContainer = () => {
+    return location.pathname === '/' ? css.containerReverse : css.container;
   };
 
   const location = useLocation();
 
   return (
-    <div className={css.container}>
+    <div className={changeFlexContainer()}>
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>

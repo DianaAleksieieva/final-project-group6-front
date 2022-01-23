@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from '../../redux/auth';
-import { Nav } from '..';
+import { Nav } from '../';
 import css from './Header.module.css';
 import logo from '../../images/svg/logo.svg';
 

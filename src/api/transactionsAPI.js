@@ -14,15 +14,14 @@ export async function addTransaction(body) {
     .catch(error => notifyError(error));
 }
 
-export async function deleteTransaction(params) {
-  const { data } = await api
-    .delete(`/transactions/delete/${params.transactionId}`)
+export async function deleteTransaction(id) {
+  return api
+    .delete(`/transactions/delete/${id}`)
     .then(({ data }) => {
       Notify.info(`Транзакция удалена. Текущий баланс ${data.currentBalance}`);
       return data;
     })
     .catch(error => notifyError(error));
-  return data;
 }
 
 export async function getByTypeYearly(params) {

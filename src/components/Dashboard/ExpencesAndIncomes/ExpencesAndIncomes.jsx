@@ -3,21 +3,20 @@ import Button from '../../Button/Button';
 import { useEffect, useState } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
 import {
-  addTransaction,
-  deleteTransaction,
-  fetchMonthlyData,
-  getByTypeYearly,
-} from '../../../api/transactionsAPI';
-
+    addTransaction,
+    deleteTransaction,
+    fetchMonthlyData,
+    getByTypeYearly
+  } from '../../../api/transactionsAPI';
 import {
-  ReportsMonths,
-  TransactionHistory,
-  TransactionInput,
-  DayPicker,
-} from '../..';
+    ReportsMonths,
+    TransactionHistory,
+    TransactionInput,
+    DayPicker,
+  } from '../..';
 
 export default function ExpencesAndIncomes({ transactionType }) {
-  const { type } = transactionType;
+  const { type, category } = transactionType;
 
   const initialDate = new Date();
   const [date, setDate] = useState(initialDate);
@@ -28,7 +27,6 @@ export default function ExpencesAndIncomes({ transactionType }) {
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
 
-  const [idToDelete, setIdToDelete] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -37,6 +35,7 @@ export default function ExpencesAndIncomes({ transactionType }) {
     }
     fetchData();
   }, [month, type, year]);
+
 
   useEffect(() => {
     async function fetchYearlyData() {
@@ -58,14 +57,6 @@ export default function ExpencesAndIncomes({ transactionType }) {
     }
   }, [date, monthTransactions]);
 
-  useEffect(() => {
-    if (dayTransactions && idToDelete && dayTransactions !== []) {
-      const filteredTransactions = dayTransactions.filter(
-        el => el._id !== idToDelete,
-      );
-      setDayTransactions(filteredTransactions);
-    }
-  }, [dayTransactions, idToDelete]);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -95,11 +86,16 @@ export default function ExpencesAndIncomes({ transactionType }) {
     setDate(date);
   };
 
-  const getIdToDelete = async id => {
-    setIdToDelete(id);
-    const deleted = await deleteTransaction(id);
-    console.log(deleted);
-  };
+
+  const handleDelete = async id => { 
+    const filteredTransactions = dayTransactions.filter(
+      el => el._id !== id
+    )
+    setDayTransactions(filteredTransactions)
+
+    await deleteTransaction(`${id}`)
+  }
+
 
   return (
     <div className={css.wraper}>
@@ -129,8 +125,10 @@ export default function ExpencesAndIncomes({ transactionType }) {
       </div>
       <div className={css.report}>
         <TransactionHistory
-          handleDelete={getIdToDelete}
-          transactions={dayTransactions}
+          handleDelete={handleDelete}
+          data={dayTransactions}
+          category={category}
+          type={type}
         />
       </div>
       <div className={css.position}>

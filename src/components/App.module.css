@@ -106,6 +106,7 @@ li {
   z-index: -1;
 }
 .backgroundCabbage {
+  z-index: -1;
   width: 60%;
   display: flex;
   justify-content: center;

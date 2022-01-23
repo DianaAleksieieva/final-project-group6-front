@@ -1,6 +1,6 @@
 import css from './ReportsMonths.module.css'
-import {Month} from '../../constans'
 
+import {Month} from '../../constans'
 
 
 function ReportsMonths({ report }) {
