@@ -34,19 +34,22 @@ export default function StatisticCategories({ transactionType, month, year }) {
 
     function res(iconsContainer) {
         let arr = [];
-        const result = getResultArray();
 
-        if (result && result !== []) {
-            result.map((item) => (
-                arr.push(...iconsContainer.filter(function (el) {
-                    return el.CatName === item.CatName
-                }))
+        if (monthTransactionsByType) {
+            const result = getResultArray();
 
-            ))
+            if (result && result !== []) {
+                result.map((item) => (
+                    arr.push(...iconsContainer.filter(function (el) {
+                        return el.CatName === item.CatName
+                    }))
 
-            arr = arr.map(function (item, i) {
-                return item = { ...item, ...result[i] };
-            })
+                ))
+
+                arr = arr.map(function (item, i) {
+                    return item = { ...item, ...result[i] };
+                })
+            }
         }
 
         return arr;
