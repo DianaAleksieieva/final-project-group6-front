@@ -13,10 +13,18 @@ function Droplist({categories, categoryTitle, data, onChange}) {
   function close(e) {
     setOpen(e && e.target === ref.current)
   }
-  
+
+  // function toggleInput(e) {
+  //   if(data && e.target.value === ''){
+  //     onChange(null);
+  //     return;
+  //   }
+  //     e.target.value = '';
+  // }
+  // onChange={(e) => e.target.value = data}
   return(
     <>
-    <input id='category' type="hidden" value={data? data.value: ''} onChange={(e) => e.target.value = data} required/>
+    <input id='category' type="hidden" value={data? data.value: ''} onChange={() => console.log('change')} required/>
     <div className={css.dropdown}>
       <div className={css.control} onClick={() => setOpen((prev) => !prev)}>
         <div className={css.selectedValue} ref={ref} style={data && {color: '#52555F'}}>{data? data.label: categoryTitle}</div>
