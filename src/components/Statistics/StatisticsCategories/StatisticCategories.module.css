@@ -13,22 +13,20 @@
   align-items: center;  
   height: 63px;
   width: 56px;  
-  fill: var(--light-icons-color);
-  stroke: var(--dark-icons-color);
+  fill: var(--dark-icons-color);
   transition: stroke 0.2s, fill 0.3s;  
 }
 
 .statistics_icon:hover{  
     cursor: pointer;
-    stroke: var(--accent-orange-color);
-    fill: var(--lite-orange-color);
-    
+    stroke: 0;
+    fill: var(--accent-orange-color);
 }
 
 .statistics_icon:focus{   
     cursor: pointer;
-    stroke: var(--accent-orange-color);
-    fill: var(--lite-orange-color); 
+    stroke: 0;
+    fill: var(--accent-orange-color);
 }
 
 .statistics_list{   
