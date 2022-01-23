@@ -3,7 +3,7 @@ import iconsContainer from '../../../utils/statisticComponents';
 import { useEffect, useState } from 'react';
 import { getByTypeMonthly } from '../../../api/transactionsAPI';
 
-export default function StatisticCategories({ transactionType, month, year }) {
+export default function StatisticCategories({ transactionType, month, year, changeCategory }) {
     const { type } = transactionType;
     const [monthTransactionsByType, setMonthTransactionsByType] = useState([]);
 
@@ -62,7 +62,9 @@ export default function StatisticCategories({ transactionType, month, year }) {
                     res(iconsContainer).map((item, index) => (
                         <li className={css.statistics_item} key={index}>
                             <span className={css.labels_style}>{item.Amount}</span>
-                            {item.Component}
+                            <button className={css.statistics_icon} onClick={() => changeCategory(item.CatName)}>
+                                {item.Component}
+                            </button>
                             <span className={css.labels_style}>{item.CatLabel}</span>
                         </li>
 
