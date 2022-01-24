@@ -171,11 +171,16 @@
 
 @media screen and (max-width: 767px) {
 
+  .wraper {
+    height: auto;
+  }
+
   .imgBack {
     display: block;
     /* background-image: url('../../../images/back.png'); */
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-bottom: 110px;
   }
   .hideHistory {
     display: none;
@@ -194,9 +199,6 @@
   }
   form.hideForm {
     display: none;
-  }
-  .imgBack {
-    margin-bottom: 30px;
   }
   div.hidePicker {
     display: none;
