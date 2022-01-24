@@ -10,6 +10,7 @@ import {
   YAxis,
   ResponsiveContainer,
   LabelList,
+  CartesianGrid,
 } from 'recharts';
 
 export default function Charts({ category, month, year }) {
@@ -18,9 +19,9 @@ export default function Charts({ category, month, year }) {
 
   useEffect(() => {
     if (!category || !year || !month) {
-      return
+      return;
     }
-      getByCategoryMonthly({ category, year, month })
+    getByCategoryMonthly({ category, year, month })
       .then(data1 => setTransactions(data1))
       .catch(error => setTransactions([]));
   }, [category, month, year]);
@@ -92,11 +93,13 @@ export default function Charts({ category, month, year }) {
   return screenWidth >= 768 ? (
     <div>
       <BarChart
+        style={{ marginRight: 'auto', marginLeft: 'auto' }}
         data={dataChart}
         width={666}
         height={422}
         margin={{ top: 40, right: 15, bottom: 20, left: 15 }}
       >
+        {category ? <CartesianGrid vertical={false} /> : null}
         <Bar
           dataKey="total"
           radius={[10, 10, 0, 0]}
