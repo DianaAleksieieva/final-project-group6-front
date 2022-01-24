@@ -12,7 +12,7 @@ function Header() {
     <section className={css.header}>
       <Link to='/'>
       <svg width="90" height="31">
-        <use href={`${sprite}#icon-kapusta`}></use>
+        <use href={`${sprite}#icon-logo`}></use>
       </svg>
       </Link>
       {isLoggedIn && <Nav />}

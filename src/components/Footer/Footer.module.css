@@ -1,0 +1,66 @@
+@import url('../../utils/_variables.css');
+
+.bgWrapper{
+  background-color: var(--light-icons-color)
+}
+.container {
+  max-width: 100%;
+  margin: auto;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+.team{
+  display: flex;
+  align-items: center;
+}
+.copyright{
+  padding: 10px 0;
+  margin-top: auto;
+  text-align: center;
+}
+.arrow{
+  margin-left: 10px;
+  transform: rotate(180deg);
+}
+.kapusta{
+  margin-left: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 1s;
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+.kapusta{
+  animation: spin 5s linear 0s infinite;
+}
+.kapusta:hover{
+  box-shadow: 0px 0px 20px -5px var(--accent-orange-color);
+  background-color: #ffe3d2;
+}
+@media (min-width: 320px) {
+  .container {
+    max-width: 320px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 50px;
+  }
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 110px;
+  }
+}
