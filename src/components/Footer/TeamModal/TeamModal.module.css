@@ -14,35 +14,76 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 40px;
+  box-sizing: border-box;
   box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
   border-radius: 30px;
   background-color: var(--white-color);
 }
-.teamName {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: var(--main-text-color);
-  margin-bottom: 40px;
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.teamMembers{
-  margin-bottom: 200px;
+.logo{
+  height: auto;
+}
+.logo > img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.teamLead.member{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 280px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.teamLead .photo{
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
 }
 .membersList{
   display: flex;
-  flex-wrap: nowrap;
-  cursor: pointer;
-  margin: 0 -5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .member{
-  width: 90px;
-  height: 90px;
-  margin: 0 5px;
-  background-color: lime;
+  padding: 10px;
+  border: 2px solid var(--placeholder-text-color);
+  border-radius: 15px;
+}
+.photo{
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  background-color: var(--placeholder-text-color);
   border: 2px solid var(--accent-orange-color);
+  border-radius: 50%;
+}
+.name{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+.social{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.link{
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid orange;
   border-radius: 50%;
 }
 .modalCloseBtn {
@@ -60,4 +101,54 @@
   width: 14px;
   height: 14px;
   background-repeat: no-repeat;
+} 
+@media (max-width: 767px) {
+  .modal_content{
+    width: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .modal_content{
+    width: 760px;
+    margin-bottom: -10px;
+    padding: 12px;
+    padding-top: 14px;
+  }
+  .logo{
+    width: 180px;
+  }
+  .main{
+    margin-bottom: 10px;
+  }
+  .membersList{
+    justify-content: space-around;
+    margin: 0 -4px;
+    margin-bottom: -10px;
+  }
+  .member{
+    width: 132px;
+    margin: 4px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 1280px) {
+  .modal_content{
+    width: 860px;
+    padding: 30px 30px;
+  }
+  .logo{
+    width: 220px;
+  }
+  .main{
+    margin-bottom: 20px;
+  }
+  .membersList{
+    margin: 0 -5px;
+    margin-bottom: -12px;
+  }
+  .member{
+    width: 146px;
+    margin: 5px;
+    margin-bottom: 12px;
+  }
 } 
