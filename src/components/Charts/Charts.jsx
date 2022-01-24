@@ -2,19 +2,26 @@ import { useState, useEffect } from 'react';
 
 import { getByCategoryMonthly } from '../../api/transactionsAPI';
 
-import { BarChart, Bar, Cell, XAxis } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  LabelList,
+} from 'recharts';
 
-export default function Charts({ month, year }) {
+export default function Charts({ category, month, year }) {
   const [transactions, setTransactions] = useState([]);
   let mas = [];
 
   useEffect(() => {
-    let category = 'transport';
     getByCategoryMonthly({ category, year, month })
       .then(data1 => setTransactions(data1))
       .catch(error => setTransactions([]));
-  }, [month, year]);
-  let activeCategory = transactions.result;
+  }, [category, month, year]);
+  let activeCategory = transactions?.result;
   console.log('activeCategory', activeCategory);
 
   activeCategory?.map(el =>
@@ -63,7 +70,22 @@ export default function Charts({ month, year }) {
   //     { description: 'хлеб', total: 5 },
   //   ];
 
-  return (
+  const MobileBarLabel = ({ x, y, width, value }) => (
+    <text x={x + width / 1.1} y={y} textAnchor="middle" fontSize={10} dy={-10}>
+      {value ? `${value} грн` : ''}
+    </text>
+  );
+
+  const MobileCategoryLabel = ({ x, y, value }) => (
+    <text x={x} y={y} dy={-10} fontSize={10}>
+      {value}
+    </text>
+  );
+
+  const screenWidth = window.innerWidth;
+  console.log('screenWidth', screenWidth);
+
+  return screenWidth >= 768 ? (
     <div>
       <BarChart
         data={dataChart}
@@ -84,5 +106,35 @@ export default function Charts({ month, year }) {
         <XAxis dataKey="description" axisLine={false} tickLine={false} />
       </BarChart>
     </div>
+  ) : (
+    <ResponsiveContainer width="100%" height={500}>
+      <BarChart
+        layout="vertical"
+        data={dataChart}
+        margin={{ top: 30, right: 0, bottom: 30, left: 0 }}
+        className="chartText"
+      >
+        <Bar
+          dataKey="total"
+          barSize={18}
+          radius={[0, 10, 10, 0]}
+          label={<MobileBarLabel />}
+          fill="#52555f"
+          minPointSize={80}
+        >
+          {dataChart.map((el, idx) => (
+            <Cell key={`cell-${idx}`} fill={idx % 3 ? '#FFDAC0' : '#ff751d'} />
+          ))}
+          <LabelList
+            dataKey="description"
+            content={<MobileCategoryLabel />}
+            fill="#52555F"
+          />
+        </Bar>
+
+        <XAxis type="number" hide={true} />
+        <YAxis dataKey="description" type="category" scale="band" hide={true} />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
