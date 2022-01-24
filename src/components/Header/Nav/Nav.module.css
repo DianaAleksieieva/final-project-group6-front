@@ -36,16 +36,18 @@
   display: block;
   margin-left: 15px;
   cursor: pointer;
-} 
+}
 
 @media (max-width: 767px) {
-  .userName, .line, .exitLink {
+  .userName,
+  .line,
+  .exitLink {
     display: none;
   }
 }
 
 @media (min-width: 768px) {
-  .exitIcon{
+  .exitIcon {
     display: none;
   }
 
@@ -67,5 +69,9 @@
     text-decoration-line: underline;
     color: var(--main-text-color);
     cursor: pointer;
+  }
+
+  .exitLink:hover {
+    color: var(--accent-orange-color);
   }
 }

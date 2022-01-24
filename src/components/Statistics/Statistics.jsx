@@ -9,7 +9,9 @@ import { ReactComponent as Img } from '../../images/svg/dollar.svg';
 export default function Statistics({ month, year }) {
   const [active, setActive] = useState('Расход');
   const [transactionType, setTransactionType] = useState(EXPENCES);
+
   const [category, setCategory] = useState('');
+
 
   useEffect(() => {
     if (active === 'Доход') {

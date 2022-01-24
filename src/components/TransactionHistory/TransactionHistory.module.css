@@ -436,4 +436,7 @@
   .itemBtn:hover {
     background-color: var(--light-icons-color);
   }
+  /* .itemBtn:hover .itemSvg {
+    stroke: var(--accent-orange-color);
+  } */
 }
