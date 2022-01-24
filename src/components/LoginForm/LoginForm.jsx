@@ -33,13 +33,19 @@ function LoginForm() {
   });
 
   const onSubmit = data => {
+    const { email, password } = data; 
+    const userName = data.email?.split('@', 1);
+
     switch (actionType) {
       case 'login':
         dispatch(authOperations.logIn(data));
         return;
       
       case 'register':
-        dispatch(authOperations.register(data));
+        dispatch(authOperations.register({
+          email, password, userName: `${userName}`
+        }));
+        // reset();
         return;
       
       default:
@@ -104,6 +110,10 @@ function LoginForm() {
                   value: 6,
                   message: 'Минимальная длина должна быть не менее 6 символов',
                 },
+                maxLength: {
+                  value: 10,
+                  message: 'Допустимая длина не более 10 символов',
+                }
               })}
             ></input>
             <IconButton
