@@ -1,5 +1,9 @@
 .datepickerButton {
   margin-right: 25px;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  font-style: normal;
 
   font-weight: 900;
   color: #52555f;
