@@ -4,7 +4,15 @@ import css from './MonthAndYearButton.module.css';
 import { Month } from '../../constans/index';
 
 function MonthAndYearButton({ month, year, onIncrement, onDecrement }) {
+  const currentDate = new Date();
+
   const increment = () => {
+    if (
+      currentDate.getMonth() + 1 === month &&
+      currentDate.getFullYear() === year
+    ) {
+      return;
+    }
     onIncrement(month, year);
   };
 
