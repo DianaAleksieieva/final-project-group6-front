@@ -17,17 +17,21 @@ export default function Charts({ category, month, year }) {
   let mas = [];
 
   useEffect(() => {
-    getByCategoryMonthly({ category, year, month })
+    if (!category || !year || !month) {
+      return
+    }
+      getByCategoryMonthly({ category, year, month })
       .then(data1 => setTransactions(data1))
       .catch(error => setTransactions([]));
   }, [category, month, year]);
+
   let activeCategory = transactions?.result;
-  console.log('activeCategory', activeCategory);
+  // console.log('activeCategory', activeCategory);
 
   activeCategory?.map(el =>
     mas.push({ description: el.description, total: el.amount }),
   );
-  console.log('mas', mas);
+  // console.log('mas', mas);
 
   const sortBy = field => (a, b) => a[field] < b[field] ? 1 : -1;
 
@@ -49,7 +53,7 @@ export default function Charts({ category, month, year }) {
     .sort(sortBy('total'));
 
   const dataChart = newData?.length ? newData : [0];
-  console.log('dataChart', dataChart);
+  // console.log('dataChart', dataChart);
 
   const renderCustomizedLabel = props => {
     const { x, y, width, value } = props;
@@ -83,7 +87,7 @@ export default function Charts({ category, month, year }) {
   );
 
   const screenWidth = window.innerWidth;
-  console.log('screenWidth', screenWidth);
+  // console.log('screenWidth', screenWidth);
 
   return screenWidth >= 768 ? (
     <div>

@@ -168,9 +168,7 @@
   }
 }
 
-
 @media screen and (max-width: 767px) {
-
   .wraper {
     height: auto;
   }
@@ -195,7 +193,7 @@
     background-color: transparent;
   }
   .list {
-    top: 35px
+    top: 35px;
   }
   form.hideForm {
     display: none;
@@ -203,4 +201,24 @@
   div.hidePicker {
     display: none;
   }
+}
+
+button.enterButton {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+
+button.enterButton:hover {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton:hover {
+  background-color: #ff751d;
+  color: #ffffff;
 }

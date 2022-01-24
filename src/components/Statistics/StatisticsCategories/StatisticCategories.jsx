@@ -32,6 +32,8 @@ export default function StatisticCategories({ transactionType, month, year, chan
         return newArr;
     }
 
+    // console.log('result', getResultArray());
+
     function res(iconsContainer) {
         let arr = [];
 

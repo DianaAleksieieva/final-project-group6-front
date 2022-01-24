@@ -5,15 +5,6 @@ import { useEffect, useState } from 'react';
 import { EXPENCES, INCOMES } from '../../constans';
 
 const buttons = ['Расход', 'Доход'];
-// const style = (active, text) => ({
-//   backgroundColor: active === text ? '#FEFEFE' : '#FAFBFD',
-//   color: active === text ? '#FF751D' : 'black',
-//   borderBottomRightRadius: '0',
-//   borderBottomLeftRadius: '0',
-//   padding: '13px 34px',
-//   boxShadow: 'none',
-//   width: '138px',
-// });
 const changeStyle = (active, text) => {
   return active === text ? css.activeButton : css.button;
 };
@@ -24,7 +15,6 @@ function Dashboard({
   stateDashboardButton,
   changestateDashboardButton,
 }) {
-  // const [active, setActive] = useState('Расход');
   const [transactionType, setTransactionType] = useState(EXPENCES);
 
   useEffect(() => {
@@ -38,7 +28,6 @@ function Dashboard({
   const handleClick = e => {
     const { innerHTML } = e.target;
     changeActiveState(innerHTML);
-    // setActive(innerHTML);
   };
 
   return (
@@ -48,7 +37,6 @@ function Dashboard({
           <Button
             key={text}
             type="button"
-            // style={changeStyle(active, text)}
             className={changeStyle(active, text)}
             text={text}
             onClick={handleClick}
