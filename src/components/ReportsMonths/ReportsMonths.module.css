@@ -51,9 +51,9 @@
   line-height: 1.16;
   height: 38px;
 }
-.item:nth-last-child(-n + 18) {
+/* .item:nth-last-child(-n + 18) {
   display: none;
-}
+} */
 
 .item:not(:last-child) {
   border-bottom: 2px solid;
