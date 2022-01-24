@@ -2,9 +2,10 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 import notifyError from '../../helpers/api/notifyError';
+import { tokenToAxios } from '../../api/settings';
 
-axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:4321/';
+// axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:4325/';
 
 const token = {
   set(token) {
@@ -21,6 +22,7 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('api/auth/register', credentials);
       token.set(data.token);
+      tokenToAxios.set(data.token);
       Notify.success(
         `Пользователь с email ${data.user.email} успешно зарегистрирован`,
       );
@@ -39,6 +41,7 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('api/auth/login', credentials);
       token.set(data.token);
+      tokenToAxios.set(data.token);
       Notify.success(`Добро пожаловать ${data.user.email}`);
       return data;
     } catch (error) {
@@ -53,6 +56,7 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
   try {
     await axios.post('api/auth/logout');
     token.unset();
+    tokenToAxios.unset();
     Notify.success(`Вы успешно разлогинились!`);
   } catch (error) {
     notifyError(error);
@@ -61,11 +65,10 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'api/user/token/refresh',
+  'api/user/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    const persistedRefreshToken = state.auth.refreshToken;
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -75,8 +78,31 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('api/user/current');
       return data;
     } catch (error) {
-      if ((error.message = 'jwt expired'))
-        return refreshHelper(persistedRefreshToken);
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
+
+const refreshToken = createAsyncThunk(
+  'api/user/token/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const stateToken = state.auth.token;
+    console.log(stateToken);
+    if (stateToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    const stateRefresh = state.auth.refreshToken;
+    token.set(stateRefresh);
+    tokenToAxios.set(stateRefresh);
+    try {
+      const { user, token, refreshToken, expiresIn } = await axios.get(
+        'api/user/token/refresh',
+      );
+      token.set(token);
+      tokenToAxios.set(token);
+      return { user, token, refreshToken, expiresIn };
+    } catch (error) {
       return thunkAPI.rejectWithValue();
     }
   },
@@ -106,5 +132,6 @@ const operations = {
   logIn,
   fetchCurrentUser,
   googleIn,
+  refreshToken,
 };
 export default operations;
