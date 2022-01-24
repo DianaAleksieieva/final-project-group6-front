@@ -7,7 +7,7 @@
 @media (min-width: 768px) {
   .container {
     width: 230px;
-    height: 278px;
+    height: 264px;
     background-color: #f5f6fb;
     border-radius: 20px 20px 20px 0;
   }
@@ -16,7 +16,7 @@
 @media (min-width: 1280px) {
   .container {
     width: 230px;
-    height: 278px;
+    height: 264px;
     background-color: #f5f6fb;
     border-radius: 20px 20px 20px 0;
   }
@@ -37,8 +37,12 @@
 }
 
 .list {
-  padding-top: 10px;
+  height: 206px;
+  padding-top: 2px;
 }
+ 
+
+
 
 .item {
   font-style: normal;
@@ -46,6 +50,9 @@
   font-size: 12px;
   line-height: 1.16;
   height: 38px;
+}
+.item:nth-last-child(-n + 18) {
+  display: none;
 }
 
 .item:not(:last-child) {
