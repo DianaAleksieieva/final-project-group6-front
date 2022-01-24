@@ -23,11 +23,15 @@ const register = createAsyncThunk(
       token.set(data.token);
       Notify.success(
         `Пользователь с email ${data.user.email} успешно зарегистрирован`,
+        {
+          timeout: 3000,
+          clickToClose: true,
+          pauseOnHover: true,
+        },
       );
       return data;
     } catch (error) {
       notifyError(error);
-      // alert('The user with this email is already registered');
       return rejectValue(error);
     }
   },
@@ -39,11 +43,14 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('api/auth/login', credentials);
       token.set(data.token);
-      Notify.success(`Добро пожаловать ${data.user.email}`);
+      Notify.success(`Добро пожаловать ${data.user.email}`, {
+        timeout: 3000,
+        clickToClose: true,
+        pauseOnHover: true,
+      });
       return data;
     } catch (error) {
       notifyError(error);
-      // alert('Wrong Password');
       return rejectValue(error);
     }
   },
@@ -53,7 +60,6 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
   try {
     await axios.post('api/auth/logout');
     token.unset();
-    Notify.success(`Вы успешно разлогинились!`);
   } catch (error) {
     notifyError(error);
     return rejectValue(error);
@@ -88,7 +94,11 @@ const googleIn = createAsyncThunk(
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
       const { data } = await axios.get('/api/user/current');
-      Notify.success(`Добро пожаловать ${data.user.email}`);
+      Notify.success(`Добро пожаловать ${data.userName}`, {
+        timeout: 3000,
+        clickToClose: true,
+        pauseOnHover: true,
+      });
       return data;
     } catch (error) {
       notifyError(error);

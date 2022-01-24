@@ -10,6 +10,7 @@ import { authSelectors } from '../../../redux/auth';
 function Nav() {
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
   const dispatch = useDispatch();
+
   const userEmail = useSelector(authSelectors.getUserEmail);
   const userName = userEmail?.split('@', 1);
   const avatarUrl = useSelector(authSelectors.avatarURL);
