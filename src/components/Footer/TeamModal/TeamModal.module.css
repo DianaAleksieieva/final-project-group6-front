@@ -1,0 +1,154 @@
+@import url('../../../utils/_variables.css');
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101; 
+  backdrop-filter: blur(5px);
+}
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  background-color: var(--white-color);
+}
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.logo{
+  height: auto;
+}
+.logo > img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.teamLead.member{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 280px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.teamLead .photo{
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+.membersList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.member{
+  padding: 10px;
+  border: 2px solid var(--placeholder-text-color);
+  border-radius: 15px;
+}
+.photo{
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  background-color: var(--placeholder-text-color);
+  border: 2px solid var(--accent-orange-color);
+  border-radius: 50%;
+}
+.name{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+.social{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.link{
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid orange;
+  border-radius: 50%;
+}
+.modalCloseBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  margin: 2px;
+}
+.modalCloseIcon {
+  background-image: url(../../../images/svg/close.svg);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+} 
+@media (max-width: 767px) {
+  .modal_content{
+    width: 300px;
+  }
+}
+@media (min-width: 768px) {
+  .modal_content{
+    width: 760px;
+    margin-bottom: -10px;
+    padding: 12px;
+    padding-top: 14px;
+  }
+  .logo{
+    width: 180px;
+  }
+  .main{
+    margin-bottom: 10px;
+  }
+  .membersList{
+    justify-content: space-around;
+    margin: 0 -4px;
+    margin-bottom: -10px;
+  }
+  .member{
+    width: 132px;
+    margin: 4px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 1280px) {
+  .modal_content{
+    width: 860px;
+    padding: 30px 30px;
+  }
+  .logo{
+    width: 220px;
+  }
+  .main{
+    margin-bottom: 20px;
+  }
+  .membersList{
+    margin: 0 -5px;
+    margin-bottom: -12px;
+  }
+  .member{
+    width: 146px;
+    margin: 5px;
+    margin-bottom: 12px;
+  }
+} 
