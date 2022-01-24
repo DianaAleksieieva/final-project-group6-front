@@ -76,6 +76,10 @@ function App() {
     setStateDashboardButton(data);
   };
 
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
     dispatch(authOperations.googleIn(token));
