@@ -3,10 +3,12 @@ import css from './Statistics.module.css';
 import ButtonChangeCategories from './ButtonChangeCategories';
 import StatisticsCategoies from './StatisticsCategories/StatisticCategories';
 import { EXPENCES, INCOMES } from '../../constans';
+import Charts  from '../Charts/Charts';
 
 export default function Statistics({ month, year }) {
   const [active, setActive] = useState('Расход');
   const [transactionType, setTransactionType] = useState(EXPENCES);
+  const [category, setCategory] = useState('');                         // ЭТА ПЕРЕМЕННАЯ ДЛЯ ГРАФИКОВ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   useEffect(() => {
     if (active === 'Доход') {
@@ -24,15 +26,18 @@ export default function Statistics({ month, year }) {
     }
   };
 
+  const changeCategory = (categoryToChange = '') => {
+    setCategory(categoryToChange);
+  };
 
   return (
     <>
       <div className={css.containerButton}>
         <ButtonChangeCategories active={active} changeStatus={changeStatus} />
-        <StatisticsCategoies month={month} year={year} transactionType={transactionType} />
+        <StatisticsCategoies month={month} year={year} transactionType={transactionType} changeCategory={changeCategory} />
       </div>
       <div className={css.containerGraph}>
-        {/* <Graph costs={costs} month={month} year={year}/> - тут должны быть графики для описаний */}
+        <Charts  month={month} year={year}/> 
       </div>
     </>
   );

@@ -1,4 +1,3 @@
-import css from '../components/Statistics/StatisticsCategories/StatisticCategories.module.css';
 import { ReactComponent as Education } from '../images/svg/statistics/expend/book.svg';
 import { ReactComponent as Transport } from '../images/svg/statistics/expend/car.svg';
 import { ReactComponent as Goods } from '../images/svg/statistics/expend/products.svg';
@@ -17,67 +16,67 @@ const iconsContainer = [
     {
         CatName: "goods",
         CatLabel: "Продукты",
-        Component: <Goods className={css.statistics_icon} />
+        Component: <Goods />
     },
     {
         CatName: "alco",
         CatLabel: "Алкоголь",
-        Component: <Alco className={css.statistics_icon} />
+        Component: <Alco />
     },
     {
         CatName: "fun",
         CatLabel: "Развлечение",
-        Component: <Fun className={css.statistics_icon} />
+        Component: <Fun />
     },
     {
         CatName: "health",
         CatLabel: "Здоровье",
-        Component: <Health className={css.statistics_icon} />
+        Component: <Health />
     },
     {
         CatName: "transport",
         CatLabel: "Транспорт",
-        Component: <Transport className={css.statistics_icon} />
+        Component: <Transport />
     },
     {
         CatName: "house",
         CatLabel: "Все для дома",
-        Component: <House className={css.statistics_icon} />
+        Component: <House />
     },
     {
         CatName: "tech",
         CatLabel: "Техника",
-        Component: <Tech className={css.statistics_icon} />
+        Component: <Tech />
     },
     {
         CatName: "utilities",
         CatLabel: "Комуналка, Связь",
-        Component: <Utilities className={css.statistics_icon} />
+        Component: <Utilities />
     },
     {
         CatName: "sport",
         CatLabel: "Спорт, Хобби",
-        Component: <Sport className={css.statistics_icon} />
+        Component: <Sport />
     },
     {
         CatName: "education",
         CatLabel: "Образование",
-        Component: <Education className={css.statistics_icon} />
+        Component: <Education />
     },
     {
         CatName: "other",
         CatLabel: "Прочее",
-        Component: <Other className={css.statistics_icon} />
+        Component: <Other />
     },
     {
         CatName: "salary",
         CatLabel: "ЗП",
-        Component: <Salary className={css.statistics_icon} />
+        Component: <Salary />
     },
     {
         CatName: "freelance",
         CatLabel: "Доп. доход",
-        Component: <Freelance className={css.statistics_icon} />
+        Component: <Freelance />
     },
 ];
 

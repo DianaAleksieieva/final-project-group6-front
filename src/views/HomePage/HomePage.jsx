@@ -1,12 +1,19 @@
 import Dashboard from '../../components/Dashboard';
 
-
-
-function HomePage() {
-
+function HomePage({
+  active,
+  changeActiveState,
+  stateDashboardButton,
+  changestateDashboardButton,
+}) {
   return (
     <>
-      <Dashboard />
+      <Dashboard
+        active={active}
+        changeActiveState={changeActiveState}
+        stateDashboardButton={stateDashboardButton}
+        changestateDashboardButton={changestateDashboardButton}
+      />
     </>
   );
 }

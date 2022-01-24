@@ -25,7 +25,7 @@ button.activeButton:hover, button.activeButton:focus {
     color: #FF751D;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .buttonWrapper {
     width: 100%;
     position: fixed;
@@ -38,7 +38,7 @@ button.activeButton:hover, button.activeButton:focus {
     border-radius: 0;
     padding: 13px 34px;
     box-shadow: none;
-    width: 50%;
+    width: 160px;
   }
     button.activeButton {
     background-color: #FF751D;
@@ -46,7 +46,7 @@ button.activeButton:hover, button.activeButton:focus {
     border-radius: 0;
     padding: 13px 34px;
     box-shadow: none;
-    width: 50%;
+    width: 160px;
   }
   button.activeButton:hover, button.activeButton:focus {
     background-color: #FF751D;

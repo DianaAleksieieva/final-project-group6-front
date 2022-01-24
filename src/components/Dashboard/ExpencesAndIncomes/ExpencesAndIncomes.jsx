@@ -2,6 +2,7 @@ import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
 import { useEffect, useState } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
+import sprite from '../../../images/svg/sprite.svg';
 import {
   addTransaction,
   deleteTransaction,
@@ -17,7 +18,11 @@ import {
 import { authOperations } from '../../../redux/auth';
 import { useDispatch } from 'react-redux';
 
-export default function ExpencesAndIncomes({ transactionType }) {
+export default function ExpencesAndIncomes({
+  transactionType,
+  stateDashboardButton,
+  changestateDashboardButton,
+}) {
   const { type, category } = transactionType;
 
   const initialDate = new Date();
@@ -98,16 +103,35 @@ export default function ExpencesAndIncomes({ transactionType }) {
     await deleteTransaction(`${id}`);
   };
 
+  const hideDashboard = () => {
+    changestateDashboardButton(true);
+  };
+
+  const hideForm = () => {
+    return stateDashboardButton === true && css.hideForm;
+  };
+
+  const hidePicker = () => {
+    return stateDashboardButton === false && css.hidePicker;
+  };
+
   return (
     <div className={css.wraper}>
       <div className={css.imgBack}>
         <div className={css.conteiner}>
-          <div className={css.flex}>
+          <div className={`${css.flex} ${hidePicker()}`}>
             <div className={css.box}>
               <DayPicker date={date} changeDate={changeDate} />
             </div>
           </div>
-          <form className={css.form} onSubmit={handleSubmit}>
+          {stateDashboardButton === false && (
+            <button className={css.wrapperArrow} onClick={hideDashboard}>
+              <svg width="18" height="12">
+                <use href={`${sprite}#icon-arrowGoBack`}></use>
+              </svg>
+            </button>
+          )}
+          <form className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
             <TransactionInput
               transactionType={transactionType}
               value={categotyValue}
@@ -128,7 +152,11 @@ export default function ExpencesAndIncomes({ transactionType }) {
           </form>
         </div>
       </div>
-      <div className={css.report}>
+      <div
+        className={`${css.report} ${
+          stateDashboardButton === true ? css.showHistory : css.hideHistory
+        }`}
+      >
         <TransactionHistory
           handleDelete={handleDelete}
           data={dayTransactions}

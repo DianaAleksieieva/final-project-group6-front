@@ -13,7 +13,11 @@
   align-items: center;  
   height: 63px;
   width: 56px;  
-  fill: var(--dark-icons-color);
+
+  background-color: transparent;
+  border: none;
+  fill: var(--light-icons-color);
+  stroke: var(--dark-icons-color);
   transition: stroke 0.2s, fill 0.3s;  
 }
 
@@ -42,7 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column;    
   margin-top: calc(1 * 30);
   margin-left: calc(1 * 20px);
   flex-basis: calc((100% - 60px) / 3);  

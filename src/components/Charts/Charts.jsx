@@ -17,7 +17,7 @@ export default function Charts({ month, year }) {
   let activeCategory = transactions.result;
   console.log('activeCategory', activeCategory);
 
-  activeCategory.map(el =>
+  activeCategory?.map(el =>
     mas.push({ description: el.description, total: el.amount }),
   );
   console.log('mas', mas);
