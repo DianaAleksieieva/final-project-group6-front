@@ -9,7 +9,6 @@ export default function Statistics({ month, year }) {
   const [active, setActive] = useState('Расход');
   const [transactionType, setTransactionType] = useState(EXPENCES);
   const [category, setCategory] = useState(''); // ЭТА ПЕРЕМЕННАЯ ДЛЯ ГРАФИКОВ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  console.log("category: ", category);
 
   useEffect(() => {
     if (active === 'Доход') {

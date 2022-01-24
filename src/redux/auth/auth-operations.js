@@ -20,6 +20,7 @@ const register = createAsyncThunk(
   async (credentials, rejectValue) => {
     try {
       const { data } = await axios.post('api/auth/register', credentials);
+      // console.log('reg', data);
       token.set(data.token);
       Notify.success(
         `Пользователь с email ${data.user.email} успешно зарегистрирован`,
@@ -42,6 +43,7 @@ const logIn = createAsyncThunk(
   async (credentials, rejectValue) => {
     try {
       const { data } = await axios.post('api/auth/login', credentials);
+      // console.log('log', data);
       token.set(data.token);
       Notify.success(`Добро пожаловать ${data.user.email}`, {
         timeout: 3000,
