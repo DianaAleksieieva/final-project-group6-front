@@ -1,0 +1,63 @@
+@import url('../../../utils/_variables.css');
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101; 
+  backdrop-filter: blur(5px);
+}
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  background-color: var(--white-color);
+}
+.teamName {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: var(--main-text-color);
+  margin-bottom: 40px;
+}
+.teamMembers{
+  margin-bottom: 200px;
+}
+.membersList{
+  display: flex;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  margin: 0 -5px;
+}
+.member{
+  width: 90px;
+  height: 90px;
+  margin: 0 5px;
+  background-color: lime;
+  border: 2px solid var(--accent-orange-color);
+  border-radius: 50%;
+}
+.modalCloseBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  margin: 2px;
+}
+.modalCloseIcon {
+  background-image: url(../../../images/svg/close.svg);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+} 
