@@ -7,13 +7,13 @@ import {
   addTransaction,
   deleteTransaction,
   fetchMonthlyData,
-  getByTypeYearly,
+  getByTypeFromLastHalfYear
 } from '../../../api/transactionsAPI';
 import {
   ReportsMonths,
   TransactionHistory,
   TransactionInput,
-  DayPicker,
+  DayPicker
 } from '../..';
 import { authOperations } from '../../../redux/auth';
 import { useDispatch } from 'react-redux';
@@ -38,6 +38,9 @@ export default function ExpencesAndIncomes({
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!type || !year || !month) {
+      return
+    }
     async function fetchData() {
       const data = await fetchMonthlyData(type, year, month);
       setMonthTransactions(data);
@@ -47,12 +50,15 @@ export default function ExpencesAndIncomes({
 
 
   useEffect(() => {
+    if (!type) {
+      return
+    }
     async function fetchYearlyData() {
-      const data = await getByTypeYearly({ type, year });
-      setYearTransactions(data.result);
+      const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
+      setYearTransactions(lastMonthsArray);
     }
     fetchYearlyData();
-  }, [type, year]);
+  }, [type]);
 
 
   useEffect(() => {
@@ -145,7 +151,6 @@ export default function ExpencesAndIncomes({
                 <Button
                   type="submit"
                   text={'Ввод'}
-                  // style={{ backgroundColor: '#ff751d', color: 'white' }}
                   className={css.enterButton}
                 />
               </li>
