@@ -99,7 +99,7 @@ export default function ExpencesAndIncomes({
   const handleDelete = async id => {
     const filteredTransactions = dayTransactions.filter(el => el._id !== id);
     setDayTransactions(filteredTransactions);
-
+    dispatch(authOperations.fetchCurrentUser());
     await deleteTransaction(`${id}`);
   };
 
