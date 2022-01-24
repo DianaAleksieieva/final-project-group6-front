@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import css from './Statistics.module.css';
-import ButtonChangeCategories from './ButtonChangeCategories';
+import ButtonChangeCategories from './ButtonChangeCategories/ButtonChangeCategories';
 import StatisticsCategoies from './StatisticsCategories/StatisticCategories';
 import { EXPENCES, INCOMES } from '../../constans';
 import Charts from '../Charts/Charts';
