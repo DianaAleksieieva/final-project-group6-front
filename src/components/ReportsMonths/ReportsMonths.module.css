@@ -44,16 +44,17 @@
 
 
 
-.item {
+.item:nth-child(-n+6){
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 1.16;
   height: 38px;
 }
-/* .item:nth-last-child(-n + 18) {
-  display: none;
-} */
+
+.item:nth-child(n+6) {
+  display: none; 
+ }
 
 .item:not(:last-child) {
   border-bottom: 2px solid;
