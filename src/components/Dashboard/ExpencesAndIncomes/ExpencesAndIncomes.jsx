@@ -53,11 +53,11 @@ export default function ExpencesAndIncomes({
     if (!type) {
       return
     }
-    async function fetchYearlyData() {
+    async function fetchLastHalfYearData() {
       const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
       setYearTransactions(lastMonthsArray);
     }
-    fetchYearlyData();
+    fetchLastHalfYearData();
   }, [type]);
 
 
