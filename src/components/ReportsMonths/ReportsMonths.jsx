@@ -3,9 +3,9 @@ import css from './ReportsMonths.module.css'
 import {Month} from '../../constans'
 
 
-function ReportsMonths({ report }) {
+function ReportsMonths({ report }) {   
     // console.log('report:', report);
-    // console.log(report);
+
     // report.map(i => console.log(Month[Object.keys(i).toString()]))
     // report.map(i => console.log(Object.values(i).toString()))
     let indMonth = 0;
@@ -14,7 +14,7 @@ function ReportsMonths({ report }) {
             <h1 className={css.title}>СВОДКА</h1>
             <ol className={css.list}>
 
-             {report.map(i => {
+             {/* {report && report.map(i => {
                  let month = Month[Object.keys(i).toString()];
                  let sum = Object.values(i).toString()
                  let key = Object.keys(i).toString()
@@ -26,7 +26,7 @@ function ReportsMonths({ report }) {
                      {(sum !== '0' && indMonth <= 6) && <span className={css.item_number}>{sum}</span>}
                      
                  </li>
-             })}
+             })} */}
 
 
 
