@@ -45,6 +45,7 @@ export default function ExpencesAndIncomes({
     fetchData();
   }, [month, type, year]);
 
+
   useEffect(() => {
     async function fetchYearlyData() {
       const data = await getByTypeYearly({ type, year });
@@ -52,6 +53,7 @@ export default function ExpencesAndIncomes({
     }
     fetchYearlyData();
   }, [type, year]);
+
 
   useEffect(() => {
     if (monthTransactions && monthTransactions !== []) {
@@ -65,7 +67,8 @@ export default function ExpencesAndIncomes({
     }
   }, [date, monthTransactions]);
 
-  const handleSubmit = async e => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { description, category, amount } = e.target;
     const stringifyDate = JSON.parse(JSON.stringify(date));
@@ -86,17 +89,17 @@ export default function ExpencesAndIncomes({
     dispatch(authOperations.fetchCurrentUser());
   };
 
-  const clearForm = e => {
+  const clearForm = (e) => {
     setDate(initialDate);
     e.target.form.reset();
     setCategotyValue(null);
   };
 
-  const changeDate = date => {
+  const changeDate = (date) => {
     setDate(date);
   };
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     const filteredTransactions = dayTransactions.filter(el => el._id !== id);
     setDayTransactions(filteredTransactions);
     dispatch(authOperations.fetchCurrentUser());
@@ -142,11 +145,17 @@ export default function ExpencesAndIncomes({
                 <Button
                   type="submit"
                   text={'Ввод'}
-                  style={{ backgroundColor: '#ff751d', color: 'white' }}
+                  // style={{ backgroundColor: '#ff751d', color: 'white' }}
+                  className={css.enterButton}
                 />
               </li>
               <li>
-                <Button type="button" text={'Очистить'} onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={'Очистить'}
+                  onClick={clearForm}
+                  className={css.clearButton}
+                />
               </li>
             </ul>
           </form>
