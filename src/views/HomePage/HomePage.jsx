@@ -1,4 +1,8 @@
 import Dashboard from '../../components/Dashboard';
+import { authOperations } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 
 function HomePage({
   active,
@@ -6,6 +10,11 @@ function HomePage({
   stateDashboardButton,
   changestateDashboardButton,
 }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <>

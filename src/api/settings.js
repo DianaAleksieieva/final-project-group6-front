@@ -11,12 +11,17 @@ export const api = axios.create({
 export const tokenToAxios = {
   token: null,
   getToken() {
-    const { token } = JSON.parse(localStorage.getItem('persist:auth'));
-    if (token) {
-      if (token[0] === '"') {
-        this.token = token.slice(1, token.length - 1);
-      } else {
-        this.token = token;
+    const item = localStorage.getItem('persist:auth')
+    if (!item) {
+      this.token = null
+    } else {
+      const { token } = JSON.parse(item);
+      if (token) {
+        if (token[0] === '"') {
+          this.token = token.slice(1, token.length - 1);
+        } else {
+          this.token = token;
+        }
       }
     }
   },

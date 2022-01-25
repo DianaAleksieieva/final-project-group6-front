@@ -1,7 +1,6 @@
 import {
   configureStore,
   combineReducers,
-  getDefaultMiddleware,
 } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -14,7 +13,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { jwtMiddleware } from '../middlewares/JWTrefreshMiddleware';
+// import { jwtMiddleware } from '../middlewares/JWTrefreshMiddleware';
 import { authReducer } from './auth';
 // import { balanceReducer } from './balance';
 
@@ -36,7 +35,8 @@ export const store = configureStore({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }).concat(jwtMiddleware),
+    })
+      // .concat(jwtMiddleware),
 });
 
 export const persistor = persistStore(store);
