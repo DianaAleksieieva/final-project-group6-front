@@ -5,10 +5,15 @@
     align-items: center;  
     height: 25px;
     width: 20px;
+    background-color: rgb(224, 224, 224);
+    padding:25px;
+    border-radius: 50px;
+    margin-bottom: 5px;
 }
 
 .micro_container:hover{
     color: var(--accent-orange-color);
+    filter: drop-shadow(0 0 3px rgb(107, 107, 107));   
 }
 
 .micro_icon{
@@ -17,13 +22,10 @@
     align-items: center;  
     height: 25px;
     width: 20px;  
-
     background-color: transparent;
     border: none;
     fill: black;    
     transition: stroke 0.2s, fill 0.3s;  
-    padding-bottom: 30px; 
-    filter: drop-shadow(0 0 6px black);   
 }
 
 .micro_icon:hover{  
