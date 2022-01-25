@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import TeamModal from './TeamModal';
 import useModal from '../Modal/useModal';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import members from '../../team/team.json';
 import css from './Footer.module.css';
 import sprite from '../../images/svg/sprite.svg';
+import rabbits from '../../images/svg/Rabbits.svg';
 
 function Footer(){
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
@@ -25,12 +27,9 @@ function Footer(){
     <div className={css.bgWrapper}>
       <div className={css.container}>
         <section className={css.footer}>
-          {/* <Link to='/'>
-            <svg className={css.logo} width="120" height="41.3">
-              <use href={`${sprite}#icon-logo`}></use>
-            </svg>
-          </Link> */}
-          <span>LOGO</span>
+          <Link to='/'>
+            <img className={css.logo} src={rabbits} alt="rabbits" />
+          </Link>
           <div className={css.team}>
             <span className={css.teamTitle}>Our Team</span>
             <svg className={css.arrow} width="24" height="24">
@@ -41,11 +40,11 @@ function Footer(){
             </svg>
           </div>
         </section>
-        <div className={css.copyright}>Copyright © 2022 Project group 666</div>
+        <div className={css.copyright}>Copyright © 2022 Project group Rabbits.</div>
       </div>
       {isShowingModal && (
         <TeamModal
-          textContent={'Project group 666'}
+          members={members}
           closeModal={toggle}
           handleBackdropClick={handleBackdropClick}
         />
