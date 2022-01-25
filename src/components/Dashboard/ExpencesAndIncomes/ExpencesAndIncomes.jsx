@@ -41,6 +41,7 @@ export default function ExpencesAndIncomes({
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
   const [submit, setSubmit] = useState(false);
+  const formElement = useRef(null);
 
   // useEffect(() => {
   //   setCategotyValue(null);
@@ -94,6 +95,13 @@ export default function ExpencesAndIncomes({
       setDayTransactions(filerTransactions(monthTransactions));
   }, [date, monthTransactions, token]);
 
+  useEffect(() => {
+    if(type === 'расход'){
+      return;
+    }
+    setCategotyValue(null);
+    formElement.current.reset();
+  }, [type]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -176,7 +184,7 @@ export default function ExpencesAndIncomes({
               </svg>
             </button>
           )}
-          <form className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
+          <form ref={formElement} className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
             <TransactionInput
               transactionType={transactionType}
               value={categotyValue}

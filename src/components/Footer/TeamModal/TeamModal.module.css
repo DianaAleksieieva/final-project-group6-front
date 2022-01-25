@@ -62,7 +62,6 @@
   height: 80px;
   margin: 0;
   padding: 0;
-  border: 2px solid var(--accent-orange-color);
   border-radius: 50%;
   text-align: center;
   transition: transform .3s;
@@ -93,13 +92,13 @@
   margin: 4px;
   margin-bottom: 10px;
   padding: 10px;
-  border: 2px solid var(--main-text-color);
+  filter: drop-shadow(0 0 2px rgb(197, 197, 197));  
   border-radius: 15px;
   background-color: var(--light-icons-color);
   transition: box-shadow 0.3s ease-in-out;
 }
 .member:hover{
-  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  box-shadow: 10px 10px 10px rgba(156, 156, 156, 0.2);
 }
 .photo{
   display: block;
@@ -107,7 +106,6 @@
   height: 80px;
   margin: 0 auto;
   margin-bottom: 5px;
-  border: 2px solid var(--main-text-color);
   border-radius: 50%;
 }
 .name{
