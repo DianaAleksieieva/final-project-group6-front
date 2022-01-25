@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const apiUrl = 'https://final-project-group6-back.herokuapp.com/api/';
-const apiUrl = 'http://localhost:4325/api/';
+const apiUrl = 'https://final-project-group6-back.herokuapp.com/api/';
+// const apiUrl = 'http://localhost:4321/api/';
 
 export const api = axios.create({
   baseURL: apiUrl,
@@ -9,15 +9,26 @@ export const api = axios.create({
 });
 
 export const tokenToAxios = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  token: null,
+  getToken() {
+    const { token } = JSON.parse(localStorage.getItem('persist:auth'));
+    if (token) {
+      if (token[0] === '"') {
+        this.token = token.slice(1, token.length - 1);
+      } else {
+        this.token = token;
+      }
+    }
   },
-  get() {
-    const { authorization = '' } = axios.defaults.headers.common.Authorization;
-    const [bearer, token] = authorization.split(' ');
-    return token;
+  set(inputToken) {
+    if (inputToken) {
+      this.token = inputToken;
+    } else {
+      this.getToken();
+    }
+    api.defaults.headers.common.Authorization = `Bearer ${this.token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    api.defaults.headers.common.Authorization = '';
   },
 };

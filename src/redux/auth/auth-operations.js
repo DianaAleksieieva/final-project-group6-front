@@ -4,8 +4,8 @@ import { Notify } from 'notiflix';
 import notifyError from '../../helpers/api/notifyError';
 import { tokenToAxios } from '../../api/settings';
 
-// axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:4325/';
+axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:4321/';
 
 const token = {
   set(token) {
@@ -88,7 +88,6 @@ const refreshToken = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const stateToken = state.auth.token;
-    console.log(stateToken);
     if (stateToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -96,12 +95,31 @@ const refreshToken = createAsyncThunk(
     token.set(stateRefresh);
     tokenToAxios.set(stateRefresh);
     try {
-      const { user, token, refreshToken, expiresIn } = await axios.get(
-        'api/user/token/refresh',
-      );
-      token.set(token);
-      tokenToAxios.set(token);
-      return { user, token, refreshToken, expiresIn };
+      return await axios.get('api/user/token/refresh').then(({ data }) => {
+        token.set(data.token);
+        tokenToAxios.set(data.token);
+        return data;
+      });
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
+const renewToken = createAsyncThunk(
+  'api/user/token/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const stateToken = state.auth.token;
+    if (stateToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(stateToken);
+    try {
+      return await axios.get('api/user/token/refresh').then(({ data }) => {
+        token.set(data.token);
+        tokenToAxios.set(data.token);
+        return data;
+      });
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
@@ -133,5 +151,6 @@ const operations = {
   fetchCurrentUser,
   googleIn,
   refreshToken,
+  renewToken,
 };
 export default operations;

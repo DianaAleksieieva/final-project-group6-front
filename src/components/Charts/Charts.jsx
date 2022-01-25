@@ -15,12 +15,10 @@ export default function Charts({ month, year }) {
       .catch(error => setTransactions([]));
   }, [month, year]);
   let activeCategory = transactions.result;
-  console.log('activeCategory', activeCategory);
 
   activeCategory?.map(el =>
     mas.push({ description: el.description, total: el.amount }),
   );
-  console.log('mas', mas);
 
   const sortBy = field => (a, b) => a[field] < b[field] ? 1 : -1;
 
@@ -42,7 +40,6 @@ export default function Charts({ month, year }) {
     .sort(sortBy('total'));
 
   const dataChart = newData?.length ? newData : [0];
-  console.log('dataChart', dataChart);
 
   const renderCustomizedLabel = props => {
     const { x, y, width, value } = props;

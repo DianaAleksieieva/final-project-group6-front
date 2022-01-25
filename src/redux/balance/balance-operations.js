@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:4325/';
+axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:4321/';
 
 const setBalance = createAsyncThunk(
   'api/user/balance',
