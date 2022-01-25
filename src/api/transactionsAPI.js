@@ -24,13 +24,13 @@ export async function deleteTransaction(id) {
     .catch(error => notifyError(error));
 }
 
-export async function getByTypeYearly(params) {
-  const { type, year } = params;
-  return api
-    .get(`/transactions/getByType/${type}/${year}`)
-    .then(({ data }) => data)
-    .catch(error => notifyError(error));
-}
+// export async function getByTypeYearly(params) {
+//   const { type, year } = params;
+//   return api
+//     .get(`/transactions/getByType/${type}/${year}`)
+//     .then(({ data }) => data)
+//     .catch(error => notifyError(error));
+// }
 
 export async function getByTypeFromLastHalfYear(type) {
   return api

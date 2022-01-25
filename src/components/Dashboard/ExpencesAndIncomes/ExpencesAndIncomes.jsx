@@ -15,8 +15,9 @@ import {
   TransactionInput,
   DayPicker
 } from '../..';
-import { authOperations } from '../../../redux/auth';
+import { authOperations, authSelectors } from '../../../redux/auth';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function ExpencesAndIncomes({
   transactionType,
@@ -24,6 +25,7 @@ export default function ExpencesAndIncomes({
   changestateDashboardButton,
 }) {
   const { type, category } = transactionType;
+  const token = useSelector(authSelectors.getToken);
 
   const initialDate = new Date();
   const [date, setDate] = useState(initialDate);
@@ -38,7 +40,7 @@ export default function ExpencesAndIncomes({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!type || !year || !month) {
+    if (!type || !year || !month || !token) {
       return
     }
     async function fetchData() {
@@ -46,23 +48,26 @@ export default function ExpencesAndIncomes({
       setMonthTransactions(data);
     }
     fetchData();
-  }, [month, type, year]);
+  }, [month, token, type, year]);
 
 
   useEffect(() => {
-    if (!type) {
+    if (!type || !token) {
       return
     }
+    console.log(token);
     async function fetchYearlyData() {
       const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
       setYearTransactions(lastMonthsArray);
     }
     fetchYearlyData();
-  }, [type]);
+  }, [token, type]);
 
 
   useEffect(() => {
-    if (monthTransactions && monthTransactions !== []) {
+    if (!monthTransactions || monthTransactions === [] || !token) {
+      return
+    }
       const filerTransactions = month =>
         month.filter(
           trans =>
@@ -70,8 +75,7 @@ export default function ExpencesAndIncomes({
             lightFormat(date, 'dd.MM.yyyy'),
         );
       setDayTransactions(filerTransactions(monthTransactions));
-    }
-  }, [date, monthTransactions]);
+  }, [date, monthTransactions, token]);
 
 
   const handleSubmit = async (e) => {

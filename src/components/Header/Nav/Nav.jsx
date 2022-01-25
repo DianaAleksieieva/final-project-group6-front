@@ -51,7 +51,10 @@ function Nav() {
         {isShowingModal && (
           <Modal
             textContent={'Вы действительно хотите выйти?'}
-            toLogout={() => dispatch(authOperations.logOut())}
+            toLogout={() => {
+              dispatch(authOperations.logOut());
+              // window.location.reload();
+            }}
             closeModal={toggle}
             handleBackdropClick={handleBackdropClick}
           />

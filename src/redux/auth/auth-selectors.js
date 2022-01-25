@@ -1,3 +1,4 @@
+const getToken = state => state.auth.token;
 const getIsLoggedIn = state => state.auth.isLoggedIn;
 const getIsRegistered = state => state.auth.isRegistered;
 const getUsername = state => state.auth.user.name;
@@ -9,6 +10,7 @@ const getStartBalance = state => state.auth.user.startBalance;
 
 
 const authSelectors = {
+  getToken,
   getIsLoggedIn,
   getUsername,
   getIsRegistered,
