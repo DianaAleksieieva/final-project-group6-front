@@ -63,6 +63,8 @@ function Balance({
         <p className={css.balanceText}>Баланс:</p>
         <div className={css.wrapperButton}>
           <input
+            type='number'
+            min='0'
             className={css.input}
             placeholder={balance ? balance : '0'}
             disabled={startBalance !== null && 'disabled'}

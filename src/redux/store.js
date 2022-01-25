@@ -16,7 +16,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { jwtMiddleware } from '../middlewares/JWTrefreshMiddleware';
 import { authReducer } from './auth';
-import { balanceReducer } from './balance';
+// import { balanceReducer } from './balance';
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,7 +31,8 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV === 'development',
-  middleware: getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },

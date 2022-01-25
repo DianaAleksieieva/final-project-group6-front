@@ -1,6 +1,7 @@
 @import url('../../utils/_variables.css');
 
-.container, .containerReverse {
+.container,
+.containerReverse {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,7 +22,7 @@
 }
 .balanceWrap {
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 .balanceText {
   display: inline-block;
@@ -46,6 +47,10 @@
 }
 .imageState {
   margin-left: 15px;
+  fill: #52555f;
+}
+.text_statistic:hover + .imageState {
+  fill: var(--accent-orange-color);
 }
 .text_statistic {
   margin-top: -5px;
@@ -66,12 +71,14 @@
   cursor: pointer;
   color: var(--balance-text-color);
   font-weight: 600;
-  color: var(--white-color)
+  color: var(--white-color);
 }
 
 .confirmButton:hover {
-  background-color: var(--accent-orange-color);
-  color: var(--white-color);
+  /* background-color: var(--accent-orange-color);
+  color: var(--white-color); */
+  color: #52555f;
+  background-color: #f5f6fb;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .disabledButton {
@@ -112,15 +119,14 @@
 }
 .text {
   color: rgba(82, 85, 95, 0.7);
-  margin-left: 18px; 
+  margin-left: 18px;
 }
-
 
 .modal {
   background-image: var(--modal-balance-gradient);
   position: absolute;
-  top:155px;
-  left:50%;
+  top: 155px;
+  left: 50%;
   transform: translateX(-50%);
   border-radius: 30px;
   padding: 15px;
@@ -138,17 +144,17 @@
 
 .triangle {
   position: absolute;
-  top:-16px;
-  left:47px;
+  top: -16px;
+  left: 47px;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 16px solid #1D346A;
+  border-bottom: 16px solid #1d346a;
 }
 
 @media screen and (max-width: 767px) {
   .container {
-  flex-direction: column;
-}
+    flex-direction: column;
+  }
   .statisticButton {
     text-align: center;
   }
@@ -164,7 +170,7 @@
     margin-left: 19px;
   }
   .balanceWrap {
-  flex-direction: column;
+    flex-direction: column;
   }
   .balanceText {
     margin-bottom: 8px;
@@ -181,12 +187,21 @@
     margin-bottom: 40px;
   }
   .modal {
-   top:245px;
+    top: 245px;
   }
   .hideBalance {
     display: none;
   }
   .showBalance {
     display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .contArrow {
+    display: none;
+  }
+  .containerReverse {
+    justify-content: space-around;
   }
 }

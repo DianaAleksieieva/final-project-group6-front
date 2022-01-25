@@ -55,6 +55,13 @@ export async function getByTypeYearly(params) {
     .catch(error => notifyError(error));
 }
 
+export async function getByTypeFromLastHalfYear(type) {
+  return api
+    .get(`/transactions/getLastHalfYearByType/${type}`)
+    .then(({ data }) => data)
+    .catch(error => notifyError(error));
+}
+
 export async function getByTypeMonthly(params) {
   const { type, year, month } = params;
   tokenToAxios.set();

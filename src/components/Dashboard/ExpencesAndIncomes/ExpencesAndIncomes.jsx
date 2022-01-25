@@ -7,13 +7,13 @@ import {
   addTransaction,
   deleteTransaction,
   fetchMonthlyData,
-  getByTypeYearly,
+  getByTypeFromLastHalfYear
 } from '../../../api/transactionsAPI';
 import {
   ReportsMonths,
   TransactionHistory,
   TransactionInput,
-  DayPicker,
+  DayPicker
 } from '../..';
 import { authOperations } from '../../../redux/auth';
 import { useDispatch } from 'react-redux';
@@ -38,6 +38,9 @@ export default function ExpencesAndIncomes({
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!type || !year || !month) {
+      return
+    }
     async function fetchData() {
       const data = await fetchMonthlyData(type, year, month);
       setMonthTransactions(data);
@@ -45,13 +48,18 @@ export default function ExpencesAndIncomes({
     fetchData();
   }, [month, type, year]);
 
+
   useEffect(() => {
+    if (!type) {
+      return
+    }
     async function fetchYearlyData() {
-      const data = await getByTypeYearly({ type, year });
-      setYearTransactions(data.result);
+      const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
+      setYearTransactions(lastMonthsArray);
     }
     fetchYearlyData();
-  }, [type, year]);
+  }, [type]);
+
 
   useEffect(() => {
     if (monthTransactions && monthTransactions !== []) {
@@ -65,7 +73,8 @@ export default function ExpencesAndIncomes({
     }
   }, [date, monthTransactions]);
 
-  const handleSubmit = async e => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { description, category, amount } = e.target;
     const stringifyDate = JSON.parse(JSON.stringify(date));
@@ -86,20 +95,20 @@ export default function ExpencesAndIncomes({
     dispatch(authOperations.fetchCurrentUser());
   };
 
-  const clearForm = e => {
+  const clearForm = (e) => {
     setDate(initialDate);
     e.target.form.reset();
     setCategotyValue(null);
   };
 
-  const changeDate = date => {
+  const changeDate = (date) => {
     setDate(date);
   };
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     const filteredTransactions = dayTransactions.filter(el => el._id !== id);
     setDayTransactions(filteredTransactions);
-
+    dispatch(authOperations.fetchCurrentUser());
     await deleteTransaction(`${id}`);
   };
 
@@ -142,11 +151,16 @@ export default function ExpencesAndIncomes({
                 <Button
                   type="submit"
                   text={'Ввод'}
-                  style={{ backgroundColor: '#ff751d', color: 'white' }}
+                  className={css.enterButton}
                 />
               </li>
               <li>
-                <Button type="button" text={'Очистить'} onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={'Очистить'}
+                  onClick={clearForm}
+                  className={css.clearButton}
+                />
               </li>
             </ul>
           </form>

@@ -1,4 +1,6 @@
+// import { useDispatch } from 'react-redux';
 import Dashboard from '../../components/Dashboard';
+// import { authSelectors } from '../../redux/auth';
 
 function HomePage({
   active,
@@ -6,6 +8,8 @@ function HomePage({
   stateDashboardButton,
   changestateDashboardButton,
 }) {
+  // const dispatch = useDispatch()
+  // console.log(getIsLoggedIn);
   return (
     <>
       <Dashboard

@@ -30,6 +30,7 @@ const CalendarPicker = ({ date, changeDate }) => {
           onChange={date => selectDate(date)}
           dateFormat="dd.MM.yyyy"
           todayButton="Сегодня"
+          maxDate={new Date()}
           customInput={<CustomInput />}
         />
       </div>

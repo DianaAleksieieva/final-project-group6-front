@@ -1,4 +1,4 @@
-import { Header, Hero, LoginForm } from '../../components';
+import { Header, Hero, LoginForm, } from '../../components';
 import css from './LoginPage.module.css';
 
 function LoginPage() {

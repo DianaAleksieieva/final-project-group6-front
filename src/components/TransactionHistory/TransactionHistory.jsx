@@ -12,7 +12,7 @@ function TransactionHistory({ data, type, category, handleDelete }) {
 
   const [id, setId] = useState('');
   const [transactions, setTransactions] = useState([]);
-  
+
 
   useEffect(() => {
     if (data && data !== []) {
@@ -63,8 +63,10 @@ function TransactionHistory({ data, type, category, handleDelete }) {
               <span className={css.itemDate}>{format(new Date(date), "dd.MM.yyyy")}</span>
               <span className={css.itemDesc}>{description}</span>
               <span className={css.itemCategory}>{category}</span>
-              {type=== 'income' ?
-                <span className={css.itemSum}>{amount} грн.</span> :
+              {type === 'income' &&
+                <span className={css.itemSum}>{amount} грн.</span>
+              }
+              {type === 'expense' &&
                 <span className={css.itemSumRed} >- {amount} грн.</span>}
               <span className={css.itemBtn}>
                 <button className={css.itemBtn} >

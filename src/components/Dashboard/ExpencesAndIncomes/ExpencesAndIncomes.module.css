@@ -168,14 +168,17 @@
   }
 }
 
-
 @media screen and (max-width: 767px) {
+  .wraper {
+    height: auto;
+  }
 
   .imgBack {
     display: block;
     /* background-image: url('../../../images/back.png'); */
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    margin-bottom: 110px;
   }
   .hideHistory {
     display: none;
@@ -190,15 +193,32 @@
     background-color: transparent;
   }
   .list {
-    top: 35px
+    top: 35px;
   }
   form.hideForm {
     display: none;
   }
-  .imgBack {
-    margin-bottom: 30px;
-  }
   div.hidePicker {
     display: none;
   }
+}
+
+button.enterButton {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+
+button.enterButton:hover {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton:hover {
+  background-color: #ff751d;
+  color: #ffffff;
 }
