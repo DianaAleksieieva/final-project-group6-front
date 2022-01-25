@@ -5,6 +5,7 @@ import { getByTypeMonthly } from '../../../api/transactionsAPI';
 import { ReactComponent as BgStatisric } from '../../../images/svg/statistics/bg-statisric-ico.svg';
 
 export default function StatisticCategories({
+  active,
   transactionType,
   month,
   year,
@@ -18,6 +19,10 @@ export default function StatisticCategories({
     const data = await getByTypeMonthly({ type, year, month });
     return data.categories;
   }
+
+  useEffect(() => {
+    setActiveBackground(null);
+  }, [active]);
 
   useEffect(() => {
     async function fetchData() {
