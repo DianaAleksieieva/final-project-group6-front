@@ -53,10 +53,12 @@ export default function Charts({ category, month, year }) {
     }, [])
     .sort(sortBy('total'));
 
+
   let Data = newData.slice(0, 8);
 
   const dataChart = Data?.length ? Data : [0];
   // console.log('dataChart', dataChart);
+
 
   const renderCustomizedLabel = props => {
     const { x, y, width, value } = props;
