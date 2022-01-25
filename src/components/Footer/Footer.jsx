@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import TeamModal from './TeamModal';
 import useModal from '../Modal/useModal';
 import { Link } from 'react-router-dom';
-import members from '../../team/team.json';
+import members from '../../db/team.json';
 import css from './Footer.module.css';
 import sprite from '../../images/svg/sprite.svg';
 import rabbits from '../../images/svg/Rabbits.svg';
