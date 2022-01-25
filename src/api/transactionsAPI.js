@@ -46,6 +46,7 @@ export async function deleteTransaction(id) {
     .catch(error => notifyError(error));
 }
 
+
 export async function getByTypeYearly(params) {
   const { type, year } = params;
   tokenToAxios.set();
@@ -54,6 +55,7 @@ export async function getByTypeYearly(params) {
     .then(({ data }) => data)
     .catch(error => notifyError(error));
 }
+
 
 export async function getByTypeFromLastHalfYear(type) {
   return api
