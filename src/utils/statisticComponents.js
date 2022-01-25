@@ -11,12 +11,13 @@ import { ReactComponent as Sport } from '../images/svg/statistics/expend/clay.sv
 import { ReactComponent as Other } from '../images/svg/statistics/expend/ufo.svg';
 import { ReactComponent as Freelance } from '../images/svg/statistics/income/freelance.svg';
 import { ReactComponent as Salary } from '../images/svg/statistics/income/salary.svg';
+import css from '../components/Statistics/Statistics.module.css';
 
 const iconsContainer = [
     {
         CatName: "goods",
         CatLabel: "Продукты",
-        Component: <Goods />
+        Component: <Goods/>
     },
     {
         CatName: "alco",

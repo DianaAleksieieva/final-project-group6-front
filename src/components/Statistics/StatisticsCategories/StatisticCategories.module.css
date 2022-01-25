@@ -1,3 +1,5 @@
+@import url('../../../utils/_variables.css');
+
 .labels_style{
   font-family: Roboto;
   font-weight: 400;
@@ -13,23 +15,19 @@
   align-items: center;  
   height: 63px;
   width: 56px;  
-
   background-color: transparent;
   border: none;
-  fill: var(--light-icons-color);
   stroke: var(--dark-icons-color);
   transition: stroke 0.2s, fill 0.3s;  
 }
 
 .statistics_icon:hover{  
     cursor: pointer;
-    stroke: 0;
-    fill: var(--accent-orange-color);
+    stroke: var(--accent-orange-color);
 }
 
 .statistics_icon:focus{   
     cursor: pointer;
-    stroke: 0;
     fill: var(--accent-orange-color);
 }
 
