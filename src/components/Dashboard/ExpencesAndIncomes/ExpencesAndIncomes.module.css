@@ -120,6 +120,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .conteiner {
+    padding: 33px 0 0 0;
+  }
+
   .wraper {
     width: 1060px;
     height: 579px;
@@ -154,9 +158,10 @@
     display: block;
     position: absolute;
     z-index: 50;
-    top: 105px;
+    top: 136px;
     left: 780px;
     margin-left: 30px;
+    margin-top: 0;
   }
   .report {
     margin-left: 20px;
