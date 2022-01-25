@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 import notifyError from '../../helpers/api/notifyError';
-import { tokenToAxios } from '../../api/settings';
 
 axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
 // axios.defaults.baseURL = 'http://localhost:4321/';
@@ -22,7 +21,6 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('api/auth/register', credentials);
       token.set(data.token);
-      tokenToAxios.set(data.token);
       Notify.success(
         `Пользователь с email ${data.user.email} успешно зарегистрирован`,
         {
@@ -62,9 +60,6 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
   try {
     await axios.post('api/auth/logout');
     token.unset();
-    tokenToAxios.unset();
-    Notify.success(`Вы успешно разлогинились!`);
-
   } catch (error) {
     notifyError(error);
     return rejectValue(error);
@@ -72,7 +67,7 @@ const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'api/user/current',
+  'api/user/token/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -84,49 +79,6 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await axios.get('api/user/current');
       return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue();
-    }
-  },
-);
-
-const refreshToken = createAsyncThunk(
-  'api/user/token/refresh',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const stateToken = state.auth.token;
-    if (stateToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    const stateRefresh = state.auth.refreshToken;
-    token.set(stateRefresh);
-    tokenToAxios.set(stateRefresh);
-    try {
-      return await axios.get('api/user/token/refresh').then(({ data }) => {
-        token.set(data.token);
-        tokenToAxios.set(data.token);
-        return data;
-      });
-    } catch (error) {
-      return thunkAPI.rejectWithValue();
-    }
-  },
-);
-const renewToken = createAsyncThunk(
-  'api/user/token/refresh',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const stateToken = state.auth.token;
-    if (stateToken === null) {
-      return thunkAPI.rejectWithValue();
-    }
-    token.set(stateToken);
-    try {
-      return await axios.get('api/user/token/refresh').then(({ data }) => {
-        token.set(data.token);
-        tokenToAxios.set(data.token);
-        return data;
-      });
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
@@ -161,7 +113,5 @@ const operations = {
   logIn,
   fetchCurrentUser,
   googleIn,
-  refreshToken,
-  renewToken,
 };
 export default operations;
