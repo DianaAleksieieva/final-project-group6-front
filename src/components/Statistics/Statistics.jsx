@@ -13,7 +13,6 @@ export default function Statistics({ month, year }) {
 
   const [category, setCategory] = useState('');
 
-
   useEffect(() => {
     if (active === 'Доход') {
       setTransactionType(INCOMES);
@@ -43,16 +42,14 @@ export default function Statistics({ month, year }) {
   return (
     <>
       <div className={css.containerButton}>
-        <ButtonChangeCategories
-          active={active}
-          changeStatus={changeStatus}
-        />
+        <ButtonChangeCategories active={active} changeStatus={changeStatus} />
         <Micro
           active={active}
           changeCategory={changeCategory}
           changeStatus={changeStatus}
         />
         <StatisticsCategoies
+          active={active}
           month={month}
           year={year}
           transactionType={transactionType}
@@ -60,20 +57,16 @@ export default function Statistics({ month, year }) {
         />
       </div>
       <div className={css.containerGraph}>
-        {
-          categoryIsEmpty() && (
-            <div>
-              <Img height={100} width={100} />
-              <h2>Для отображения графиков - пополните баланс на 100$</h2>
-              <h3>Шутка!Просто выберите категорию выше</h3>
-            </div>
-          )
-
-        }
-        {
-          !categoryIsEmpty() &&
+        {categoryIsEmpty() && (
+          <div>
+            <Img height={100} width={100} />
+            <h2>Для отображения графиков - пополните баланс на 100$</h2>
+            <h3>Шутка!Просто выберите категорию выше</h3>
+          </div>
+        )}
+        {!categoryIsEmpty() && (
           <Charts category={category} month={month} year={year} />
-        }
+        )}
       </div>
     </>
   );
