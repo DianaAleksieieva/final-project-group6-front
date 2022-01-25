@@ -5,9 +5,8 @@ import Footer from './Footer';
 import { Container, Loader } from '.';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -25,7 +24,6 @@ const LoginView = lazy(() =>
   import('../views/LoginPage' /* webpackChunkName: "login-page" */),
 );
 
-
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -37,7 +35,6 @@ function App() {
   const [year, setYear] = useState(selectedYear);
   const [active, setActive] = useState('Расход');
   const [stateDashboardButton, setStateDashboardButton] = useState(true);
-
 
   const onIncrement = (month, year) => {
     if (month < 12) {
@@ -68,6 +65,9 @@ function App() {
     setStateDashboardButton(data);
   };
 
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
@@ -77,8 +77,7 @@ function App() {
 
   return (
     <>
-      {location.pathname === '/' ||
-      location.pathname === '/statistics' ? (
+      {location.pathname === '/' || location.pathname === '/statistics' ? (
         <div className={css.backgroundLogin}></div>
       ) : (
         <div className={css.background}></div>
@@ -135,8 +134,7 @@ function App() {
         </Suspense>
       </Container>
 
-      {location.pathname === '/' ||
-      location.pathname === '/statistics' ? (
+      {location.pathname === '/' || location.pathname === '/statistics' ? (
         <div className={css.wrapperBackgroundStatistic}>
           <div className={css.backgroundStatistic}></div>
         </div>
