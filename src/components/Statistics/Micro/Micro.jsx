@@ -6,9 +6,11 @@ import css from './Micro.module.css';
 export default function Micro({ active, changeCategory, changeStatus }) {
 
     function getElemForFocus(name) {
+        console.log()
+
         return [...document.getElementsByClassName('StatisticCategories_statistics_item__kox+4')].filter(function (el) {
             return el.children[2].innerText === name
-        })[0].children[1];
+        })[0].children[1].children[1];
     }
 
     const commands = [
@@ -16,11 +18,10 @@ export default function Micro({ active, changeCategory, changeStatus }) {
             command: 'Продукты',
             callback: () => {
                 if (active === 'Расход') {
-                    changeCategory('goods')
+                    changeCategory('goods');
                     const elem = getElemForFocus('Продукты');
 
-                    elem.focus();
-
+                    elem.click();
                 }
             }
         },
@@ -31,7 +32,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('alco')
                     const elem = getElemForFocus('Алкоголь');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -42,7 +43,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('fun')
                     const elem = getElemForFocus('Развлечение');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -53,7 +54,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('health')
                     const elem = getElemForFocus('Здоровье');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -64,7 +65,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('transport')
                     const elem = getElemForFocus('Транспорт');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -75,7 +76,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('house')
                     const elem = getElemForFocus('Все для дома');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -86,7 +87,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('tech')
                     const elem = getElemForFocus('Техника');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -97,7 +98,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('utilities')
                     const elem = getElemForFocus('Комуналка, Связь');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -108,7 +109,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('sport')
                     const elem = getElemForFocus('Спорт, Хобби');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -119,7 +120,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('education')
                     const elem = getElemForFocus('Образование');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -130,7 +131,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('other')
                     const elem = getElemForFocus('Прочее');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -141,7 +142,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('freelance')
                     const elem = getElemForFocus('ЗП');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -152,7 +153,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                     changeCategory('salary')
                     const elem = getElemForFocus('Доп. доход');
 
-                    elem.focus();
+                    elem.click();
                 }
             }
         },
@@ -175,7 +176,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
     ];
 
 
-    const { transcript, browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
+    const { browserSupportsSpeechRecognition } = useSpeechRecognition({ commands })
 
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
@@ -189,7 +190,6 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                 className={css.micro_icon}>
                 <MicroIcon />
             </div>
-            <p>{`You said - ${transcript}`}</p>
         </div>
     );
 };
