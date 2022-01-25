@@ -22,7 +22,7 @@ function Balance({
   const dispatch = useDispatch();
 
   // const [activeState, setActiveState] = useState(false);
-
+  const windowInnerWidth = window.innerWidth;
   const balance = useSelector(authSelectors.getUserBalance);
   const userStartBalance = useSelector(authSelectors.getStartBalance);
 
@@ -63,8 +63,8 @@ function Balance({
         <p className={css.balanceText}>Баланс:</p>
         <div className={css.wrapperButton}>
           <input
-            type='number'
-            min='0'
+            type="number"
+            min="0"
             className={css.input}
             placeholder={balance ? balance : '0'}
             disabled={startBalance !== null && 'disabled'}
@@ -72,7 +72,8 @@ function Balance({
           ></input>
           <span className={css.UA}> UAH</span>
           {startBalance === null && <FirstModal />}
-          {startBalance !== null ? (
+          {location.pathname === '/statistics' &&
+          windowInnerWidth < 1279 ? null : startBalance !== null ? (
             <button
               type="submit"
               className={css.disabledButton}
