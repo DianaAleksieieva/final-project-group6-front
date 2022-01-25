@@ -65,11 +65,19 @@
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  /* transition: border .3s ease-in-out; */
 }
 .leadInfo .name{
   margin-bottom: 20px;
   font-size: 15px;
+}
+.position{
+  display: block;
+  text-align: left;
+  margin-top: -14px;
+  margin-left: 25px;
+  color: var(--accent-orange-color);
+  font-size: 12px;
+  cursor: default;
 }
 .leadInfo .social{
   justify-content: flex-end;
@@ -112,7 +120,7 @@
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
-  padding: 0 20px;
+  padding: 0 24px;
   font-size: 12px;
   font-weight: 600;
   line-height: 14px;
@@ -161,6 +169,9 @@
   }
   .leadInfo .name{
     font-size: 18px;
+  }
+  .position{
+    font-size: 14px;
   }
   .main{
     margin-bottom: 20px;

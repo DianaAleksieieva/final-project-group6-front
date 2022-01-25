@@ -25,6 +25,7 @@ function TeamModal({ handleBackdropClick, closeModal, members}) {
               <img className={css.photo} src={window.location.origin + "/team/Aleksieieva.jpg"} alt="Diana Aleksieieva" />
               <div className={css.leadInfo}>
                 <span className={css.name}>Diana Aleksieieva</span>
+                <span className={css.position}>Team Lead</span>
                 <div className={css.social}>
                   <a href="https://github.com/DianaAleksieieva" className={css.link} target="_blank" rel="noreferrer">
                     <img src={gitHub} alt="GitHub" />
