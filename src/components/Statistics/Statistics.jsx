@@ -5,6 +5,7 @@ import StatisticsCategoies from './StatisticsCategories/StatisticCategories';
 import { EXPENCES, INCOMES } from '../../constans';
 import Charts from '../Charts/Charts';
 import { ReactComponent as Img } from '../../images/svg/dollar.svg';
+import Micro from './Micro/Micro';
 
 export default function Statistics({ month, year }) {
   const [active, setActive] = useState('Расход');
@@ -44,6 +45,11 @@ export default function Statistics({ month, year }) {
       <div className={css.containerButton}>
         <ButtonChangeCategories
           active={active}
+          changeStatus={changeStatus}
+        />
+        <Micro
+          active={active}
+          changeCategory={changeCategory}
           changeStatus={changeStatus}
         />
         <StatisticsCategoies

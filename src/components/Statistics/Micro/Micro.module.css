@@ -1,0 +1,30 @@
+.micro_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.micro_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 25px;
+    width: 20px;  
+
+    background-color: transparent;
+    border: none;
+    fill: black;    
+    transition: stroke 0.2s, fill 0.3s;  
+    padding-bottom: 10px;
+}
+
+.micro_icon:hover{  
+    cursor: pointer;    
+    fill: var(--accent-orange-color);    
+}
+
+.micro_icon:focus{   
+    cursor: pointer;    
+    fill: var(--accent-orange-color);    
+}
