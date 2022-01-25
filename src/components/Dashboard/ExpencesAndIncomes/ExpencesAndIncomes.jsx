@@ -1,6 +1,7 @@
 import sprite from '../../../images/svg/sprite.svg';
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
+import Loader from '../../Loader/Loader';
 import { Notify } from 'notiflix';
 import { useEffect, useState, useRef } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
@@ -8,19 +9,16 @@ import {
   addTransaction,
   deleteTransaction,
   fetchMonthlyData,
-  getByTypeFromLastHalfYear
+  getByTypeFromLastHalfYear,
 } from '../../../api/transactionsAPI';
 import {
   ReportsMonths,
   TransactionHistory,
   TransactionInput,
-  DayPicker
+  DayPicker,
 } from '../..';
 import { authOperations, authSelectors } from '../../../redux/auth';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-
-
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ExpencesAndIncomes({
   transactionType,
@@ -42,35 +40,35 @@ export default function ExpencesAndIncomes({
   const [categotyValue, setCategotyValue] = useState(null);
   const [submit, setSubmit] = useState(false);
   const formElement = useRef(null);
+  const [reqStatus, setReqStatus] = useState('idle');
 
   // useEffect(() => {
   //   setCategotyValue(null);
   // }, [type]);
-  
 
   useEffect(() => {
     if (submit && token) {
       dispatch(authOperations.fetchCurrentUser());
-      setSubmit(false)
+      setSubmit(false);
     }
   }, [dispatch, submit, token]);
-  
 
   useEffect(() => {
     if (!type || !year || !month || !token) {
-      return
+      return;
     }
     async function fetchData() {
+      setReqStatus('pending');
       const data = await fetchMonthlyData(type, year, month);
       setMonthTransactions(data);
+      setReqStatus('resolved');
     }
     fetchData();
   }, [month, token, type, year]);
 
-
   useEffect(() => {
     if (!type || !token) {
-      return
+      return;
     }
 
     async function fetchLastHalfYearData() {
@@ -80,44 +78,40 @@ export default function ExpencesAndIncomes({
     fetchLastHalfYearData();
   }, [token, type]);
 
-
-
   useEffect(() => {
     if (!monthTransactions || monthTransactions === [] || !token) {
-      return
+      return;
     }
-      const filerTransactions = month =>
-        month.filter(
-          trans =>
-            lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') ===
-            lightFormat(date, 'dd.MM.yyyy'),
-        );
-      setDayTransactions(filerTransactions(monthTransactions));
+    const filerTransactions = month =>
+      month.filter(
+        trans =>
+          lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') ===
+          lightFormat(date, 'dd.MM.yyyy'),
+      );
+    setDayTransactions(filerTransactions(monthTransactions));
   }, [date, monthTransactions, token]);
 
   useEffect(() => {
-    if(type === 'расход'){
+    if (type === 'расход') {
       return;
     }
     setCategotyValue(null);
     formElement.current.reset();
   }, [type]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const { description, category, amount } = e.target;
-      if (!category.value) {
-        Notify.failure(
-            "Выберите категорию",
-          {
-            timeout: 3000,
-            clickToClose: true,
-            pauseOnHover: true,
-          });
-        return
-      }
-    
+    if (!category.value) {
+      Notify.failure('Выберите категорию', {
+        timeout: 3000,
+        clickToClose: true,
+        pauseOnHover: true,
+      });
+      return;
+    }
+
     const stringifyDate = JSON.parse(JSON.stringify(date));
     const newTransaction = {
       type,
@@ -133,27 +127,24 @@ export default function ExpencesAndIncomes({
 
     const data = await fetchMonthlyData(type, year, month);
     setMonthTransactions(data);
-    setSubmit(true)
+    setSubmit(true);
   };
 
-
-  const clearForm = (e) => {
+  const clearForm = e => {
     setDate(initialDate);
     e.target.form.reset();
     setCategotyValue(null);
   };
 
-
-  const changeDate = (date) => {
+  const changeDate = date => {
     setDate(date);
   };
 
-
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     const filteredTransactions = dayTransactions.filter(el => el._id !== id);
     setDayTransactions(filteredTransactions);
     await deleteTransaction(`${id}`);
-    setSubmit(true)
+    setSubmit(true);
   };
 
   const hideDashboard = () => {
@@ -170,6 +161,7 @@ export default function ExpencesAndIncomes({
 
   return (
     <div className={css.wraper}>
+      {reqStatus === 'pending' && <Loader />};
       <div className={css.imgBack}>
         <div className={css.conteiner}>
           <div className={`${css.flex} ${hidePicker()}`}>
@@ -184,7 +176,11 @@ export default function ExpencesAndIncomes({
               </svg>
             </button>
           )}
-          <form ref={formElement} className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
+          <form
+            ref={formElement}
+            className={`${css.form} ${hideForm()}`}
+            onSubmit={handleSubmit}
+          >
             <TransactionInput
               transactionType={transactionType}
               value={categotyValue}
