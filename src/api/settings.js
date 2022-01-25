@@ -9,10 +9,26 @@ export const api = axios.create({
 });
 
 export const tokenToAxios = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  token: null,
+  getToken() {
+    const { token } = JSON.parse(localStorage.getItem('persist:auth'));
+    if (token) {
+      if (token[0] === '"') {
+        this.token = token.slice(1, token.length - 1);
+      } else {
+        this.token = token;
+      }
+    }
+  },
+  set(inputToken) {
+    if (inputToken) {
+      this.token = inputToken;
+    } else {
+      this.getToken();
+    }
+    api.defaults.headers.common.Authorization = `Bearer ${this.token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    api.defaults.headers.common.Authorization = '';
   },
 };
