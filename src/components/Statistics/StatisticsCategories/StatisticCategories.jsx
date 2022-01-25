@@ -2,7 +2,7 @@ import css from './StatisticCategories.module.css';
 import iconsContainer from '../../../utils/statisticComponents';
 import { useEffect, useState } from 'react';
 import { getByTypeMonthly } from '../../../api/transactionsAPI';
-import { ReactComponent as BgStatisric } from '../../../images/svg/statistics/bg-statisric-ico.svg';
+import bgStatistic from '../../../images/svg/statistics/statistic-sprite.svg';
 
 export default function StatisticCategories({
   active,
@@ -77,13 +77,14 @@ export default function StatisticCategories({
           <li className={css.statistics_item} key={index}>
             <span className={css.labels_style}>{item.Amount}</span>
             <div className={css.wrapper_icon}>
-              <BgStatisric
-                className={
-                  activeBackground === index
-                    ? css.wrapper_background
-                    : css.background_hide
-                }
-              />
+              <svg className={
+                activeBackground === index
+                  ? css.wrapper_background
+                  : css.background_hide
+              } >
+                <use href={`${bgStatistic}#bg`} />
+              </svg>
+
               <button
                 className={
                   activeBackground !== index
@@ -95,13 +96,16 @@ export default function StatisticCategories({
                   setActiveBackground(index);
                 }}
               >
-                {item.Component}
+                {/* {item.Component} */}
+                <svg className={css.statistics_icon}>
+                  <use href={item.Component} />
+                </svg>
               </button>
             </div>
             <span className={css.labels_style}>{item.CatLabel}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </div >
   );
 }

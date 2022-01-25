@@ -1,5 +1,7 @@
 @import url('../../../utils/_variables.css');
 
+/* --lite-orange-color  светло-оранжевый*/
+
 .labels_style{
   font-family: Roboto;
   font-weight: 400;
@@ -19,7 +21,7 @@
   height: 63px;
   width: 56px;  
   border: none;
-  stroke: var(--dark-icons-color);
+  fill: var(--dark-icons-color);
   transition: stroke 0.2s, fill 0.3s;  
 }
 
@@ -33,25 +35,19 @@
   height: 63px;
   width: 56px;  
   border: none;
-  stroke: var(--dark-icons-color);
-  transition: stroke 0.2s, fill 0.3s;  
-  stroke: var(--accent-orange-color);
+  transition: stroke 0.1s, fill 0.2s;    
   fill: var(--accent-orange-color);
   cursor: pointer;
 }
 
 .wrapper_icon:hover .statistics_icon{  
     cursor: pointer;
-    stroke: var(--accent-orange-color);
-}
-
-.wrapper_icon:hover .statistics_icon{   
-    cursor: pointer;
     fill: var(--accent-orange-color);
 }
 
-.wrapper_icon:hover .background_hide {
-  visibility: visible;
+
+.wrapper_icon:hover .background_hide {  
+  fill: var(--lite-orange-color);
 }
 
 .statistics_list{   
@@ -79,6 +75,7 @@
 .wrapper_icon {
   position: relative;
   background-color: transparent;
+  fill: var(--light-icons-color);
 }
 
 .wrapper_background, .background_hide {
@@ -87,13 +84,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  fill: var(--light-icons-color);
   transform: translate(-50%, -50%);
   z-index: 0;
 }
 
-.background_hide {
-  visibility: hidden;
-}
 
 @media (min-width: 767px) {
   .statistics_list{     
@@ -111,5 +106,6 @@
   .statistics_item{
     flex-basis: calc((100% - 120px) / 6); 
   }}
+
 
 

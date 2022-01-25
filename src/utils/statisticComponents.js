@@ -1,82 +1,70 @@
-import { ReactComponent as Education } from '../images/svg/statistics/expend/book.svg';
-import { ReactComponent as Transport } from '../images/svg/statistics/expend/car.svg';
-import { ReactComponent as Goods } from '../images/svg/statistics/expend/products.svg';
-import { ReactComponent as Fun } from '../images/svg/statistics/expend/kite.svg';
-import { ReactComponent as Health } from '../images/svg/statistics/expend/hands-holding-heart.svg';
-import { ReactComponent as Alco } from '../images/svg/statistics/expend/cocktail.svg';
-import { ReactComponent as House } from '../images/svg/statistics/expend/couch.svg';
-import { ReactComponent as Tech } from '../images/svg/statistics/expend/tools.svg';
-import { ReactComponent as Utilities } from '../images/svg/statistics/expend/invoice.svg';
-import { ReactComponent as Sport } from '../images/svg/statistics/expend/clay.svg';
-import { ReactComponent as Other } from '../images/svg/statistics/expend/ufo.svg';
-import { ReactComponent as Freelance } from '../images/svg/statistics/income/freelance.svg';
-import { ReactComponent as Salary } from '../images/svg/statistics/income/salary.svg';
+import sprite from '../images/svg/statistics/statistic-sprite.svg'
 
 const iconsContainer = [
     {
         CatName: "goods",
         CatLabel: "Продукты",
-        Component: <Goods />
+        Component: `${sprite}#icon-products`
     },
     {
         CatName: "alco",
         CatLabel: "Алкоголь",
-        Component: <Alco />
+        Component: `${sprite}#icon-cocktail`
     },
     {
         CatName: "fun",
         CatLabel: "Развлечение",
-        Component: <Fun />
+        Component: `${sprite}#icon-kite`
     },
     {
         CatName: "health",
         CatLabel: "Здоровье",
-        Component: <Health />
+        Component: `${sprite}#icon-hands-holding-heart`
     },
     {
         CatName: "transport",
         CatLabel: "Транспорт",
-        Component: <Transport />
+        Component: `${sprite}#icon-car`
     },
     {
         CatName: "house",
         CatLabel: "Все для дома",
-        Component: <House />
+        Component: `${sprite}#icon-couch`
     },
     {
         CatName: "tech",
         CatLabel: "Техника",
-        Component: <Tech />
+        Component: `${sprite}#icon-tools`
     },
     {
         CatName: "utilities",
         CatLabel: "Комуналка, Связь",
-        Component: <Utilities />
+        Component: `${sprite}#icon-invoice`
     },
     {
         CatName: "sport",
         CatLabel: "Спорт, Хобби",
-        Component: <Sport />
+        Component: `${sprite}#icon-clay`
     },
     {
         CatName: "education",
         CatLabel: "Образование",
-        Component: <Education />
+        Component: `${sprite}#icon-book`
     },
     {
         CatName: "other",
         CatLabel: "Прочее",
-        Component: <Other />
+        Component: `${sprite}#icon-ufo`
     },
     {
         CatName: "salary",
         CatLabel: "ЗП",
-        Component: <Salary />
+        Component: `${sprite}#salary`
     },
     {
         CatName: "freelance",
         CatLabel: "Доп. доход",
-        Component: <Freelance />
+        Component: `${sprite}#freelance`
     },
 ];
 
