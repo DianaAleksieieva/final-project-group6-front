@@ -1,12 +1,13 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { Container, Loader } from '.';
 import PrivateRoute from '../helpers/routes/PrivateRoute';
 import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
-import { authOperations } from '../redux/auth';
 import Footer from './Footer';
+import { Container, Loader } from '.';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../redux/auth';
+import { lazy, Suspense, useState } from 'react';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
+
 
 const LayoutView = lazy(() =>
   import('../views/LayoutPage' /* webpackChunkName: "layout-page" */),
@@ -28,8 +29,6 @@ const LoginView = lazy(() =>
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
-  let backgroundLocation = useLocation();
-  const isFirstRender = useRef(true);
 
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
@@ -39,14 +38,6 @@ function App() {
   const [active, setActive] = useState('Расход');
   const [stateDashboardButton, setStateDashboardButton] = useState(true);
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch, isFirstRender]);
 
   const onIncrement = (month, year) => {
     if (month < 12) {
@@ -77,9 +68,6 @@ function App() {
     setStateDashboardButton(data);
   };
 
-  useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
@@ -89,8 +77,8 @@ function App() {
 
   return (
     <>
-      {backgroundLocation.pathname === '/' ||
-      backgroundLocation.pathname === '/statistics' ? (
+      {location.pathname === '/' ||
+      location.pathname === '/statistics' ? (
         <div className={css.backgroundLogin}></div>
       ) : (
         <div className={css.background}></div>
@@ -146,8 +134,9 @@ function App() {
           </Routes>
         </Suspense>
       </Container>
-      {backgroundLocation.pathname === '/' ||
-      backgroundLocation.pathname === '/statistics' ? (
+
+      {location.pathname === '/' ||
+      location.pathname === '/statistics' ? (
         <div className={css.wrapperBackgroundStatistic}>
           <div className={css.backgroundStatistic}></div>
         </div>

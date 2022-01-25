@@ -60,6 +60,8 @@ const logIn = createAsyncThunk(
 
 const logOut = createAsyncThunk('api/auth/logout', async (_, rejectValue) => {
   try {
+    
+    // console.log('tokenAxios', tokenToAxios);
     await axios.post('api/auth/logout');
     tokenToAxios.unset();
     token.unset();
@@ -131,6 +133,8 @@ const refreshToken = createAsyncThunk(
     }
   },
 );
+
+
 const renewToken = createAsyncThunk(
   'api/user/token/refresh',
   async (_, thunkAPI) => {

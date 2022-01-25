@@ -1,8 +1,9 @@
+import sprite from '../../../images/svg/sprite.svg';
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
-import { useEffect, useState, useRef } from 'react';
+import { Notify } from 'notiflix';
+import { useEffect, useState } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
-import sprite from '../../../images/svg/sprite.svg';
 import {
   addTransaction,
   deleteTransaction,
@@ -19,11 +20,14 @@ import { authOperations, authSelectors } from '../../../redux/auth';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
+
+
 export default function ExpencesAndIncomes({
   transactionType,
   stateDashboardButton,
   changestateDashboardButton,
 }) {
+  const dispatch = useDispatch();
   const { type, category } = transactionType;
   const token = useSelector(authSelectors.getToken);
 
@@ -36,9 +40,21 @@ export default function ExpencesAndIncomes({
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
+  const [submit, setSubmit] = useState(false);
   const formElement = useRef(null);
 
-  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   setCategotyValue(null);
+  // }, [type]);
+  
+
+  useEffect(() => {
+    if (submit && token) {
+      dispatch(authOperations.fetchCurrentUser());
+      setSubmit(false)
+    }
+  }, [dispatch, submit, token]);
+  
 
   useEffect(() => {
     if (!type || !year || !month || !token) {
@@ -89,7 +105,19 @@ export default function ExpencesAndIncomes({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const { description, category, amount } = e.target;
+      if (!category.value) {
+        Notify.failure(
+            "Выберите категорию",
+          {
+            timeout: 3000,
+            clickToClose: true,
+            pauseOnHover: true,
+          });
+        return
+      }
+    
     const stringifyDate = JSON.parse(JSON.stringify(date));
     const newTransaction = {
       type,
@@ -105,8 +133,9 @@ export default function ExpencesAndIncomes({
 
     const data = await fetchMonthlyData(type, year, month);
     setMonthTransactions(data);
-    dispatch(authOperations.fetchCurrentUser());
+    setSubmit(true)
   };
+
 
   const clearForm = (e) => {
     setDate(initialDate);
@@ -114,15 +143,17 @@ export default function ExpencesAndIncomes({
     setCategotyValue(null);
   };
 
+
   const changeDate = (date) => {
     setDate(date);
   };
+
 
   const handleDelete = async (id) => {
     const filteredTransactions = dayTransactions.filter(el => el._id !== id);
     setDayTransactions(filteredTransactions);
     await deleteTransaction(`${id}`);
-    dispatch(authOperations.fetchCurrentUser());
+    setSubmit(true)
   };
 
   const hideDashboard = () => {

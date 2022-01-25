@@ -3,12 +3,7 @@ import { Month } from '../../constans'
 import { useEffect, useState } from 'react';
 
 function ReportsMonths({ report }) {  
-    // console.log('report:', report);
-    // report.map(i => console.log(Month[Object.keys(i).toString()]))
-    // report.map(i => console.log(Object.values(i).toString()))
-    // let indMonth = 0;
     const [data, setData] = useState([]);
-    // console.log(report)
 
     useEffect(() => {
       if(!report || report === []){
@@ -23,10 +18,7 @@ function ReportsMonths({ report }) {
         )
         setData(newReport);
     }, [report]);
-
-    // console.log(data)
     
-
     return (
         <div className={css.container}>
             <h1 className={css.title}>СВОДКА</h1>
@@ -42,7 +34,6 @@ function ReportsMonths({ report }) {
              </ul>
         </div>
     )
-    
     
 
 //   return (
