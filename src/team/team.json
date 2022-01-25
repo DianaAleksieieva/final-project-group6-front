@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Aleksandr Seleznyov",
+    "photo": "Seleznyov.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Oleksandr Yepishev",
+    "photo": "Yepishev.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Dima Pashchenko",
+    "photo": "Pashchenko.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Alex Tvardievich",
+    "photo": "Tvardievich.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Marian Moskal",
+    "photo": "Moskal.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Dmitriy Afanasiev",
+    "photo": "Afanasiev.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Chyshko Maksym",
+    "photo": "Chyshko.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Ievhen Pavlovskyi",
+    "photo": "Pavlovskyi.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Denys Ozolin",
+    "photo": "Ozolin.jsx",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Kostiantyn Chaikivskyi",
+    "photo": "Chaikivskyi.jpg",
+    "social": {
+      "github": "./",
+      "linkedin": "./"
+    }
+  }
+]
