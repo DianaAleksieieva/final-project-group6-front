@@ -2,7 +2,7 @@ import sprite from '../../../images/svg/sprite.svg';
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
 import { Notify } from 'notiflix';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
 import {
   addTransaction,
