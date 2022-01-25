@@ -56,18 +56,16 @@
 }
 .teamLead.member:hover{
   box-shadow: none;
+  transform: none;
 }
 .teamLead .photo{
+  text-align: center;
   width: 80px;
   height: 80px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  text-align: center;
-  transition: transform .3s;
-}
-.teamLead .photo:hover{
-  transform: scale(1.1);
+  /* transition: border .3s ease-in-out; */
 }
 .leadInfo .name{
   margin-bottom: 20px;
@@ -95,9 +93,11 @@
   filter: drop-shadow(0 0 2px rgb(197, 197, 197));  
   border-radius: 15px;
   background-color: var(--light-icons-color);
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow .3s ease-in-out;
+  transition: transform .3s ease-in-out;
 }
 .member:hover{
+  transform: scale(1.1);
   box-shadow: 10px 10px 10px rgba(156, 156, 156, 0.2);
 }
 .photo{
