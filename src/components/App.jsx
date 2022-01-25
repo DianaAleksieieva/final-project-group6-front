@@ -5,7 +5,7 @@ import Footer from './Footer';
 import { Container, Loader } from '.';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 
 
@@ -38,7 +38,9 @@ function App() {
   const [active, setActive] = useState('Расход');
   const [stateDashboardButton, setStateDashboardButton] = useState(true);
 
-
+ useEffect(() => {
+   dispatch(authOperations.fetchCurrentUser());
+ }, [dispatch]);
   const onIncrement = (month, year) => {
     if (month < 12) {
       setMonth(month + 1);
