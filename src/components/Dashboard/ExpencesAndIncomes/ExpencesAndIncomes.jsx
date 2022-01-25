@@ -1,6 +1,6 @@
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
 import sprite from '../../../images/svg/sprite.svg';
 import {
@@ -36,6 +36,7 @@ export default function ExpencesAndIncomes({
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
+  const formElement = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -78,6 +79,13 @@ export default function ExpencesAndIncomes({
       setDayTransactions(filerTransactions(monthTransactions));
   }, [date, monthTransactions, token]);
 
+  useEffect(() => {
+    if(type === 'расход'){
+      return;
+    }
+    setCategotyValue(null);
+    formElement.current.reset();
+  }, [type]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -145,7 +153,7 @@ export default function ExpencesAndIncomes({
               </svg>
             </button>
           )}
-          <form className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
+          <form ref={formElement} className={`${css.form} ${hideForm()}`} onSubmit={handleSubmit}>
             <TransactionInput
               transactionType={transactionType}
               value={categotyValue}
