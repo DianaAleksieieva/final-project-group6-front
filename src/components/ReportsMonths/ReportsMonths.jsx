@@ -9,6 +9,7 @@ function ReportsMonths({ report }) {
     // report.map(i => console.log(Object.values(i).toString()))
     // let indMonth = 0;
     const [data, setData] = useState([]);
+    // console.log(report)
 
     useEffect(() => {
       if(!report || report === []){
@@ -23,12 +24,14 @@ function ReportsMonths({ report }) {
         )
         setData(newReport);
     }, [report]);
+
+    // console.log(data)
     
 
     return (
         <div className={css.container}>
             <h1 className={css.title}>СВОДКА</h1>
-            <ol className={css.list}>
+            <ul className={css.list}>
 
                 {data && data.map(({sum, month}) => (
                     <li key={`${sum}+${month}`} className={css.item}>
@@ -55,7 +58,7 @@ function ReportsMonths({ report }) {
 
 
 
-             </ol>
+             </ul>
         </div>
     )
 }

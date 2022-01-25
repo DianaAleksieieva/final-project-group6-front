@@ -24,6 +24,7 @@ const LoginView = lazy(() =>
   import('../views/LoginPage' /* webpackChunkName: "login-page" */),
 );
 
+
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();

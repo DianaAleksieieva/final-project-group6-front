@@ -61,7 +61,7 @@ export default function ExpencesAndIncomes({
       setYearTransactions(lastMonthsArray);
     }
     fetchLastHalfYearData();
-  }, [type]);
+  }, [token, type]);
 
 
 
