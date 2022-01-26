@@ -28,16 +28,23 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
   let selectedYear = date.getFullYear();
 
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
+  const token = useSelector(authSelectors.getToken)
 
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
   const [active, setActive] = useState('Расход');
   const [stateDashboardButton, setStateDashboardButton] = useState(true);
+
+    useEffect(() => {
+    if (token) {
+      dispatch(authOperations.fetchCurrentUser());
+    }
+  }, [dispatch, token]);
 
   const onIncrement = (month, year) => {
     if (month < 12) {
@@ -68,12 +75,6 @@ function App() {
     setStateDashboardButton(data);
   };
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(authOperations.fetchCurrentUser());
-    }
-  }, [dispatch, isLoggedIn]);
-
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
     dispatch(authOperations.googleIn(token));
@@ -81,14 +82,12 @@ function App() {
   }
 
   return (
-    <>
-      {location.pathname === '/' || location.pathname === '/statistics' ? (
-        <div className={css.backgroundLogin}></div>
-      ) : (
-        <div className={css.background}></div>
-      )}
-
       <Suspense fallback={<Loader />}>
+        {location.pathname === '/' || location.pathname === '/statistics' ? (
+          <div className={css.backgroundLogin}></div>
+        ) : (
+          <div className={css.background}></div>
+        )}
         <Container>
           <Routes>
             <Route
@@ -149,10 +148,6 @@ function App() {
         )}
         <Footer />
         </Suspense>
-
-
-      
-    </>
   );
 }
 

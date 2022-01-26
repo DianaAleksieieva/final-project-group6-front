@@ -5,11 +5,9 @@ import useModal from '../Modal/useModal';
 import Loader from '../Loader';
 import { format } from 'date-fns'
 import { useEffect, useState } from 'react';
-// import { useDispatch } from "react-redux";
 
 function TransactionHistory({ data, type, category, handleDelete, status }) {
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
-  // const dispatch = useDispatch();
 
   const [id, setId] = useState('');
   const [transactions, setTransactions] = useState([]);
