@@ -83,10 +83,17 @@
   height: 46px;
   position: absolute;
   top: 50%;
-  left: 50%;
-  fill: var(--light-icons-color);
+  left: 50%;  
   transform: translate(-50%, -50%);
   z-index: 0;
+}
+
+.wrapper_icon .background_hide{
+  fill: var(--light-icons-color);
+}
+
+.wrapper_icon .wrapper_background{
+  fill: var(--lite-orange-color);
 }
 
 

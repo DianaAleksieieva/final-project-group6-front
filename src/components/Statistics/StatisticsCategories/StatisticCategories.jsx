@@ -44,8 +44,6 @@ export default function StatisticCategories({
     return newArr;
   }
 
-  // console.log('result', getResultArray());
-
   function res(iconsContainer) {
     let arr = [];
 
@@ -95,8 +93,8 @@ export default function StatisticCategories({
                   changeCategory(item.CatName);
                   setActiveBackground(index);
                 }}
-              >                
-                <svg className={css.statistics_icon}>
+              >
+                <svg>
                   <use href={item.Component} />
                 </svg>
               </button>
