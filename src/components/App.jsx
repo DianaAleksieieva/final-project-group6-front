@@ -148,7 +148,7 @@ function App() {
           <div className={css.cabbageSmall}></div>
         </div>
       )}
-      <Footer />
+      {isLoggedIn && <Footer />}
     </>
   );
 }
