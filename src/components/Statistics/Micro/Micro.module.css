@@ -5,7 +5,7 @@
     align-items: center;  
     height: 25px;
     width: 20px;
-    background-color: rgb(224, 224, 224);
+    background-color: var(--light-icons-color);
     padding:25px;
     border-radius: 50px;
     margin-bottom: 5px;

@@ -44,8 +44,6 @@ export default function StatisticCategories({
     return newArr;
   }
 
-  // console.log('result', getResultArray());
-
   function res(iconsContainer) {
     let arr = [];
 
