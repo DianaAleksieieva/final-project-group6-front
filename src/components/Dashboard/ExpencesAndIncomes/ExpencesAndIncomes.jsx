@@ -39,6 +39,7 @@ export default function ExpencesAndIncomes({
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
   const [submit, setSubmit] = useState(false);
+  
   const formElement = useRef(null);
   const [reqStatus, setReqStatus] = useState('idle');
 
@@ -161,7 +162,7 @@ export default function ExpencesAndIncomes({
 
   return (
     <div className={css.wraper}>
-      {reqStatus === 'pending' && <Loader />};
+      {reqStatus === 'pending' && <Loader />}
       <div className={css.imgBack}>
         <div className={css.conteiner}>
           <div className={`${css.flex} ${hidePicker()}`}>
