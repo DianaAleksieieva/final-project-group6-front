@@ -55,7 +55,9 @@ function Nav() {
             handleBackdropClick={handleBackdropClick}
             toLogout={() => {
               dispatch(authOperations.logOut())
-              window.location.reload();
+              setTimeout(() => {
+                window.location.reload();
+              }, 200);
             }}
           />
         )}
