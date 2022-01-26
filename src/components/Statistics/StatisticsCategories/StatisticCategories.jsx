@@ -95,8 +95,8 @@ export default function StatisticCategories({
                   changeCategory(item.CatName);
                   setActiveBackground(index);
                 }}
-              >                
-                <svg className={css.statistics_icon}>
+              >
+                <svg>
                   <use href={item.Component} />
                 </svg>
               </button>
