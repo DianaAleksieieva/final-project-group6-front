@@ -20,6 +20,7 @@
 
 @media (max-width: 767px) {
   .input{
+    width: 100%;
     margin: 0 auto;
     border-color: var(--white-color);
     border-top-right-radius: 16px;
@@ -32,6 +33,6 @@
 }
 @media (min-width: 1280px) {
   .input{
-    width: 289px;
+    width: 287px;
   }
 }

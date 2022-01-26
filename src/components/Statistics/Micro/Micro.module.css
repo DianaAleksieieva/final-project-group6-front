@@ -1,0 +1,41 @@
+.micro_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    height: 25px;
+    width: 20px;
+    background-color: var(--light-icons-color);
+    padding:25px;
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+.micro_container:hover{
+    color: var(--accent-orange-color);
+    filter: drop-shadow(0 0 3px rgb(107, 107, 107));   
+}
+
+.micro_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 25px;
+    width: 20px;  
+    background-color: transparent;
+    border: none;
+    fill: black;    
+    transition: stroke 0.2s, fill 0.3s;  
+}
+
+.micro_icon:hover{  
+    cursor: pointer;    
+    fill: var(--accent-orange-color); 
+    filter: drop-shadow(0 0 3px var(--accent-orange-color));    
+}
+
+.micro_icon:focus{   
+    cursor: pointer;    
+    fill: var(--accent-orange-color);  
+    filter: drop-shadow(0 0 3px var(--accent-orange-color));   
+}

@@ -30,22 +30,22 @@
   line-height: 1.16;
   align-items: center;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 12px 0;
   border-bottom: 2px solid;
   border-bottom-color: white;
 }
 
 .list {
-  padding-top: 10px;
+  height: 206px;
+  padding-top: 2px;
 }
 
-.item {
+.item:nth-child(-n + 6) {
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 1.16;
-  height: 38px;
+  height: 40px;
 }
 
 .item:not(:last-child) {
@@ -56,7 +56,7 @@
 .item_text {
   display: inline-block;
   margin-left: 20px;
-  
+
   align-items: center;
   text-align: center;
   padding-top: 10px;
@@ -68,7 +68,7 @@
 
 .item_number {
   display: inline-block;
-  float:right;
+  float: right;
   margin-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;

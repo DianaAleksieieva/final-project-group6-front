@@ -17,7 +17,7 @@ function Droplist({categories, categoryTitle, data, onChange}) {
   return(
     <>
     <input id='category' type='hidden' value={data? data.value: ''} onChange={() => console.log('change')} required/>
-    <div className={css.dropdown} tabindex='0'>
+    <div className={css.dropdown} tabIndex='0'>
       <div className={css.control} onClick={() => setOpen((prev) => !prev)}>
         <div className={css.selectedValue} ref={ref} style={data && {color: '#52555F'}}>{data? data.label: categoryTitle}</div>
         <div className={`${css.arrow} ${open ? css.open: null}`}></div>

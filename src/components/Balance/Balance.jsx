@@ -9,22 +9,30 @@ import { useLocation } from 'react-router-dom';
 import { balanceOperations } from '../../redux/balance';
 import { authSelectors, authOperations } from '../../redux/auth';
 
-function Balance({ month, year, onIncrement, onDecrement }) {
+function Balance({
+  month,
+  year,
+  onIncrement,
+  onDecrement,
+  active,
+  stateDashboardButton,
+}) {
   const [handledBalance, setHandleBalance] = useState(0);
   const [startBalance, setStartBalance] = useState(null);
   const dispatch = useDispatch();
 
+  // const [activeState, setActiveState] = useState(false);
+  const windowInnerWidth = window.innerWidth;
   const balance = useSelector(authSelectors.getUserBalance);
   const userStartBalance = useSelector(authSelectors.getStartBalance);
-
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch, userStartBalance, balance]);
-  
+
   useEffect(() => {
     setStartBalance(userStartBalance);
-    }, [userStartBalance]);
+  }, [userStartBalance]);
 
   const handleChange = event => {
     setHandleBalance(event.target.value);
@@ -42,7 +50,11 @@ function Balance({ month, year, onIncrement, onDecrement }) {
   const location = useLocation();
 
   return (
-    <div className={changeFlexContainer()}>
+    <div
+      className={`${changeFlexContainer()} ${
+        stateDashboardButton === true ? css.showBalance : css.hideBalance
+      }`}
+    >
       <div className={css.contArrow}>
         {location.pathname === '/statistics' && <GoBackButton />}
       </div>
@@ -51,6 +63,8 @@ function Balance({ month, year, onIncrement, onDecrement }) {
         <p className={css.balanceText}>Баланс:</p>
         <div className={css.wrapperButton}>
           <input
+            type="number"
+            min="0"
             className={css.input}
             placeholder={balance ? balance : '0'}
             disabled={startBalance !== null && 'disabled'}
@@ -58,7 +72,8 @@ function Balance({ month, year, onIncrement, onDecrement }) {
           ></input>
           <span className={css.UA}> UAH</span>
           {startBalance === null && <FirstModal />}
-          {startBalance !== null ? (
+          {location.pathname === '/statistics' &&
+          windowInnerWidth < 1279 ? null : startBalance !== null ? (
             <button
               type="submit"
               className={css.disabledButton}

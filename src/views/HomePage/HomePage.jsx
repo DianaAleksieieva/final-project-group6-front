@@ -1,12 +1,29 @@
 import Dashboard from '../../components/Dashboard';
+import { authOperations } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 
+function HomePage({
+  active,
+  changeActiveState,
+  stateDashboardButton,
+  changestateDashboardButton,
+}) {
+  const dispatch = useDispatch();
 
-function HomePage() {
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <>
-      <Dashboard />
+      <Dashboard
+        active={active}
+        changeActiveState={changeActiveState}
+        stateDashboardButton={stateDashboardButton}
+        changestateDashboardButton={changestateDashboardButton}
+      />
     </>
   );
 }

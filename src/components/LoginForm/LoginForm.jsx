@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { authOperations, authSelectors } from '../../redux/auth';
+import { authOperations} from '../../redux/auth';
 import css from './LoginForm.module.css';
 
 function LoginForm() {
@@ -14,11 +14,6 @@ function LoginForm() {
     password: '',
     showPassword: false,
   });
-  // const isGoogleUser = useSelector(authSelectors.getIsGoogleUser);
-
-  // useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch, isGoogleUser]);
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
@@ -32,22 +27,27 @@ function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
   } = useForm({
     delayError: 500,
     mode: 'onChange',
   });
 
   const onSubmit = data => {
+    const { email, password } = data; 
+    const userName = data.email?.split('@', 1);
+
     switch (actionType) {
       case 'login':
         dispatch(authOperations.logIn(data));
-        // reset();
         return;
+      
       case 'register':
-        dispatch(authOperations.register(data));
+        dispatch(authOperations.register({
+          email, password, userName: `${userName}`
+        }));
         // reset();
         return;
+      
       default:
         return;
     }
@@ -110,6 +110,10 @@ function LoginForm() {
                   value: 6,
                   message: 'Минимальная длина должна быть не менее 6 символов',
                 },
+                maxLength: {
+                  value: 10,
+                  message: 'Допустимая длина не более 10 символов',
+                }
               })}
             ></input>
             <IconButton

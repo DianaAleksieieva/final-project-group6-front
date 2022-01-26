@@ -1,17 +1,18 @@
 import { useState } from "react";
 
 const useModal = () => {
-    const [isShowingModal, setIsShowingModal] = useState(false);
+    const [isShowingModal, setIsShowingModal] = useState(false);     
+    isShowingModal? document.body.style.overflow = 'hidden': document.body.style.overflow = 'visible';
     
   function toggle() {
     setIsShowingModal(!isShowingModal);
   }
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
-     toggle();
+      toggle();
     }
   };
- 
+
   return {
     isShowingModal,
     toggle,

@@ -1,4 +1,4 @@
-import Statistics from '../../components/Statistics';
+import Statistics from '../../components/Statistics/Statistics';
 import CostsAndIncome from '../../components/CostsAndIncome';
 
 function StatisticsPage({ month, year }) {

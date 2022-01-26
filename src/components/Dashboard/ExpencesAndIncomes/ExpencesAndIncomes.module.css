@@ -32,7 +32,7 @@
 }
 
 .box {
-  display: none;
+  display: block;
 }
 
 .select {
@@ -56,6 +56,10 @@
 }
 
 .position {
+  display: none;
+}
+
+.wrapperArrow {
   display: none;
 }
 
@@ -116,6 +120,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .conteiner {
+    padding: 33px 0 0 0;
+  }
+
   .wraper {
     width: 1060px;
     height: 579px;
@@ -150,9 +158,10 @@
     display: block;
     position: absolute;
     z-index: 50;
-    top: 105px;
+    top: 136px;
     left: 780px;
     margin-left: 30px;
+    margin-top: 0;
   }
   .report {
     margin-left: 20px;
@@ -162,4 +171,59 @@
     left: 0;
     transform: translateX(0);
   }
+}
+
+@media screen and (max-width: 767px) {
+  .wraper {
+    height: auto;
+  }
+
+  .imgBack {
+    display: block;
+    /* background-image: url('../../../images/back.png'); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 110px;
+  }
+  .hideHistory {
+    display: none;
+  }
+  .showHistory {
+    display: flex;
+  }
+  .wrapperArrow {
+    display: block;
+    margin: 15px 0;
+    border: none;
+    background-color: transparent;
+  }
+  .list {
+    top: 35px;
+  }
+  form.hideForm {
+    display: none;
+  }
+  div.hidePicker {
+    display: none;
+  }
+}
+
+button.enterButton {
+  background-color: #ff751d;
+  color: #ffffff;
+}
+
+button.enterButton:hover {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton {
+  color: #52555f;
+  background-color: #f5f6fb;
+}
+
+button.clearButton:hover {
+  background-color: #ff751d;
+  color: #ffffff;
 }

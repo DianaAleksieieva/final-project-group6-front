@@ -28,16 +28,15 @@
     color: #52555f;
   }
   .redText {
-    color: #E53935;
+    color: #e53935;
   }
   .greenText {
-      color: #407946
+    color: #407946;
   }
   .band {
     margin-left: 15px;
     margin-right: 10px;
   }
-
 }
 @media screen and (min-width: 768px) {
   .section {

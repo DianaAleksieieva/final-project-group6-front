@@ -1,0 +1,192 @@
+@import url('../../../utils/_variables.css');
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101; 
+  backdrop-filter: blur(5px);
+}
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 760px;
+  margin-bottom: -10px;
+  padding: 12px;
+  padding-top: 14px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  background-color: var(--white-color);
+}
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.logo{
+  width: 180px;
+  height: auto;
+}
+.logo > img {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.membersList{
+  justify-content: space-around;
+  margin: 0 -4px;
+  margin-bottom: -10px;
+}
+.teamLead.member{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 360px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.teamLead.member:hover{
+  box-shadow: none;
+  transform: none;
+}
+.teamLead .photo{
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+.leadInfo .name{
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+.position{
+  display: block;
+  text-align: left;
+  margin-top: -14px;
+  margin-left: 25px;
+  color: var(--accent-orange-color);
+  font-size: 12px;
+  cursor: default;
+}
+.leadInfo .social{
+  justify-content: flex-end;
+  margin-right: 20px;
+  padding: 0;
+}
+.leadInfo .link{
+  width: 28px;
+  margin-left: 10px;
+}
+.membersList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.member{
+  width: 132px;
+  margin: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  filter: drop-shadow(0 0 2px rgb(197, 197, 197));  
+  border-radius: 15px;
+  background-color: var(--light-icons-color);
+  transition: box-shadow .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+}
+.member:hover{
+  transform: scale(1.1);
+  box-shadow: 10px 10px 10px rgba(156, 156, 156, 0.2);
+}
+.photo{
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+.name{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 0 24px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+  cursor: default;
+}
+.social{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.link{
+  display: block;
+  width: 20px;
+  height: auto;
+}
+.modalCloseBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  margin: 2px;
+}
+.modalCloseIcon {
+  background-image: url(../../../images/svg/close.svg);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+} 
+@media (min-width: 1280px) {
+  .modal_content{
+    width: 860px;
+    padding: 30px 30px;
+  }
+  .logo{
+    width: 220px;
+  }
+  .teamLead .photo{
+    width: 100px;
+    height: 100px;
+  }
+  .leadInfo .name{
+    font-size: 18px;
+  }
+  .position{
+    font-size: 14px;
+  }
+  .main{
+    margin-bottom: 20px;
+  }
+  .membersList{
+    margin: 0 -5px;
+    margin-bottom: -12px;
+  }
+  .member{
+    width: 146px;
+    margin: 5px;
+    margin-bottom: 12px;
+  }
+  .name{
+    font-size: 16px;
+    line-height: 20px;
+  }
+} 

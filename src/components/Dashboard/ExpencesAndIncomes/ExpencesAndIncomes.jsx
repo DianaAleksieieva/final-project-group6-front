@@ -1,24 +1,33 @@
+import sprite from '../../../images/svg/sprite.svg';
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
-import { useEffect, useState } from 'react';
+// import Loader from '../../Loader/Loader';
+import { Notify } from 'notiflix';
+import { useEffect, useState, useRef } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
 import {
-    addTransaction,
-    deleteTransaction,
-    fetchMonthlyData,
-    getByTypeYearly
-  } from '../../../api/transactionsAPI';
+  addTransaction,
+  deleteTransaction,
+  fetchMonthlyData,
+  getByTypeFromLastHalfYear,
+} from '../../../api/transactionsAPI';
 import {
-    ReportsMonths,
-    TransactionHistory,
-    TransactionInput,
-    DayPicker,
+  ReportsMonths,
+  TransactionHistory,
+  TransactionInput,
+  DayPicker,
 } from '../..';
-import { authOperations } from '../../../redux/auth';
-import { useDispatch } from 'react-redux';
+import { authOperations, authSelectors } from '../../../redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function ExpencesAndIncomes({ transactionType }) {
+export default function ExpencesAndIncomes({
+  transactionType,
+  stateDashboardButton,
+  changestateDashboardButton,
+}) {
+  const dispatch = useDispatch();
   const { type, category } = transactionType;
+  const token = useSelector(authSelectors.getToken);
 
   const initialDate = new Date();
   const [date, setDate] = useState(initialDate);
@@ -29,42 +38,82 @@ export default function ExpencesAndIncomes({ transactionType }) {
   const [monthTransactions, setMonthTransactions] = useState([]);
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
+  const [submit, setSubmit] = useState(false);
+  
+  const formElement = useRef(null);
+  const [reqStatus, setReqStatus] = useState('idle');
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
+    if (submit && token) {
+      dispatch(authOperations.fetchCurrentUser());
+      setSubmit(false);
+    }
+  }, [dispatch, submit, token]);
+
+
+  useEffect(() => {
+    if (!type || !year || !month || !token) {
+      return;
+    }
     async function fetchData() {
+      setReqStatus('pending');
       const data = await fetchMonthlyData(type, year, month);
       setMonthTransactions(data);
+      setReqStatus('resolved');
     }
     fetchData();
-  }, [month, type, year]);
+  }, [month, token, type, year]);
 
 
   useEffect(() => {
-    async function fetchYearlyData() {
-      const data = await getByTypeYearly({ type, year });
-      setYearTransactions(data.result);
+    if (!type || !token) {
+      return;
     }
-    fetchYearlyData();
-  }, [type, year]);
+    async function fetchLastHalfYearData() {
+      const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
+      setYearTransactions(lastMonthsArray);
+    }
+    fetchLastHalfYearData();
+  }, [token, type]);
+
 
   useEffect(() => {
-    if (monthTransactions && monthTransactions !== []) {
-      const filerTransactions = month =>
-        month.filter(
-          trans =>
-            lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') ===
-            lightFormat(date, 'dd.MM.yyyy'),
-        );
-      setDayTransactions(filerTransactions(monthTransactions));
+    if (!monthTransactions || monthTransactions === [] || !token) {
+      return;
     }
-  }, [date, monthTransactions]);
+    const filerTransactions = month =>
+      month.filter(
+        trans =>
+          lightFormat(parseISO(`${trans.date}`), 'dd.MM.yyyy') ===
+          lightFormat(date, 'dd.MM.yyyy'),
+      );
+    setDayTransactions(filerTransactions(monthTransactions));
+  }, [date, monthTransactions, token]);
+
+
+  useEffect(() => {
+    if (type === 'расход') {
+      return;
+    }
+    setCategotyValue(null);
+    formElement.current.reset();
+  }, [type]);
 
 
   const handleSubmit = async e => {
     e.preventDefault();
+
     const { description, category, amount } = e.target;
+    if (!category.value) {
+      Notify.failure('Выберите категорию', {
+        timeout: 3000,
+        clickToClose: true,
+        pauseOnHover: true,
+      });
+      return;
+    }
+
     const stringifyDate = JSON.parse(JSON.stringify(date));
     const newTransaction = {
       type,
@@ -80,8 +129,9 @@ export default function ExpencesAndIncomes({ transactionType }) {
 
     const data = await fetchMonthlyData(type, year, month);
     setMonthTransactions(data);
-    dispatch(authOperations.fetchCurrentUser());
+    setSubmit(true);
   };
+
 
   const clearForm = e => {
     setDate(initialDate);
@@ -89,52 +139,87 @@ export default function ExpencesAndIncomes({ transactionType }) {
     setCategotyValue(null);
   };
 
+
   const changeDate = date => {
     setDate(date);
   };
 
+  const handleDelete = async id => {
+    const filteredTransactions = dayTransactions.filter(el => el._id !== id);
+    setDayTransactions(filteredTransactions);
+    await deleteTransaction(`${id}`);
+    setSubmit(true);
+  };
 
-  const handleDelete = async id => { 
-    const filteredTransactions = dayTransactions.filter(
-      el => el._id !== id
-    )
-    setDayTransactions(filteredTransactions)
+  const hideDashboard = () => {
+    changestateDashboardButton(true);
+  };
 
-    await deleteTransaction(`${id}`)
-  }
+  const hideForm = () => {
+    return stateDashboardButton === true && css.hideForm;
+  };
 
+  const hidePicker = () => {
+    return stateDashboardButton === false && css.hidePicker;
+  };
 
   return (
     <div className={css.wraper}>
+      {/* {reqStatus === 'pending' && <Loader />} */}
       <div className={css.imgBack}>
         <div className={css.conteiner}>
-          <div className={css.flex}>
+          <div className={`${css.flex} ${hidePicker()}`}>
             <div className={css.box}>
               <DayPicker date={date} changeDate={changeDate} />
             </div>
           </div>
-          <form className={css.form} onSubmit={handleSubmit}>
-            <TransactionInput transactionType={transactionType} value={categotyValue} onChange={v => setCategotyValue(v)}/>
+          {stateDashboardButton === false && (
+            <button className={css.wrapperArrow} onClick={hideDashboard}>
+              <svg width="18" height="12">
+                <use href={`${sprite}#icon-arrowGoBack`}></use>
+              </svg>
+            </button>
+          )}
+          <form
+            ref={formElement}
+            className={`${css.form} ${hideForm()}`}
+            onSubmit={handleSubmit}
+          >
+            <TransactionInput
+              transactionType={transactionType}
+              value={categotyValue}
+              onChange={v => setCategotyValue(v)}
+            />
             <ul className={css.list}>
               <li className={css.item}>
                 <Button
                   type="submit"
                   text={'Ввод'}
-                  style={{ backgroundColor: '#ff751d', color: 'white' }}
+                  className={css.enterButton}
                 />
               </li>
               <li>
-                <Button type="button" text={'Очистить'} onClick={clearForm} />
+                <Button
+                  type="button"
+                  text={'Очистить'}
+                  onClick={clearForm}
+                  className={css.clearButton}
+                />
               </li>
             </ul>
           </form>
         </div>
       </div>
-      <div className={css.report}>
+      <div
+        className={`${css.report} ${
+          stateDashboardButton === true ? css.showHistory : css.hideHistory
+        }`}
+      >
         <TransactionHistory
           handleDelete={handleDelete}
           data={dayTransactions}
           category={category}
+          status={reqStatus}
           type={type}
         />
       </div>

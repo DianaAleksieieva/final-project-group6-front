@@ -10,8 +10,8 @@ import { authSelectors } from '../../../redux/auth';
 function Nav() {
   const { isShowingModal, toggle, handleBackdropClick } = useModal();
   const dispatch = useDispatch();
-  const userEmail = useSelector(authSelectors.getUserEmail);
-  const userName = userEmail?.split('@', 1);
+
+  const userName = useSelector(authSelectors.getUserName);
   const avatarUrl = useSelector(authSelectors.avatarURL);
 
   useEffect(() => {
@@ -51,9 +51,14 @@ function Nav() {
         {isShowingModal && (
           <Modal
             textContent={'Вы действительно хотите выйти?'}
-            toLogout={() => dispatch(authOperations.logOut())}
             closeModal={toggle}
             handleBackdropClick={handleBackdropClick}
+            toLogout={() => {
+              dispatch(authOperations.logOut())
+              setTimeout(() => {
+                window.location.reload();
+              }, 200);
+            }}
           />
         )}
       </div>
