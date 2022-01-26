@@ -87,8 +87,9 @@ function App() {
       ) : (
         <div className={css.background}></div>
       )}
-      <Container>
-        <Suspense fallback={<Loader />}>
+
+      <Suspense fallback={<Loader />}>
+        <Container>
           <Routes>
             <Route
               path="/"
@@ -136,19 +137,21 @@ function App() {
               element={<h1 style={{ textAlign: 'center' }}>Not found!</h1>}
             />
           </Routes>
+        </Container>
+        {location.pathname === '/' || location.pathname === '/statistics' ? (
+          <div className={css.wrapperBackgroundStatistic}>
+            <div className={css.backgroundStatistic}></div>
+          </div>
+        ) : (
+          <div className={css.backgroundCabbage}>
+            <div className={css.cabbageSmall}></div>
+          </div>
+        )}
+        <Footer />
         </Suspense>
-      </Container>
 
-      {location.pathname === '/' || location.pathname === '/statistics' ? (
-        <div className={css.wrapperBackgroundStatistic}>
-          <div className={css.backgroundStatistic}></div>
-        </div>
-      ) : (
-        <div className={css.backgroundCabbage}>
-          <div className={css.cabbageSmall}></div>
-        </div>
-      )}
-      {isLoggedIn && <Footer />}
+
+      
     </>
   );
 }
