@@ -145,6 +145,7 @@
     vertical-align: baseline;
     grid-row: 1/4;
     padding-left: 10px;
+    cursor: pointer;
   }
   .itemBtn:hover {
     background-color: var(--light-icons-color);
@@ -290,6 +291,7 @@
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: baseline;
+    cursor: pointer;
   }
   .itemBtn:hover {
     background-color: var(--light-icons-color);
@@ -432,6 +434,7 @@
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: baseline;
+    cursor: pointer;
   }
   .itemBtn:hover {
     background-color: var(--light-icons-color);
