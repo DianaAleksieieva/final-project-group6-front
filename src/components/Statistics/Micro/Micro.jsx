@@ -20,6 +20,7 @@ export default function Micro({ active, changeCategory, changeStatus }) {
                 if (active === 'Расход') {
                     changeCategory('goods');
                     const elem = getElemForFocus('Продукты');
+                    console.log(elem);
 
                     elem.click();
                 }
@@ -182,9 +183,13 @@ export default function Micro({ active, changeCategory, changeStatus }) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
 
+    function startList() {
+        SpeechRecognition.startListening({ language: 'ru' })
+    }
+
     return (
         <div className={css.micro_container}>
-            <div onMouseDown={SpeechRecognition.startListening}
+            <div onMouseDown={startList}
                 onTouchEnd={SpeechRecognition.stopListening}
                 onMouseUp={SpeechRecognition.stopListening}
                 className={css.micro_icon}>
