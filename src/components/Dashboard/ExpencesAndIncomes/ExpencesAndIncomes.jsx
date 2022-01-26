@@ -39,6 +39,7 @@ export default function ExpencesAndIncomes({
   const [dayTransactions, setDayTransactions] = useState([]);
   const [categotyValue, setCategotyValue] = useState(null);
   const [submit, setSubmit] = useState(false);
+  
   const formElement = useRef(null);
   const [reqStatus, setReqStatus] = useState('idle');
 

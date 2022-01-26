@@ -3,8 +3,8 @@ import GoHome from '../helpers/routes/GoHome';
 import css from './App.module.css';
 import Footer from './Footer';
 import { Container, Loader } from '.';
-import { useDispatch } from 'react-redux';
-import { authOperations } from '../redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from '../redux/auth';
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 
@@ -31,6 +31,9 @@ function App() {
   let date = new Date();
   let selectedMonth = date.getMonth() + 1;
   let selectedYear = date.getFullYear();
+
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn)
+
   const [month, setMonth] = useState(selectedMonth);
   const [year, setYear] = useState(selectedYear);
   const [active, setActive] = useState('Расход');
@@ -66,8 +69,10 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(authOperations.fetchCurrentUser());
+    }
+  }, [dispatch, isLoggedIn]);
 
   if (location.search) {
     const token = location.search.slice(1, location.search.length);
