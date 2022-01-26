@@ -1,7 +1,7 @@
 import sprite from '../../../images/svg/sprite.svg';
 import css from './ExpencesAndIncomes.module.css';
 import Button from '../../Button/Button';
-import Loader from '../../Loader/Loader';
+// import Loader from '../../Loader/Loader';
 import { Notify } from 'notiflix';
 import { useEffect, useState, useRef } from 'react';
 import { parseISO, lightFormat } from 'date-fns';
