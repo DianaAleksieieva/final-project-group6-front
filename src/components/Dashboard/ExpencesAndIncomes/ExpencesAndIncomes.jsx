@@ -162,7 +162,7 @@ export default function ExpencesAndIncomes({
 
   return (
     <div className={css.wraper}>
-      {reqStatus === 'pending' && <Loader />}
+      {/* {reqStatus === 'pending' && <Loader />} */}
       <div className={css.imgBack}>
         <div className={css.conteiner}>
           <div className={`${css.flex} ${hidePicker()}`}>
@@ -216,6 +216,7 @@ export default function ExpencesAndIncomes({
           handleDelete={handleDelete}
           data={dayTransactions}
           category={category}
+          status={reqStatus}
           type={type}
         />
       </div>
