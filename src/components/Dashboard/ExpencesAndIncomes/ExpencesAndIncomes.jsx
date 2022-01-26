@@ -43,9 +43,6 @@ export default function ExpencesAndIncomes({
   const formElement = useRef(null);
   const [reqStatus, setReqStatus] = useState('idle');
 
-  // useEffect(() => {
-  //   setCategotyValue(null);
-  // }, [type]);
 
   useEffect(() => {
     if (submit && token) {
@@ -53,6 +50,7 @@ export default function ExpencesAndIncomes({
       setSubmit(false);
     }
   }, [dispatch, submit, token]);
+
 
   useEffect(() => {
     if (!type || !year || !month || !token) {
@@ -67,17 +65,18 @@ export default function ExpencesAndIncomes({
     fetchData();
   }, [month, token, type, year]);
 
+
   useEffect(() => {
     if (!type || !token) {
       return;
     }
-
     async function fetchLastHalfYearData() {
       const { lastMonthsArray } = await getByTypeFromLastHalfYear(type);
       setYearTransactions(lastMonthsArray);
     }
     fetchLastHalfYearData();
   }, [token, type]);
+
 
   useEffect(() => {
     if (!monthTransactions || monthTransactions === [] || !token) {
@@ -92,6 +91,7 @@ export default function ExpencesAndIncomes({
     setDayTransactions(filerTransactions(monthTransactions));
   }, [date, monthTransactions, token]);
 
+
   useEffect(() => {
     if (type === 'расход') {
       return;
@@ -99,6 +99,7 @@ export default function ExpencesAndIncomes({
     setCategotyValue(null);
     formElement.current.reset();
   }, [type]);
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -131,11 +132,13 @@ export default function ExpencesAndIncomes({
     setSubmit(true);
   };
 
+
   const clearForm = e => {
     setDate(initialDate);
     e.target.form.reset();
     setCategotyValue(null);
   };
+
 
   const changeDate = date => {
     setDate(date);
