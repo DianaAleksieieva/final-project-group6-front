@@ -91,7 +91,7 @@ function App() {
         <Container>
           <Routes>
             <Route
-              path="/"
+              path="/" 
               element={
                 <PrivateRoute>
                   <LayoutView

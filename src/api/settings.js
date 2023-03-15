@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = 'https://final-project-group6-back.herokuapp.com/api/';
+const apiUrl = 'https://kapusta-project-aleksa.onrender.com';
 // const apiUrl = 'http://localhost:4321/api/';
 
 export const api = axios.create({
