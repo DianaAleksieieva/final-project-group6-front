@@ -4,7 +4,7 @@ import { Notify } from 'notiflix';
 import notifyError from '../../helpers/api/notifyError';
 import { tokenToAxios } from '../../api/settings';
 
-axios.defaults.baseURL = 'https://final-project-group6-back.herokuapp.com/';
+axios.defaults.baseURL = 'https://kapusta-project-aleksa.onrender.com';
 // axios.defaults.baseURL = 'http://localhost:4321/';
 
 const token = {
