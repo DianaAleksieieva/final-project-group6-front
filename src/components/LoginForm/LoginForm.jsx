@@ -60,7 +60,7 @@ function LoginForm() {
       </p>
       <a
         className={css.google}
-        href="https://final-project-group6-back.herokuapp.com/api/auth/google"
+        href="https://kapusta-project-aleksa.onrender.com/api/auth/google"
       >
         Google
       </a>
